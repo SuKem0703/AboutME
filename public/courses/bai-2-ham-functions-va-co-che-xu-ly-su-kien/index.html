@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Bài 2: Hàm (Functions) và Cơ chế Xử lý sự kiện | BNGroup</title>
+<meta name="keywords" content="JavaScript, ES6, Callback, Event Handling">
+<meta name="description" content="Khám phá sức mạnh của First-class Functions, phân tích sâu về Arrow Function (ES6) và cơ chế Callback - nền tảng của lập trình bất đồng bộ.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/courses/bai-2-ham-functions-va-co-che-xu-ly-su-kien/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/courses/bai-2-ham-functions-va-co-che-xu-ly-su-kien/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="BNGroup (Alt + H)">BNGroup</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Trang Chủ">
+                    <span>Trang Chủ</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/projects/chronicles-of-knight-and-mage/" title="Dự Án (Projects)">
+                    <span>Dự Án (Projects)</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/courses/" title="Khóa Học (LTM)">
+                    <span>Khóa Học (LTM)</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Blog Cá Nhân">
+                    <span>Blog Cá Nhân</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="Về Tôi (Profile)">
+                    <span>Về Tôi (Profile)</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Bài 2: Hàm (Functions) và Cơ chế Xử lý sự kiện
+    </h1>
+    <div class="post-meta"><span title='2025-12-21 00:00:00 +0000 UTC'>December 21, 2025</span>&nbsp;·&nbsp;<span>5 phút</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Trong bài trước, chúng ta đã tìm hiểu về cách JavaScript lưu trữ dữ liệu. Ở bài này, chúng ta sẽ tìm hiểu cách JavaScript xử lý logic thông qua Hàm (Functions). Nếu bạn đến từ nền tảng C# hoặc Java, bạn sẽ thấy hàm trong JavaScript linh hoạt một cách đáng ngạc nhiên. Nó không chỉ là một phương thức (method) trong class, mà là một &ldquo;công dân hạng nhất&rdquo; (First-class citizen).</p>
+<h2 id="1-hàm-là-công-dân-hạng-nhất-first-class-function">1. Hàm là &ldquo;Công dân hạng nhất&rdquo; (First-class Function)<a hidden class="anchor" aria-hidden="true" href="#1-hàm-là-công-dân-hạng-nhất-first-class-function">#</a></h2>
+<p>Trong JavaScript, hàm được coi là một giá trị (value), giống như <code>Number</code> hay <code>String</code>. Điều này có nghĩa là:</p>
+<ol>
+<li>Hàm có thể được gán cho một biến.</li>
+<li>Hàm có thể được truyền vào hàm khác như một tham số (Callback).</li>
+<li>Hàm có thể được trả về từ một hàm khác (Higher-order Function).</li>
+</ol>
+<p>Khả năng này mở ra các mô hình lập trình mạnh mẽ như Functional Programming, nhưng cũng dễ gây bối rối cho người mới bắt đầu về ngữ cảnh thực thi (Execution Context).</p>
+<h2 id="2-các-cách-khai-báo-hàm-và-sự-tiến-hóa">2. Các cách khai báo hàm và Sự tiến hóa<a hidden class="anchor" aria-hidden="true" href="#2-các-cách-khai-báo-hàm-và-sự-tiến-hóa">#</a></h2>
+<p>JavaScript cung cấp nhiều cách để định nghĩa hàm, mỗi cách có hành vi khác nhau về <strong>Hoisting</strong> và từ khóa <strong><code>this</code></strong>.</p>
+<h3 id="21-function-declaration-khai-báo-truyền-thống">2.1. Function Declaration (Khai báo truyền thống)<a hidden class="anchor" aria-hidden="true" href="#21-function-declaration-khai-báo-truyền-thống">#</a></h3>
+<p>Đây là cách cơ bản nhất, sử dụng từ khóa <code>function</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sayHello</span>(<span style="color:#a6e22e">name</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Hello &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">name</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li><strong>Đặc điểm:</strong> Được <strong>Hoisted</strong> (đẩy lên đầu phạm vi). Bạn có thể gọi hàm <code>sayHello</code> trước dòng khai báo hàm trong code mà không gặp lỗi.</li>
+<li><strong>Ngữ cảnh <code>this</code>:</strong> Động (Dynamic). Giá trị của <code>this</code> phụ thuộc vào <em>cách hàm được gọi</em> (gọi trực tiếp, gọi thông qua object, v.v.).</li>
+</ul>
+<h3 id="22-function-expression-biểu-thức-hàm">2.2. Function Expression (Biểu thức hàm)<a hidden class="anchor" aria-hidden="true" href="#22-function-expression-biểu-thức-hàm">#</a></h3>
+<p>Gán một hàm (thường là vô danh - anonymous) cho một biến.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sayHello</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">name</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Hello &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">name</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li><strong>Đặc điểm:</strong> Không được Hoisted. Nếu bạn gọi biến <code>sayHello</code> trước khi gán, chương trình sẽ báo lỗi (ReferenceError hoặc TypeError).</li>
+<li><strong>Ứng dụng:</strong> Thường dùng khi cần truyền hàm làm tham số hoặc tạo Closure.</li>
+</ul>
+<h3 id="23-arrow-function-hàm-mũi-tên---es6">2.3. Arrow Function (Hàm mũi tên - ES6)<a hidden class="anchor" aria-hidden="true" href="#23-arrow-function-hàm-mũi-tên---es6">#</a></h3>
+<p>ES6 giới thiệu cú pháp ngắn gọn hơn, loại bỏ từ khóa <code>function</code> và <code>return</code> (trong trường hợp đơn giản).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Cú pháp đầy đủ
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">add</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Cú pháp rút gọn (Implicit return)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">multiple</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; <span style="color:#a6e22e">a</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">b</span>;
+</span></span></code></pre></div><p><strong>Sự khác biệt cốt lõi về <code>this</code> (Lexical Scope):</strong>
+Trong C# hay Java, <code>this</code> luôn trỏ về đối tượng hiện tại. Trong JS truyền thống, <code>this</code> hay bị thay đổi ngữ cảnh (context) khi hàm được gọi trong callback.
+Arrow Function <strong>không</strong> có <code>this</code> của riêng nó. Nó &ldquo;mượn&rdquo; <code>this</code> từ phạm vi bao quanh nó (Lexical Scope). Điều này giúp sửa lỗi phổ biến khi lập trình sự kiện hoặc gọi API trong class.</p>
+<p>Ví dụ minh họa sự khác biệt:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;User A&#34;</span>,
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Function thường
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printRegular</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">setTimeout</span>(<span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// &#39;this&#39; ở đây bị trôi về Global object hoặc undefined
+</span></span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Regular:&#34;</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>); 
+</span></span><span style="display:flex;"><span>        }, <span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Arrow function
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">printArrow</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">setTimeout</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// &#39;this&#39; được giữ nguyên là obj
+</span></span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Arrow:&#34;</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>        }, <span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">printRegular</span>(); <span style="color:#75715e">// Kết quả: Regular: undefined
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">printArrow</span>();   <span style="color:#75715e">// Kết quả: Arrow: User A
+</span></span></span></code></pre></div><h2 id="3-callback-function-và-xử-lý-sự-kiện">3. Callback Function và Xử lý sự kiện<a hidden class="anchor" aria-hidden="true" href="#3-callback-function-và-xử-lý-sự-kiện">#</a></h2>
+<p>Đây là khái niệm quan trọng nhất để chuẩn bị cho bài học về Lập trình bất đồng bộ (Asynchronous).</p>
+<h3 id="31-callback-là-gì">3.1. Callback là gì?<a hidden class="anchor" aria-hidden="true" href="#31-callback-là-gì">#</a></h3>
+<p>Callback đơn giản là một hàm được truyền vào một hàm khác như một tham số, và sẽ được &ldquo;gọi lại&rdquo; (executed) tại một thời điểm nào đó sau này.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">processData</span>(<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">callback</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Đang xử lý dữ liệu: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Sau khi xử lý xong, gọi hàm callback
+</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">callback</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">processData</span>(<span style="color:#e6db74">&#34;File.txt&#34;</span>, <span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Đã xử lý xong!&#34;</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h3 id="32-tại-sao-cần-callback">3.2. Tại sao cần Callback?<a hidden class="anchor" aria-hidden="true" href="#32-tại-sao-cần-callback">#</a></h3>
+<p>JavaScript là ngôn ngữ <strong>đơn luồng (Single-threaded)</strong>. Nó chỉ có một Call Stack để thực thi code. Nếu một tác vụ nặng (như đọc file, request mạng) chạy đồng bộ, nó sẽ chặn (block) toàn bộ giao diện, khiến web bị &ldquo;đơ&rdquo;.</p>
+<p>Để giải quyết, JS sử dụng mô hình <strong>Bất đồng bộ (Asynchronous)</strong> dựa trên Callback và Event Loop.</p>
+<ol>
+<li>Khi gặp sự kiện (click chuột, timer, request mạng), JS gửi tác vụ đó cho Web API xử lý nền.</li>
+<li>JS tiếp tục chạy các dòng code tiếp theo mà không chờ đợi.</li>
+<li>Khi tác vụ nền hoàn thành, Callback của nó được đẩy vào hàng đợi (Queue).</li>
+<li>Khi Call Stack rảnh, Callback được đưa vào thực thi.</li>
+</ol>
+<p>Ví dụ về Event Handling (Xử lý sự kiện):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">button</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;btn-submit&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Hàm (e) =&gt; {...} là một Callback
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Nó KHÔNG chạy ngay lập tức, mà chỉ chạy khi người dùng click
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">button</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, (<span style="color:#a6e22e">e</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Button clicked!&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">sendDataToServer</span>();
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h2 id="4-vấn-đề-callback-hell">4. Vấn đề &ldquo;Callback Hell&rdquo;<a hidden class="anchor" aria-hidden="true" href="#4-vấn-đề-callback-hell">#</a></h2>
+<p>Mặc dù Callback rất mạnh mẽ, nhưng nếu lạm dụng lồng nhau quá nhiều, code sẽ trở nên khó đọc và khó bảo trì. Đây gọi là &ldquo;Callback Hell&rdquo; (Địa ngục Callback).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Ví dụ Callback Hell
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">getData</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">a</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">getMoreData</span>(<span style="color:#a6e22e">a</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">b</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">getMoreData</span>(<span style="color:#a6e22e">b</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">c</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">getMoreData</span>(<span style="color:#a6e22e">c</span>, <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">d</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">d</span>);
+</span></span><span style="display:flex;"><span>            });
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>Để giải quyết vấn đề này, ES6 đã giới thiệu <strong>Promise</strong> và sau đó là <strong>Async/Await</strong> (chúng ta sẽ học kỹ ở Bài 3).</p>
+<h2 id="5-tổng-kết">5. Tổng kết<a hidden class="anchor" aria-hidden="true" href="#5-tổng-kết">#</a></h2>
+<ul>
+<li>Hàm trong JS là đối tượng (Object), có thể gán, truyền và trả về linh hoạt.</li>
+<li><strong>Arrow Function</strong> giúp code gọn hơn và giữ ngữ cảnh <code>this</code> ổn định, rất phù hợp cho các Callback.</li>
+<li><strong>Callback</strong> là cơ chế nền tảng để JS xử lý các tác vụ tốn thời gian mà không làm treo giao diện.</li>
+</ul>
+<p>Hiểu rõ Callback là chìa khóa để bạn chinh phục các kỹ thuật nâng cao như <code>fetch</code> API hay lập trình Socket trong các bài tiếp theo.</p>
+<hr>
+<h2 id="tài-liệu-tham-khảo">Tài liệu tham khảo<a hidden class="anchor" aria-hidden="true" href="#tài-liệu-tham-khảo">#</a></h2>
+<ol>
+<li>MDN Web Docs. &ldquo;Functions - JavaScript&rdquo;.</li>
+<li>MDN Web Docs. &ldquo;Arrow function expressions&rdquo;.</li>
+<li>Cisco Networking Academy. &ldquo;JavaScript Essentials 1: Functions &amp; Events&rdquo;.</li>
+<li>W3Schools. &ldquo;JavaScript Callbacks&rdquo;.</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/javascript/">JavaScript</a></li>
+      <li><a href="http://localhost:1313/tags/es6/">ES6</a></li>
+      <li><a href="http://localhost:1313/tags/callback/">Callback</a></li>
+      <li><a href="http://localhost:1313/tags/event-handling/">Event Handling</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+     <footer class="footer">
+        <div class="social-icons" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 15px;">
+            <a href="https://github.com/SuKem0703/" target="_blank" rel="noopener noreferrer me" title="Github">
+                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg></span>
+            </a>
+            <a href="https://www.facebook.com/binh.nguyen.250862" target="_blank" rel="noopener noreferrer me" title="Facebook">
+                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+</svg></span>
+            </a>
+            <a href="https://www.youtube.com/@Sheeppp" target="_blank" rel="noopener noreferrer me" title="Youtube">
+                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg></span>
+            </a>
+        </div>
+
+        <span>
+            © 2025 BNGroup - All Rights Reserved
+        </span>
+    </footer></body>
+
+</html>

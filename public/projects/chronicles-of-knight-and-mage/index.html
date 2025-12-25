@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Chronicles of Knight and Mage | BNGroup</title>
+<meta name="keywords" content="RPG, Adventure, PixelArt, Unity">
+<meta name="description" content="Game nhập vai hành động 2D với thế giới mở, hệ thống trồng trọt và vật phẩm ngẫu nhiên.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/projects/chronicles-of-knight-and-mage/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/projects/chronicles-of-knight-and-mage/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="BNGroup (Alt + H)">BNGroup</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Trang Chủ">
+                    <span>Trang Chủ</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/projects/chronicles-of-knight-and-mage/" title="Dự Án (Projects)">
+                    <span class="active">Dự Án (Projects)</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/courses/" title="Khóa Học (LTM)">
+                    <span>Khóa Học (LTM)</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Blog Cá Nhân">
+                    <span>Blog Cá Nhân</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="Về Tôi (Profile)">
+                    <span>Về Tôi (Profile)</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Chronicles of Knight and Mage
+    </h1>
+    <div class="post-description">
+      Game nhập vai hành động 2D với thế giới mở, hệ thống trồng trọt và vật phẩm ngẫu nhiên.
+    </div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Mục lục</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#gi%e1%bb%9bi-thi%e1%bb%87u-chung" aria-label="Giới thiệu chung">Giới thiệu chung</a></li>
+                <li>
+                    <a href="#c%e1%bb%91t-truy%e1%bb%87n" aria-label="Cốt truyện">Cốt truyện</a></li>
+                <li>
+                    <a href="#t%c3%adnh-n%c4%83ng-n%e1%bb%95i-b%e1%ba%adt" aria-label="Tính năng nổi bật">Tính năng nổi bật</a><ul>
+                        
+                <li>
+                    <a href="#1-c%c6%a1-ch%e1%ba%bf-chi%e1%ba%bfn-%c4%91%e1%ba%a5u-%c4%91a-d%e1%ba%a1ng" aria-label="1. Cơ chế chiến đấu đa dạng">1. Cơ chế chiến đấu đa dạng</a></li>
+                <li>
+                    <a href="#2-h%e1%bb%87-th%e1%bb%91ng-trang-b%e1%bb%8b-v%c3%a0-v%e1%ba%adt-ph%e1%ba%a9m" aria-label="2. Hệ thống trang bị và Vật phẩm">2. Hệ thống trang bị và Vật phẩm</a></li>
+                <li>
+                    <a href="#3-tr%e1%bb%93ng-tr%e1%bb%8dt-v%c3%a0-sinh-ho%e1%ba%a1t" aria-label="3. Trồng trọt và Sinh hoạt">3. Trồng trọt và Sinh hoạt</a></li>
+                <li>
+                    <a href="#4-th%e1%ba%bf-gi%e1%bb%9bi-m%e1%bb%9f-v%c3%a0-npc" aria-label="4. Thế giới mở và NPC">4. Thế giới mở và NPC</a></li></ul>
+                </li>
+                <li>
+                    <a href="#h%c3%acnh-%e1%ba%a3nh-trong-game" aria-label="Hình ảnh trong game">Hình ảnh trong game</a><ul>
+                        
+                <li>
+                    <a href="#giao-di%e1%bb%87n-chi%e1%ba%bfn-%c4%91%e1%ba%a5u" aria-label="Giao diện chiến đấu">Giao diện chiến đấu</a></li>
+                <li>
+                    <a href="#h%e1%bb%87-th%e1%bb%91ng-t%c3%bai-%c4%91%e1%bb%93" aria-label="Hệ thống túi đồ">Hệ thống túi đồ</a></li>
+                <li>
+                    <a href="#%c4%91%e1%bb%91i-tho%e1%ba%a1i-c%e1%bb%91t-truy%e1%bb%87n" aria-label="Đối thoại cốt truyện">Đối thoại cốt truyện</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%c4%91%e1%bb%8bnh-h%c6%b0%e1%bb%9bng-ph%c3%a1t-tri%e1%bb%83n" aria-label="Định hướng phát triển">Định hướng phát triển</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 30px;">
+    <img src="/projects/images/knight-mage-cover.png" 
+         alt="Chronicles of Knight and Mage" 
+         style="width: 280px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.15);">
+    <em style="opacity: 0.8; font-size: 0.9rem; margin-top: 10px;">
+        Dự án Game Action RPG 2D phát triển bởi Bùi Bình Nguyên
+    </em>
+</div>
+<blockquote>
+<p><strong>Trải nghiệm ngay:</strong> <a href="https://chronicles-of-knight-and-mage.onrender.com/">Truy cập trang chủ dự án</a></p>
+</blockquote>
+<hr>
+<h2 id="giới-thiệu-chung">Giới thiệu chung<a hidden class="anchor" aria-hidden="true" href="#giới-thiệu-chung">#</a></h2>
+<p><strong>Chronicles of Knight and Mage</strong> là tựa game nhập vai hành động (Action RPG) với đồ họa Pixel Art hoài cổ. Trò chơi đưa bạn vào một thế giới mở, nơi bạn không chỉ chiến đấu chống lại quái vật mà còn có thể trải nghiệm cuộc sống qua việc trồng trọt, khám phá và giải mã những bí ẩn của vùng đất Elaria.</p>
+<ul>
+<li><strong>Thể loại:</strong> Nhập vai hành động, Phiêu lưu, Mô phỏng.</li>
+<li><strong>Góc nhìn:</strong> Top-down (Từ trên xuống).</li>
+<li><strong>Nền tảng phát triển:</strong> Unity Engine.</li>
+</ul>
+<hr>
+<h2 id="cốt-truyện">Cốt truyện<a hidden class="anchor" aria-hidden="true" href="#cốt-truyện">#</a></h2>
+<p>Vùng đất <strong>Elaria</strong> từng phồn thịnh nhờ sự cân bằng giữa Khoa học và Ma thuật. Tuy nhiên, sự cân bằng đó đã sụp đổ vào &ldquo;Ngày Tan Vỡ&rdquo;, khi phong ấn cổ xưa bị phá vỡ, đánh thức các Tàn Thần trỗi dậy và gieo rắc hỗn loạn.</p>
+<p>Người chơi sẽ hóa thân thành một Hiệp sĩ lang thang hoặc một Pháp sư lưu vong. Bạn mang trong mình sứ mệnh tái thiết trật tự, đối đầu với thế lực bóng tối và tìm lại những ký ức đã bị lãng quên của chính mình.</p>
+<hr>
+<h2 id="tính-năng-nổi-bật">Tính năng nổi bật<a hidden class="anchor" aria-hidden="true" href="#tính-năng-nổi-bật">#</a></h2>
+<h3 id="1-cơ-chế-chiến-đấu-đa-dạng">1. Cơ chế chiến đấu đa dạng<a hidden class="anchor" aria-hidden="true" href="#1-cơ-chế-chiến-đấu-đa-dạng">#</a></h3>
+<p>Bạn có thể chuyển đổi linh hoạt giữa hai lối chơi hoàn toàn khác biệt:</p>
+<ul>
+<li><strong>Hiệp sĩ (Knight):</strong> Sở hữu khả năng cận chiến mạnh mẽ với các đòn Combo liên hoàn, sức chống chịu cao, thích hợp cho những ai thích xông pha.</li>
+<li><strong>Pháp sư (Mage):</strong> Sử dụng phép thuật tầm xa với sát thương diện rộng, yêu cầu kỹ năng di chuyển khéo léo để giữ khoảng cách với kẻ thù.</li>
+</ul>
+<h3 id="2-hệ-thống-trang-bị-và-vật-phẩm">2. Hệ thống trang bị và Vật phẩm<a hidden class="anchor" aria-hidden="true" href="#2-hệ-thống-trang-bị-và-vật-phẩm">#</a></h3>
+<p>Game sở hữu hệ thống vật phẩm có chiều sâu với cơ chế ngẫu nhiên (RNG) hấp dẫn:</p>
+<ul>
+<li><strong>Phân cấp độ hiếm:</strong> Vật phẩm được chia thành 9 cấp độ từ Thường (Rusty) đến Thần Thoại (Mythic). Mỗi cấp độ sẽ có màu sắc và khung viền riêng biệt.</li>
+<li><strong>Chỉ số ngẫu nhiên:</strong> Ngay cả khi nhặt được hai món đồ giống nhau, chỉ số sức mạnh của chúng cũng có thể khác biệt, tạo động lực để bạn săn tìm những trang bị hoàn hảo nhất.</li>
+<li><strong>Kho đồ thông minh:</strong> Dễ dàng quản lý, so sánh sức mạnh trang bị và sắp xếp túi đồ bằng thao tác kéo thả.</li>
+</ul>
+<h3 id="3-trồng-trọt-và-sinh-hoạt">3. Trồng trọt và Sinh hoạt<a hidden class="anchor" aria-hidden="true" href="#3-trồng-trọt-và-sinh-hoạt">#</a></h3>
+<p>Giữa những cuộc chiến căng thẳng, bạn có thể trở về vùng an toàn để làm nông. Hệ thống trồng trọt mô phỏng thời gian thực cho phép gieo hạt, chăm sóc và thu hoạch nông sản để chế tạo vật phẩm hỗ trợ.</p>
+<h3 id="4-thế-giới-mở-và-npc">4. Thế giới mở và NPC<a hidden class="anchor" aria-hidden="true" href="#4-thế-giới-mở-và-npc">#</a></h3>
+<ul>
+<li>Hệ thống nhiệm vụ đa dạng dẫn dắt người chơi khám phá cốt truyện.</li>
+<li>Tương tác với các NPC để nhận nhiệm vụ, mua bán vật phẩm hoặc tìm hiểu thêm về lịch sử của thế giới Elaria.</li>
+<li>Dữ liệu nhân vật được lưu trữ an toàn trên đám mây, giúp bạn yên tâm trải nghiệm mà không lo mất file save.</li>
+</ul>
+<hr>
+<h2 id="hình-ảnh-trong-game">Hình ảnh trong game<a hidden class="anchor" aria-hidden="true" href="#hình-ảnh-trong-game">#</a></h2>
+<p><em>(Phần này hiển thị các hình ảnh thực tế từ Gameplay)</em></p>
+<h3 id="giao-diện-chiến-đấu">Giao diện chiến đấu<a hidden class="anchor" aria-hidden="true" href="#giao-diện-chiến-đấu">#</a></h3>
+<p><img alt="Combat Gameplay" loading="lazy" src="/projects/images/combat-demo.png">
+<em>Hệ thống chiến đấu với kỹ năng và hiệu ứng hình ảnh</em></p>
+<h3 id="hệ-thống-túi-đồ">Hệ thống túi đồ<a hidden class="anchor" aria-hidden="true" href="#hệ-thống-túi-đồ">#</a></h3>
+<p><img alt="Inventory UI" loading="lazy" src="/projects/images/inventory-ui.png">
+<em>Giao diện thùng đồ và trang bị nhân vật</em></p>
+<h3 id="đối-thoại-cốt-truyện">Đối thoại cốt truyện<a hidden class="anchor" aria-hidden="true" href="#đối-thoại-cốt-truyện">#</a></h3>
+<p><img alt="Dialogue System" loading="lazy" src="/projects/images/dialogue.png">
+<em>Tương tác hội thoại với nhân vật trong game</em></p>
+<hr>
+<h2 id="định-hướng-phát-triển">Định hướng phát triển<a hidden class="anchor" aria-hidden="true" href="#định-hướng-phát-triển">#</a></h2>
+<p>Hiện tại game đã hoàn thiện các tính năng cốt lõi. Trong tương lai, dự án sẽ mở rộng thêm:</p>
+<ul>
+<li>Thêm chế độ chơi nhiều người (Multiplayer) để cùng săn Boss.</li>
+<li>Mở rộng bản đồ thế giới và thêm các chương cốt truyện mới.</li>
+<li>Phát triển phiên bản dành cho thiết bị di động.</li>
+</ul>
+<hr>
+<p><em>© 2025 BNGroup - Developed by Bùi Bình Nguyên</em></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/rpg/">RPG</a></li>
+      <li><a href="http://localhost:1313/tags/adventure/">Adventure</a></li>
+      <li><a href="http://localhost:1313/tags/pixelart/">PixelArt</a></li>
+      <li><a href="http://localhost:1313/tags/unity/">Unity</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+     <footer class="footer">
+        <div class="social-icons" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 15px;">
+            <a href="https://github.com/SuKem0703/" target="_blank" rel="noopener noreferrer me" title="Github">
+                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg></span>
+            </a>
+            <a href="https://www.facebook.com/binh.nguyen.250862" target="_blank" rel="noopener noreferrer me" title="Facebook">
+                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+</svg></span>
+            </a>
+            <a href="https://www.youtube.com/@Sheeppp" target="_blank" rel="noopener noreferrer me" title="Youtube">
+                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg></span>
+            </a>
+        </div>
+
+        <span>
+            © 2025 BNGroup - All Rights Reserved
+        </span>
+    </footer></body>
+
+</html>

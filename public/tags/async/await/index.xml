@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Async/Await on BNGroup</title>
+    <link>http://localhost:1313/tags/async/await/</link>
+    <description>Recent content in Async/Await on BNGroup</description>
+    <generator>Hugo -- 0.153.1</generator>
+    <language>vi</language>
+    <copyright>2025 BNGroup - All Rights Reserved</copyright>
+    <lastBuildDate>Sun, 21 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/async/await/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bài 3: Xử lý Bất đồng bộ - Từ Promise đến Async/Await</title>
+      <link>http://localhost:1313/courses/bai-3-xu-ly-bat-dong-bo-tu-promise-den-async-await/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/courses/bai-3-xu-ly-bat-dong-bo-tu-promise-den-async-await/</guid>
+      <description>Giải quyết vấn đề Callback Hell, tìm hiểu cơ chế Promise trong ES6 và cú pháp Async/Await trong ES8 để xử lý các tác vụ mạng hiệu quả.</description>
+    </item>
+  </channel>
+</rss>

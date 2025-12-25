@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Bài 6: Lập trình Socket TCP - Xây dựng ứng dụng Chat | BNGroup</title>
+<meta name="keywords" content="Java, Socket, TCP, Client-Server">
+<meta name="description" content="Hướng dẫn lập trình mạng cơ bản với giao thức TCP trong Java. Tìm hiểu về ServerSocket, Socket và quy trình bắt tay 3 bước để xây dựng ứng dụng Chat Client-Server.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/courses/bai-6-lap-trinh-socket-tcp-mo-hinh-client-server/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/courses/bai-6-lap-trinh-socket-tcp-mo-hinh-client-server/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="BNGroup (Alt + H)">BNGroup</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Trang Chủ">
+                    <span>Trang Chủ</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/projects/chronicles-of-knight-and-mage/" title="Dự Án (Projects)">
+                    <span>Dự Án (Projects)</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/courses/" title="Khóa Học (LTM)">
+                    <span>Khóa Học (LTM)</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Blog Cá Nhân">
+                    <span>Blog Cá Nhân</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="Về Tôi (Profile)">
+                    <span>Về Tôi (Profile)</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Bài 6: Lập trình Socket TCP - Xây dựng ứng dụng Chat
+    </h1>
+    <div class="post-meta"><span title='2025-12-21 00:00:00 +0000 UTC'>December 21, 2025</span>&nbsp;·&nbsp;<span>6 phút</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Trong các bài trước, chúng ta đã chuẩn bị đầy đủ hành trang: hiểu về biến/hàm (JS), cơ chế bất đồng bộ, và cách quản lý luồng dữ liệu (Java I/O). Hôm nay, chúng ta sẽ ghép nối tất cả để xây dựng ứng dụng mạng đầu tiên sử dụng giao thức TCP.</p>
+<p>Đây là bài học quan trọng nhất, vì 90% các ứng dụng mạng bạn sử dụng hàng ngày (Web, Email, File Transfer) đều chạy trên nền tảng TCP.</p>
+<h2 id="1-tổng-quan-về-giao-thức-tcp">1. Tổng quan về Giao thức TCP<a hidden class="anchor" aria-hidden="true" href="#1-tổng-quan-về-giao-thức-tcp">#</a></h2>
+<h3 id="11-tcp-là-gì">1.1. TCP là gì?<a hidden class="anchor" aria-hidden="true" href="#11-tcp-là-gì">#</a></h3>
+<p>TCP (Transmission Control Protocol) là giao thức hướng kết nối (connection-oriented). Trước khi hai máy tính có thể trao đổi dữ liệu, chúng phải thiết lập một &ldquo;đường ống&rdquo; ảo thông qua quy trình <strong>Bắt tay 3 bước (3-way Handshake)</strong>.</p>
+<h3 id="12-đặc-điểm-cốt-lõi">1.2. Đặc điểm cốt lõi<a hidden class="anchor" aria-hidden="true" href="#12-đặc-điểm-cốt-lõi">#</a></h3>
+<ol>
+<li><strong>Tin cậy (Reliable):</strong> TCP đảm bảo gói tin gửi đi chắc chắn đến đích. Nếu gói tin bị mất trên đường truyền, TCP sẽ tự động gửi lại (retransmission).</li>
+<li><strong>Có thứ tự (Ordered):</strong> Nếu bạn gửi A rồi gửi B, bên nhận chắc chắn sẽ nhận A trước rồi mới đến B.</li>
+<li><strong>Luồng dữ liệu (Byte Stream):</strong> TCP không giới hạn kích thước gói tin, dữ liệu được truyền đi như một dòng chảy liên tục (Stream).</li>
+</ol>
+<h3 id="13-mô-hình-client-server">1.3. Mô hình Client-Server<a hidden class="anchor" aria-hidden="true" href="#13-mô-hình-client-server">#</a></h3>
+<ul>
+<li><strong>Server (Máy chủ):</strong> Đóng vai trò thụ động. Nó mở một cổng (Port) và lắng nghe, chờ đợi ai đó kết nối đến.</li>
+<li><strong>Client (Máy khách):</strong> Đóng vai trò chủ động. Nó biết địa chỉ IP và Port của Server để khởi tạo kết nối.</li>
+</ul>
+<h2 id="2-các-lớp-java-hỗ-trợ-tcp-socket">2. Các lớp Java hỗ trợ TCP Socket<a hidden class="anchor" aria-hidden="true" href="#2-các-lớp-java-hỗ-trợ-tcp-socket">#</a></h2>
+<p>Java cung cấp gói <code>java.net</code> để làm việc với tầng giao vận này.</p>
+<h3 id="21-lớp-javanetserversocket">2.1. Lớp <code>java.net.ServerSocket</code><a hidden class="anchor" aria-hidden="true" href="#21-lớp-javanetserversocket">#</a></h3>
+<p>Lớp này chỉ được sử dụng ở phía <strong>Server</strong>. Nhiệm vụ duy nhất của nó là chờ đợi các yêu cầu kết nối từ Client.</p>
+<ul>
+<li><code>ServerSocket(int port)</code>: Tạo server lắng nghe tại port chỉ định.</li>
+<li><code>Socket accept()</code>: Phương thức quan trọng nhất. Khi gọi lệnh này, chương trình sẽ <strong>dừng lại (block)</strong> và chờ cho đến khi có một Client kết nối đến. Khi có kết nối, nó trả về một đối tượng <code>Socket</code> để giao tiếp với Client đó.</li>
+</ul>
+<h3 id="22-lớp-javanetsocket">2.2. Lớp <code>java.net.Socket</code><a hidden class="anchor" aria-hidden="true" href="#22-lớp-javanetsocket">#</a></h3>
+<p>Lớp này được sử dụng ở cả hai phía (nhưng thường được khởi tạo chủ động từ phía Client). Nó đại diện cho một đầu mối kết nối (endpoint).</p>
+<ul>
+<li><code>Socket(String host, int port)</code>: Tạo socket và thử kết nối đến Server tại địa chỉ host:port.</li>
+<li><code>getInputStream()</code>: Lấy luồng nhập để đọc dữ liệu đối phương gửi sang.</li>
+<li><code>getOutputStream()</code>: Lấy luồng xuất để gửi dữ liệu sang đối phương.</li>
+</ul>
+<h2 id="3-quy-trình-hoạt-động-workflow">3. Quy trình hoạt động (Workflow)<a hidden class="anchor" aria-hidden="true" href="#3-quy-trình-hoạt-động-workflow">#</a></h2>
+<p>Để xây dựng một ứng dụng chat đơn giản, quy trình diễn ra như sau:</p>
+<ol>
+<li><strong>Server:</strong> Khởi tạo <code>ServerSocket</code> tại port 5000.</li>
+<li><strong>Server:</strong> Gọi <code>accept()</code> và đi vào trạng thái chờ (Listening).</li>
+<li><strong>Client:</strong> Khởi tạo <code>Socket</code> kết nối đến IP Server tại port 5000.</li>
+<li><strong>Kết nối thiết lập:</strong> Server thoát khỏi trạng thái chờ, trả về một <code>Socket</code> riêng biệt để quản lý kết nối này.</li>
+<li><strong>Trao đổi dữ liệu:</strong>
+<ul>
+<li>Cả hai bên lấy <code>InputStream</code> và <code>OutputStream</code> từ Socket.</li>
+<li>Client viết vào OutputStream -&gt; Server đọc từ InputStream (và ngược lại).</li>
+</ul>
+</li>
+<li><strong>Đóng kết nối:</strong> Gọi <code>close()</code> để giải phóng tài nguyên.</li>
+</ol>
+<h2 id="4-demo-ứng-dụng-console-chat-1-1">4. Demo: Ứng dụng Console Chat (1-1)<a hidden class="anchor" aria-hidden="true" href="#4-demo-ứng-dụng-console-chat-1-1">#</a></h2>
+<p>Chúng ta sẽ viết hai chương trình riêng biệt: <code>SimpleServer.java</code> và <code>SimpleClient.java</code>.</p>
+<h3 id="41-mã-nguồn-server-simpleserverjava">4.1. Mã nguồn Server (SimpleServer.java)<a hidden class="anchor" aria-hidden="true" href="#41-mã-nguồn-server-simpleserverjava">#</a></h3>
+<p>Server này sẽ lắng nghe ở cổng 5000. Khi Client kết nối, nó sẽ cho phép chat qua lại trên màn hình Console.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.*;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.*;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SimpleServer</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> port <span style="color:#f92672">=</span> 5000;
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Server đang khởi động tại port &#34;</span> <span style="color:#f92672">+</span> port);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> (ServerSocket serverSocket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ServerSocket(port)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Chờ kết nối (Code sẽ dừng tại đây cho đến khi có Client)</span>
+</span></span><span style="display:flex;"><span>            Socket socket <span style="color:#f92672">=</span> serverSocket.<span style="color:#a6e22e">accept</span>();
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Client đã kết nối: &#34;</span> <span style="color:#f92672">+</span> socket.<span style="color:#a6e22e">getInetAddress</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Tạo luồng đọc/ghi dữ liệu</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Sử dụng BufferedReader để đọc từng dòng text</span>
+</span></span><span style="display:flex;"><span>            BufferedReader in <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader(<span style="color:#66d9ef">new</span> InputStreamReader(socket.<span style="color:#a6e22e">getInputStream</span>()));
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Sử dụng PrintWriter với autoFlush = true để gửi dữ liệu đi ngay lập tức</span>
+</span></span><span style="display:flex;"><span>            PrintWriter out <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PrintWriter(socket.<span style="color:#a6e22e">getOutputStream</span>(), <span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Luồng đọc từ bàn phím server để chat lại</span>
+</span></span><span style="display:flex;"><span>            BufferedReader stdIn <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader(<span style="color:#66d9ef">new</span> InputStreamReader(System.<span style="color:#a6e22e">in</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            String messageFromClient;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> ((messageFromClient <span style="color:#f92672">=</span> in.<span style="color:#a6e22e">readLine</span>()) <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Client: &#34;</span> <span style="color:#f92672">+</span> messageFromClient);
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Nhập tin nhắn từ bàn phím server và gửi lại</span>
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;Server: &#34;</span>);
+</span></span><span style="display:flex;"><span>                String response <span style="color:#f92672">=</span> stdIn.<span style="color:#a6e22e">readLine</span>();
+</span></span><span style="display:flex;"><span>                out.<span style="color:#a6e22e">println</span>(response);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (IOException e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="42-mã-nguồn-client-simpleclientjava">4.2. Mã nguồn Client (SimpleClient.java)<a hidden class="anchor" aria-hidden="true" href="#42-mã-nguồn-client-simpleclientjava">#</a></h3>
+<p>Client kết nối đến <code>localhost</code> (chính máy hiện tại) cổng 5000.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.*;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.*;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SimpleClient</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        String hostname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;localhost&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> port <span style="color:#f92672">=</span> 5000;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> (Socket socket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Socket(hostname, port)) {
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Đã kết nối đến Server!&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Thiết lập luồng gửi nhận tương tự Server</span>
+</span></span><span style="display:flex;"><span>            PrintWriter out <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PrintWriter(socket.<span style="color:#a6e22e">getOutputStream</span>(), <span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>            BufferedReader in <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader(<span style="color:#66d9ef">new</span> InputStreamReader(socket.<span style="color:#a6e22e">getInputStream</span>()));
+</span></span><span style="display:flex;"><span>            BufferedReader stdIn <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader(<span style="color:#66d9ef">new</span> InputStreamReader(System.<span style="color:#a6e22e">in</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            String userInput;
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;Client: &#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> ((userInput <span style="color:#f92672">=</span> stdIn.<span style="color:#a6e22e">readLine</span>()) <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Gửi tin nhắn sang Server</span>
+</span></span><span style="display:flex;"><span>                out.<span style="color:#a6e22e">println</span>(userInput);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Đọc phản hồi từ Server</span>
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Server: &#34;</span> <span style="color:#f92672">+</span> in.<span style="color:#a6e22e">readLine</span>());
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;Client: &#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (UnknownHostException e) {
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Không tìm thấy Host: &#34;</span> <span style="color:#f92672">+</span> hostname);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (IOException e) {
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lỗi I/O khi kết nối: &#34;</span> <span style="color:#f92672">+</span> e.<span style="color:#a6e22e">getMessage</span>());
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="43-cách-chạy-chương-trình">4.3. Cách chạy chương trình<a hidden class="anchor" aria-hidden="true" href="#43-cách-chạy-chương-trình">#</a></h3>
+<p>Để kiểm thử ứng dụng này, bạn cần mở 2 cửa sổ Terminal (hoặc CMD):</p>
+<ol>
+<li><strong>Terminal 1 (Chạy Server trước):</strong>
+<ul>
+<li>Biên dịch: <code>javac SimpleServer.java</code></li>
+<li>Chạy: <code>java SimpleServer</code></li>
+<li><em>Hiện trạng:</em> Màn hình sẽ hiện &ldquo;Server đang khởi động&hellip;&rdquo; và chờ đợi.</li>
+</ul>
+</li>
+<li><strong>Terminal 2 (Chạy Client):</strong>
+<ul>
+<li>Biên dịch: <code>javac SimpleClient.java</code></li>
+<li>Chạy: <code>java SimpleClient</code></li>
+<li><em>Hiện trạng:</em> Màn hình báo &ldquo;Đã kết nối đến Server!&rdquo;.</li>
+</ul>
+</li>
+<li><strong>Thử nghiệm:</strong>
+<ul>
+<li>Tại Terminal Client, gõ &ldquo;Xin chào&rdquo; -&gt; Enter.</li>
+<li>Nhìn sang Terminal Server, bạn sẽ thấy dòng chữ hiện lên.</li>
+<li>Tại Terminal Server, gõ trả lời &ldquo;Chào bạn&rdquo; -&gt; Enter.</li>
+<li>Client sẽ nhận được tin nhắn.</li>
+</ul>
+</li>
+</ol>
+<h2 id="5-các-lưu-ý-quan-trọng">5. Các lưu ý quan trọng<a hidden class="anchor" aria-hidden="true" href="#5-các-lưu-ý-quan-trọng">#</a></h2>
+<ol>
+<li><strong>Cổng (Port):</strong> Port 0-1023 là cổng hệ thống (well-known ports). Nên dùng port từ 1024 trở lên (ví dụ 3000, 5000, 8080) để tránh xung đột quyền hạn.</li>
+<li><strong>Firewall (Tường lửa):</strong> Nếu bạn chạy Server và Client trên 2 máy khác nhau, Tường lửa của máy Server có thể chặn kết nối. Cần mở port hoặc tắt firewall tạm thời.</li>
+<li><strong>Blocking I/O:</strong> Trong ví dụ trên, khi gọi <code>in.readLine()</code>, chương trình sẽ dừng lại chờ dữ liệu. Điều này dẫn đến việc Server chỉ có thể phục vụ 1 Client tại một thời điểm và phải đợi Client nói xong mới được trả lời (Chat kiểu bộ đàm). Để chat song song (Full-duplex) và phục vụ nhiều người, ta cần dùng <strong>Đa luồng (Multithreading)</strong> sẽ học ở Bài 8.</li>
+</ol>
+<h2 id="6-kết-luận">6. Kết luận<a hidden class="anchor" aria-hidden="true" href="#6-kết-luận">#</a></h2>
+<p>Chúng ta đã xây dựng thành công &ldquo;xương sống&rdquo; của một ứng dụng mạng. Mô hình Client-Server dùng Socket TCP đảm bảo dữ liệu truyền đi an toàn và chính xác.
+Tuy nhiên, TCP có nhược điểm là tốc độ chậm hơn do quá trình kiểm tra lỗi và thiết lập kết nối chặt chẽ. Ở bài tiếp theo, chúng ta sẽ tìm hiểu về UDP - người anh em nhanh nhẹn nhưng &ldquo;ẩu&rdquo; hơn của TCP.</p>
+<hr>
+<h2 id="tài-liệu-tham-khảo">Tài liệu tham khảo<a hidden class="anchor" aria-hidden="true" href="#tài-liệu-tham-khảo">#</a></h2>
+<ol>
+<li>Oracle Java Docs. &ldquo;Socket Programming&rdquo;.</li>
+<li>GeeksforGeeks. &ldquo;Socket Programming in Java&rdquo;.</li>
+<li>Giáo trình Lập trình mạng - Hutech.</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/java/">Java</a></li>
+      <li><a href="http://localhost:1313/tags/socket/">Socket</a></li>
+      <li><a href="http://localhost:1313/tags/tcp/">TCP</a></li>
+      <li><a href="http://localhost:1313/tags/client-server/">Client-Server</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+     <footer class="footer">
+        <div class="social-icons" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 15px;">
+            <a href="https://github.com/SuKem0703/" target="_blank" rel="noopener noreferrer me" title="Github">
+                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg></span>
+            </a>
+            <a href="https://www.facebook.com/binh.nguyen.250862" target="_blank" rel="noopener noreferrer me" title="Facebook">
+                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+</svg></span>
+            </a>
+            <a href="https://www.youtube.com/@Sheeppp" target="_blank" rel="noopener noreferrer me" title="Youtube">
+                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg></span>
+            </a>
+        </div>
+
+        <span>
+            © 2025 BNGroup - All Rights Reserved
+        </span>
+    </footer></body>
+
+</html>

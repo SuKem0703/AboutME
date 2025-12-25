@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Socket on BNGroup</title>
+    <link>http://localhost:1313/tags/socket/</link>
+    <description>Recent content in Socket on BNGroup</description>
+    <generator>Hugo -- 0.153.1</generator>
+    <language>vi</language>
+    <copyright>2025 BNGroup - All Rights Reserved</copyright>
+    <lastBuildDate>Thu, 25 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/socket/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bài 6: Lập trình Socket TCP - Xây dựng ứng dụng Chat</title>
+      <link>http://localhost:1313/courses/bai-6-lap-trinh-socket-tcp-mo-hinh-client-server/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/courses/bai-6-lap-trinh-socket-tcp-mo-hinh-client-server/</guid>
+      <description>Hướng dẫn lập trình mạng cơ bản với giao thức TCP trong Java. Tìm hiểu về ServerSocket, Socket và quy trình bắt tay 3 bước để xây dựng ứng dụng Chat Client-Server.</description>
+    </item>
+    <item>
+      <title>Bài 7: Socket UDP - Giao thức &#39;Nhanh nhưng Ẩu&#39;</title>
+      <link>http://localhost:1313/courses/bai-7-socket-udp-truyen-tai-du-lieu-khong-ket-noi/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/courses/bai-7-socket-udp-truyen-tai-du-lieu-khong-ket-noi/</guid>
+      <description>Phân tích đặc điểm giao thức UDP, so sánh với TCP. Hướng dẫn lập trình Socket UDP bằng Java với DatagramPacket để xây dựng ứng dụng gửi tin nhắn Broadcast.</description>
+    </item>
+    <item>
+      <title>Bài 8: Đa luồng (Multithreading) - Nâng cấp Server phục vụ nhiều Client</title>
+      <link>http://localhost:1313/courses/bai-8-da-luong-multithreading/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/courses/bai-8-da-luong-multithreading/</guid>
+      <description>Giải quyết vấn đề Blocking I/O bằng đa luồng. Hướng dẫn sử dụng Interface Runnable để xây dựng Multithreaded Server xử lý đồng thời nhiều kết nối.</description>
+    </item>
+  </channel>
+</rss>

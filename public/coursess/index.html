@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Lộ trình Java &amp; JS Network | BNGroup</title>
+<meta name="keywords" content="">
+<meta name="description" content="Tổng hợp các bài học từ cơ bản đến nâng cao phục vụ đồ án môn học.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/coursess/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/coursess/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/coursess/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="BNGroup (Alt + H)">BNGroup</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Trang Chủ">
+                    <span>Trang Chủ</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/courses/" title="Khóa Học (LTM)">
+                    <span>Khóa Học (LTM)</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Blog Cá Nhân">
+                    <span>Blog Cá Nhân</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="Về Tôi (Profile)">
+                    <span>Về Tôi (Profile)</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Lộ trình Java &amp; JS Network
+  </h1>
+  <div class="post-description">
+    Tổng hợp các bài học từ cơ bản đến nâng cao phục vụ đồ án môn học.
+  </div>
+</header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Lộ trình thực hiện đồ án: Java &amp; JavaScript
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Dàn ý chi tiết 9 bài viết cốt lõi về Frontend (JS) và Backend (Java Network) nhằm đáp ứng yêu cầu đồ án học phần.</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-20 00:00:00 +0000 UTC'>December 20, 2025</span>&nbsp;·&nbsp;<span>3 phút</span></footer>
+  <a class="entry-link" aria-label="post link to Lộ trình thực hiện đồ án: Java & JavaScript" href="http://localhost:1313/coursess/00-lo-trinh-do-an/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Bài 1: Khởi động với JavaScript - Biến và Kiểu dữ liệu
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Phân tích chuyên sâu về cơ chế quản lý bộ nhớ, dynamic typing, Scope Chain và sự tiến hóa từ ES5 (var) sang ES6 (let, const) trong JavaScript.</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-25 00:00:00 +0000 UTC'>December 25, 2025</span>&nbsp;·&nbsp;<span>6 phút</span></footer>
+  <a class="entry-link" aria-label="post link to Bài 1: Khởi động với JavaScript - Biến và Kiểu dữ liệu" href="http://localhost:1313/coursess/bai-1-khoi-dong-voi-javascript-bien-va-kieu-du-lieu/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Bài 2: Hàm (Functions) và Cơ chế Xử lý sự kiện
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Khám phá sức mạnh của First-class Functions, phân tích sâu về Arrow Function (ES6) và cơ chế Callback - nền tảng của lập trình bất đồng bộ.</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-21 00:00:00 +0000 UTC'>December 21, 2025</span>&nbsp;·&nbsp;<span>5 phút</span></footer>
+  <a class="entry-link" aria-label="post link to Bài 2: Hàm (Functions) và Cơ chế Xử lý sự kiện" href="http://localhost:1313/coursess/bai-2-ham-functions-va-co-che-xu-ly-su-kien/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Bài 3: Xử lý Bất đồng bộ - Từ Promise đến Async/Await
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Giải quyết vấn đề Callback Hell, tìm hiểu cơ chế Promise trong ES6 và cú pháp Async/Await trong ES8 để xử lý các tác vụ mạng hiệu quả.</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-21 00:00:00 +0000 UTC'>December 21, 2025</span>&nbsp;·&nbsp;<span>5 phút</span></footer>
+  <a class="entry-link" aria-label="post link to Bài 3: Xử lý Bất đồng bộ - Từ Promise đến Async/Await" href="http://localhost:1313/coursess/bai-3-xu-ly-bat-dong-bo-tu-promise-den-async-await/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Bài 4: JSON và Fetch API - Giao tiếp Client-Server
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Tìm hiểu cấu trúc JSON, cơ chế Serialization và cách sử dụng Fetch API để thực hiện các yêu cầu HTTP (GET, POST) trong mô hình Client-Server.</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-21 00:00:00 +0000 UTC'>December 21, 2025</span>&nbsp;·&nbsp;<span>6 phút</span></footer>
+  <a class="entry-link" aria-label="post link to Bài 4: JSON và Fetch API - Giao tiếp Client-Server" href="http://localhost:1313/coursess/bai-4-json-va-fetch-api-giao-tiep-client-server/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Bài 5: Java I/O Streams - Quản lý luồng nhập xuất
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Tìm hiểu kiến trúc I/O trong Java: Phân biệt Byte Stream và Character Stream, kỹ thuật Buffered để tối ưu hiệu suất và ứng dụng của chúng trong truyền tải dữ liệu mạng.</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-21 00:00:00 +0000 UTC'>December 21, 2025</span>&nbsp;·&nbsp;<span>5 phút</span></footer>
+  <a class="entry-link" aria-label="post link to Bài 5: Java I/O Streams - Quản lý luồng nhập xuất" href="http://localhost:1313/coursess/bai-5-java-i-o-streams-quan-ly-luong-nhap-xuat/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Bài 6: Lập trình Socket TCP - Xây dựng ứng dụng Chat
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Hướng dẫn lập trình mạng cơ bản với giao thức TCP trong Java. Tìm hiểu về ServerSocket, Socket và quy trình bắt tay 3 bước để xây dựng ứng dụng Chat Client-Server.</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-21 00:00:00 +0000 UTC'>December 21, 2025</span>&nbsp;·&nbsp;<span>6 phút</span></footer>
+  <a class="entry-link" aria-label="post link to Bài 6: Lập trình Socket TCP - Xây dựng ứng dụng Chat" href="http://localhost:1313/coursess/bai-6-lap-trinh-socket-tcp-mo-hinh-client-server/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Bài 7: Socket UDP - Giao thức &#39;Nhanh nhưng Ẩu&#39;
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Phân tích đặc điểm giao thức UDP, so sánh với TCP. Hướng dẫn lập trình Socket UDP bằng Java với DatagramPacket để xây dựng ứng dụng gửi tin nhắn Broadcast.</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-25 00:00:00 +0000 UTC'>December 25, 2025</span>&nbsp;·&nbsp;<span>5 phút</span></footer>
+  <a class="entry-link" aria-label="post link to Bài 7: Socket UDP - Giao thức &#39;Nhanh nhưng Ẩu&#39;" href="http://localhost:1313/coursess/bai-7-socket-udp-truyen-tai-du-lieu-khong-ket-noi/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Bài 8: Đa luồng (Multithreading) - Nâng cấp Server phục vụ nhiều Client
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Giải quyết vấn đề Blocking I/O bằng đa luồng. Hướng dẫn sử dụng Interface Runnable để xây dựng Multithreaded Server xử lý đồng thời nhiều kết nối.</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-25 00:00:00 +0000 UTC'>December 25, 2025</span>&nbsp;·&nbsp;<span>5 phút</span></footer>
+  <a class="entry-link" aria-label="post link to Bài 8: Đa luồng (Multithreading) - Nâng cấp Server phục vụ nhiều Client" href="http://localhost:1313/coursess/bai-8-da-luong-multithreading/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Bài 9: Java RMI - Bước đệm tới Hệ thống phân tán
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Khám phá Java RMI (Remote Method Invocation): Cơ chế cho phép gọi phương thức trên máy chủ từ xa như thể đang gọi hàm cục bộ. Tìm hiểu kiến trúc Stub, Skeleton và RMI Registry.</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-25 00:00:00 +0000 UTC'>December 25, 2025</span>&nbsp;·&nbsp;<span>4 phút</span></footer>
+  <a class="entry-link" aria-label="post link to Bài 9: Java RMI - Bước đệm tới Hệ thống phân tán" href="http://localhost:1313/coursess/bai-9-tong-quan-ve-rmi-remote-method-invocation/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>
+        © 2025 BNGroup - All Rights Reserved
+    </span>
+</footer></body>
+
+</html>

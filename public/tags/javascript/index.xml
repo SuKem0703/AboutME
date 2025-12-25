@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>JavaScript on BNGroup</title>
+    <link>http://localhost:1313/tags/javascript/</link>
+    <description>Recent content in JavaScript on BNGroup</description>
+    <generator>Hugo -- 0.153.1</generator>
+    <language>vi</language>
+    <copyright>2025 BNGroup - All Rights Reserved</copyright>
+    <lastBuildDate>Thu, 25 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lộ trình thực hiện đồ án: Java &amp; JavaScript</title>
+      <link>http://localhost:1313/courses/00-lo-trinh-do-an/</link>
+      <pubDate>Sat, 20 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/courses/00-lo-trinh-do-an/</guid>
+      <description>Dàn ý chi tiết 9 bài viết cốt lõi về Frontend (JS) và Backend (Java Network) nhằm đáp ứng yêu cầu đồ án học phần.</description>
+    </item>
+    <item>
+      <title>Bài 1: Khởi động với JavaScript - Biến và Kiểu dữ liệu</title>
+      <link>http://localhost:1313/courses/bai-1-khoi-dong-voi-javascript-bien-va-kieu-du-lieu/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/courses/bai-1-khoi-dong-voi-javascript-bien-va-kieu-du-lieu/</guid>
+      <description>Phân tích chuyên sâu về cơ chế quản lý bộ nhớ, dynamic typing, Scope Chain và sự tiến hóa từ ES5 (var) sang ES6 (let, const) trong JavaScript.</description>
+    </item>
+    <item>
+      <title>Bài 2: Hàm (Functions) và Cơ chế Xử lý sự kiện</title>
+      <link>http://localhost:1313/courses/bai-2-ham-functions-va-co-che-xu-ly-su-kien/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/courses/bai-2-ham-functions-va-co-che-xu-ly-su-kien/</guid>
+      <description>Khám phá sức mạnh của First-class Functions, phân tích sâu về Arrow Function (ES6) và cơ chế Callback - nền tảng của lập trình bất đồng bộ.</description>
+    </item>
+    <item>
+      <title>Bài 3: Xử lý Bất đồng bộ - Từ Promise đến Async/Await</title>
+      <link>http://localhost:1313/courses/bai-3-xu-ly-bat-dong-bo-tu-promise-den-async-await/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/courses/bai-3-xu-ly-bat-dong-bo-tu-promise-den-async-await/</guid>
+      <description>Giải quyết vấn đề Callback Hell, tìm hiểu cơ chế Promise trong ES6 và cú pháp Async/Await trong ES8 để xử lý các tác vụ mạng hiệu quả.</description>
+    </item>
+  </channel>
+</rss>

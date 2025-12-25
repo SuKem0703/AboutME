@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Callback on BNGroup</title>
+    <link>http://localhost:1313/tags/callback/</link>
+    <description>Recent content in Callback on BNGroup</description>
+    <generator>Hugo -- 0.153.1</generator>
+    <language>vi</language>
+    <copyright>2025 BNGroup - All Rights Reserved</copyright>
+    <lastBuildDate>Sun, 21 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/callback/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bài 2: Hàm (Functions) và Cơ chế Xử lý sự kiện</title>
+      <link>http://localhost:1313/courses/bai-2-ham-functions-va-co-che-xu-ly-su-kien/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/courses/bai-2-ham-functions-va-co-che-xu-ly-su-kien/</guid>
+      <description>Khám phá sức mạnh của First-class Functions, phân tích sâu về Arrow Function (ES6) và cơ chế Callback - nền tảng của lập trình bất đồng bộ.</description>
+    </item>
+  </channel>
+</rss>

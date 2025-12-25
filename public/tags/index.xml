@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on BNGroup</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on BNGroup</description>
+    <generator>Hugo -- 0.153.1</generator>
+    <language>vi</language>
+    <copyright>2025 BNGroup - All Rights Reserved</copyright>
+    <lastBuildDate>Thu, 25 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Adventure</title>
+      <link>http://localhost:1313/tags/adventure/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/adventure/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Concurrency</title>
+      <link>http://localhost:1313/tags/concurrency/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/concurrency/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CS Fundamentals</title>
+      <link>http://localhost:1313/tags/cs-fundamentals/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/cs-fundamentals/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Datagram</title>
+      <link>http://localhost:1313/tags/datagram/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/datagram/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Distributed Systems</title>
+      <link>http://localhost:1313/tags/distributed-systems/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/distributed-systems/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Frontend</title>
+      <link>http://localhost:1313/tags/frontend/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/frontend/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Java</title>
+      <link>http://localhost:1313/tags/java/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/java/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>JavaScript</title>
+      <link>http://localhost:1313/tags/javascript/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/javascript/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Multithreading</title>
+      <link>http://localhost:1313/tags/multithreading/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/multithreading/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PixelArt</title>
+      <link>http://localhost:1313/tags/pixelart/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/pixelart/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RMI</title>
+      <link>http://localhost:1313/tags/rmi/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/rmi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RPC</title>
+      <link>http://localhost:1313/tags/rpc/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/rpc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RPG</title>
+      <link>http://localhost:1313/tags/rpg/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/rpg/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Socket</title>
+      <link>http://localhost:1313/tags/socket/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/socket/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>UDP</title>
+      <link>http://localhost:1313/tags/udp/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/udp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Unity</title>
+      <link>http://localhost:1313/tags/unity/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/unity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Async/Await</title>
+      <link>http://localhost:1313/tags/async/await/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/async/await/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Callback</title>
+      <link>http://localhost:1313/tags/callback/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/callback/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Client-Server</title>
+      <link>http://localhost:1313/tags/client-server/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/client-server/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ES6</title>
+      <link>http://localhost:1313/tags/es6/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/es6/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Event Handling</title>
+      <link>http://localhost:1313/tags/event-handling/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/event-handling/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fetch API</title>
+      <link>http://localhost:1313/tags/fetch-api/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/fetch-api/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>HTTP</title>
+      <link>http://localhost:1313/tags/http/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/http/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Input/Output</title>
+      <link>http://localhost:1313/tags/input/output/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/input/output/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>JSON</title>
+      <link>http://localhost:1313/tags/json/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/json/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Network Programming</title>
+      <link>http://localhost:1313/tags/network-programming/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/network-programming/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Performance</title>
+      <link>http://localhost:1313/tags/performance/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/performance/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Promise</title>
+      <link>http://localhost:1313/tags/promise/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/promise/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RESTful</title>
+      <link>http://localhost:1313/tags/restful/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/restful/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Stream</title>
+      <link>http://localhost:1313/tags/stream/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/stream/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>TCP</title>
+      <link>http://localhost:1313/tags/tcp/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/tcp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Project</title>
+      <link>http://localhost:1313/tags/project/</link>
+      <pubDate>Sat, 20 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/project/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Roadmap</title>
+      <link>http://localhost:1313/tags/roadmap/</link>
+      <pubDate>Sat, 20 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/roadmap/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>C#</title>
+      <link>http://localhost:1313/tags/c%23/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/c%23/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GameDev</title>
+      <link>http://localhost:1313/tags/gamedev/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/gamedev/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hồ Chí Minh</title>
+      <link>http://localhost:1313/tags/h%E1%BB%93-ch%C3%AD-minh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/h%E1%BB%93-ch%C3%AD-minh/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nghiên Cứu</title>
+      <link>http://localhost:1313/tags/nghi%C3%AAn-c%E1%BB%A9u/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/nghi%C3%AAn-c%E1%BB%A9u/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RestAPI</title>
+      <link>http://localhost:1313/tags/restapi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/restapi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Triết Học</title>
+      <link>http://localhost:1313/tags/tri%E1%BA%BFt-h%E1%BB%8Dc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/tri%E1%BA%BFt-h%E1%BB%8Dc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Văn Hóa</title>
+      <link>http://localhost:1313/tags/v%C4%83n-h%C3%B3a/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/v%C4%83n-h%C3%B3a/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

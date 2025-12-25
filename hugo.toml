@@ -1,30 +1,41 @@
 baseURL = 'https://aboutme-gtap.onrender.com/'
 languageCode = 'vi'
-title = 'Blog Lập Trình Mạng'
+title = 'BNGroup'
 theme = "PaperMod"
+
+copyright = "© 2025 BNGroup - All Rights Reserved"
 
 [params]
   defaultTheme = "auto"
   ShowReadingTime = true
-  ShowShareButtons = true
+  ShowShareButtons = false
   ShowCodeCopyButtons = true
+  label.text = "BNGroup"
 
   [params.profileMode]
     enabled = true
-    title = "Xin chào, tôi là Bùi Bình Nguyên"
-    subtitle = "Sinh viên CNTT | Đam mê C# & Java Network Programming"
+    title = "Chào mừng đến với BNGroup" 
+    subtitle = "Nơi hội tụ công nghệ, nghệ thuật và kinh doanh của Bùi Bình Nguyên"
     imageUrl = "portrait/BuiBinhNguyen.png"
-    imageTitle = "Avatar"
+    imageTitle = "CEO BNGroup"
     imageWidth = 120
     imageHeight = 120
 
     [[params.profileMode.buttons]]
       name = "Dự án cá nhân"
       url = "https://github.com/SuKem0703/"
-
+  
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/SuKem0703/"
+
+  [[params.socialIcons]]
+    name = "facebook"
+    url = "https://www.facebook.com/binh.nguyen.250862"
+
+  [[params.socialIcons]]
+    name = "youtube"
+    url = "https://www.youtube.com/@Sheeppp"
 
 [menu]
   [[menu.main]]
@@ -34,13 +45,30 @@ theme = "PaperMod"
     weight = 10
 
   [[menu.main]]
-    identifier = "posts"
-    name = "Bài Viết (Blog)"
-    url = "/posts/"
+    identifier = "courses"
+    name = "Khóa Học (LTM)"
+    url = "/courses/"
     weight = 20
+    
+  [[menu.main]]
+    identifier = "projects"
+    name = "Dự Án (Projects)"
+    url = "/projects/chronicles-of-knight-and-mage/"
+    weight = 15
+
+  [[menu.main]]
+    identifier = "blog"
+    name = "Blog Cá Nhân"
+    url = "/posts/"
+    weight = 30
 
   [[menu.main]]
     identifier = "about"
     name = "Về Tôi (Profile)"
     url = "/about/"
-    weight = 30
+    weight = 40
+
+  [markup]
+    [markup.goldmark]
+      [markup.goldmark.renderer]
+        unsafe = true

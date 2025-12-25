@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Bài 8: Đa luồng (Multithreading) - Nâng cấp Server phục vụ nhiều Client | BNGroup</title>
+<meta name="keywords" content="Java, Multithreading, Socket, Concurrency">
+<meta name="description" content="Giải quyết vấn đề Blocking I/O bằng đa luồng. Hướng dẫn sử dụng Interface Runnable để xây dựng Multithreaded Server xử lý đồng thời nhiều kết nối.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/coursess/bai-8-da-luong-multithreading/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/coursess/bai-8-da-luong-multithreading/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="BNGroup (Alt + H)">BNGroup</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Trang Chủ">
+                    <span>Trang Chủ</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/courses/" title="Khóa Học (LTM)">
+                    <span>Khóa Học (LTM)</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Blog Cá Nhân">
+                    <span>Blog Cá Nhân</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="Về Tôi (Profile)">
+                    <span>Về Tôi (Profile)</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Bài 8: Đa luồng (Multithreading) - Nâng cấp Server phục vụ nhiều Client
+    </h1>
+    <div class="post-meta"><span title='2025-12-25 00:00:00 +0000 UTC'>December 25, 2025</span>&nbsp;·&nbsp;<span>5 phút</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Trong Bài 6, chúng ta đã xây dựng thành công một TCP Server. Tuy nhiên, nó có một điểm yếu chí mạng: <strong>Chỉ phục vụ được 1 người tại một thời điểm</strong>. Nếu Client A đang kết nối, Client B kết nối đến sẽ bị &ldquo;treo&rdquo; cho đến khi A thoát.</p>
+<p>Tại sao lại như vậy? Đó là do cơ chế <strong>Blocking I/O</strong>. Khi chương trình chạy lệnh đọc dữ liệu (<code>in.readLine()</code>), nó sẽ dừng toàn bộ hoạt động để chờ. Hôm nay, chúng ta sẽ giải quyết vấn đề này bằng <strong>Đa luồng (Multithreading)</strong>.</p>
+<h2 id="1-tại-sao-server-cần-đa-luồng">1. Tại sao Server cần Đa luồng?<a hidden class="anchor" aria-hidden="true" href="#1-tại-sao-server-cần-đa-luồng">#</a></h2>
+<p>Hãy tưởng tượng Server giống như một nhân viên ngân hàng.</p>
+<ul>
+<li><strong>Mô hình Đơn luồng (Single-threaded):</strong> Chỉ có 1 nhân viên. Nếu khách hàng A đang điền giấy tờ (tốn 10 phút), nhân viên ngồi chờ và khách hàng B xếp hàng phía sau cũng phải chờ.</li>
+<li><strong>Mô hình Đa luồng (Multi-threaded):</strong> Ngân hàng có 1 quản lý và nhiều nhân viên.
+<ul>
+<li><strong>Quản lý (Main Thread):</strong> Chỉ đứng cửa chào khách và chỉ định nhân viên phục vụ.</li>
+<li><strong>Nhân viên (Worker Thread):</strong> Mỗi nhân viên phục vụ riêng một khách hàng.</li>
+</ul>
+</li>
+</ul>
+<p>Trong lập trình Socket, Main Thread sẽ chạy vòng lặp vô tận để đón kết nối (<code>accept()</code>). Ngay khi có kết nối, nó giao <code>Socket</code> đó cho một Thread con xử lý, rồi quay lại tiếp tục đón khách mới.</p>
+<h2 id="2-cách-tạo-luồng-trong-java">2. Cách tạo luồng trong Java<a hidden class="anchor" aria-hidden="true" href="#2-cách-tạo-luồng-trong-java">#</a></h2>
+<p>Java cung cấp 2 cách cơ bản để tạo luồng: kế thừa lớp <code>Thread</code> hoặc hiện thực interface <code>Runnable</code>. Trong thực tế, cách dùng <code>Runnable</code> được ưu tiên hơn vì tính linh hoạt (Java không hỗ trợ đa kế thừa).</p>
+<h3 id="cấu-trúc-cơ-bản-của-runnable">Cấu trúc cơ bản của Runnable<a hidden class="anchor" aria-hidden="true" href="#cấu-trúc-cơ-bản-của-runnable">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ClientHandler</span> <span style="color:#66d9ef">implements</span> Runnable {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Socket socket;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ClientHandler</span>(Socket socket) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">socket</span> <span style="color:#f92672">=</span> socket;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Code xử lý giao tiếp với Client nằm ở đây</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Đọc/Ghi dữ liệu...</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="3-nâng-cấp-multithreaded-chat-server">3. Nâng cấp: Multithreaded Chat Server<a hidden class="anchor" aria-hidden="true" href="#3-nâng-cấp-multithreaded-chat-server">#</a></h2>
+<p>Chúng ta sẽ tách code Server thành 2 phần:</p>
+<ol>
+<li><strong>ServerMain:</strong> Chịu trách nhiệm lắng nghe cổng 5000.</li>
+<li><strong>ClientHandler:</strong> Chịu trách nhiệm chat với từng Client riêng biệt.</li>
+</ol>
+<h3 id="31-clienthandlerjava-nhân-viên-phục-vụ">3.1. ClientHandler.java (Nhân viên phục vụ)<a hidden class="anchor" aria-hidden="true" href="#31-clienthandlerjava-nhân-viên-phục-vụ">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.*;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.*;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ClientHandler</span> <span style="color:#66d9ef">implements</span> Runnable {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Socket clientSocket;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ClientHandler</span>(Socket socket) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">clientSocket</span> <span style="color:#f92672">=</span> socket;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Tạo luồng Input/Output</span>
+</span></span><span style="display:flex;"><span>            BufferedReader in <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader(<span style="color:#66d9ef">new</span> InputStreamReader(clientSocket.<span style="color:#a6e22e">getInputStream</span>()));
+</span></span><span style="display:flex;"><span>            PrintWriter out <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PrintWriter(clientSocket.<span style="color:#a6e22e">getOutputStream</span>(), <span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            out.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Xin chào! Bạn đang được phục vụ bởi Thread: &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            String request;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> ((request <span style="color:#f92672">=</span> in.<span style="color:#a6e22e">readLine</span>()) <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Client nói: &#34;</span> <span style="color:#f92672">+</span> request);
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Giả lập xử lý chậm để test đa luồng</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (request.<span style="color:#a6e22e">equalsIgnoreCase</span>(<span style="color:#e6db74">&#34;sleep&#34;</span>)) {
+</span></span><span style="display:flex;"><span>                    Thread.<span style="color:#a6e22e">sleep</span>(5000); 
+</span></span><span style="display:flex;"><span>                    out.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Server vừa ngủ dậy sau 5s&#34;</span>);
+</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                    out.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Server phản hồi: &#34;</span> <span style="color:#f92672">+</span> request.<span style="color:#a6e22e">toUpperCase</span>());
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (IOException <span style="color:#f92672">|</span> InterruptedException e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">finally</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Luôn đóng socket khi hoàn thành</span>
+</span></span><span style="display:flex;"><span>                clientSocket.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (IOException e) {
+</span></span><span style="display:flex;"><span>                e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="32-multithreadserverjava-quản-lý">3.2. MultiThreadServer.java (Quản lý)<a hidden class="anchor" aria-hidden="true" href="#32-multithreadserverjava-quản-lý">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.*;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.*;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MultiThreadServer</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> port <span style="color:#f92672">=</span> 5000;
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Server đa luồng đang chạy tại port &#34;</span> <span style="color:#f92672">+</span> port);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> (ServerSocket serverSocket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ServerSocket(port)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">true</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 1. Chờ kết nối (Block tại đây)</span>
+</span></span><span style="display:flex;"><span>                Socket clientSocket <span style="color:#f92672">=</span> serverSocket.<span style="color:#a6e22e">accept</span>();
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Client mới kết nối: &#34;</span> <span style="color:#f92672">+</span> clientSocket.<span style="color:#a6e22e">getInetAddress</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 2. Tạo đối tượng xử lý (Handler)</span>
+</span></span><span style="display:flex;"><span>                ClientHandler handler <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ClientHandler(clientSocket);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 3. Tạo luồng mới và khởi chạy</span>
+</span></span><span style="display:flex;"><span>                Thread thread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(handler);
+</span></span><span style="display:flex;"><span>                thread.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (IOException e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="4-kiểm-thử">4. Kiểm thử<a hidden class="anchor" aria-hidden="true" href="#4-kiểm-thử">#</a></h2>
+<ol>
+<li>Chạy <code>MultiThreadServer</code>.</li>
+<li>Chạy <code>SimpleClient</code> (code bài 6) ở Terminal 1 -&gt; Gửi tin nhắn &ldquo;Hello&rdquo;.</li>
+<li>Chạy thêm một <code>SimpleClient</code> nữa ở Terminal 2 -&gt; Gửi tin nhắn &ldquo;Hi&rdquo;.</li>
+<li><strong>Kết quả:</strong> Cả hai Client đều nhận được phản hồi ngay lập tức mà không phải chờ nhau. Nếu là Server cũ, Terminal 2 sẽ bị treo.</li>
+</ol>
+<h2 id="5-tối-ưu-hóa-với-thread-pool">5. Tối ưu hóa với Thread Pool<a hidden class="anchor" aria-hidden="true" href="#5-tối-ưu-hóa-với-thread-pool">#</a></h2>
+<p>Việc tạo mới một Thread (<code>new Thread()</code>) cho mỗi Client là rất tốn kém tài nguyên. Nếu có 10.000 Client kết nối cùng lúc, Server sẽ bị sập vì hết bộ nhớ (Out of Memory).</p>
+<p>Giải pháp chuyên nghiệp là sử dụng <strong>Thread Pool</strong> (Hồ chứa luồng) thông qua <code>ExecutorService</code>. Nó giới hạn số lượng Thread cố định, các Client đến sau sẽ được đưa vào hàng đợi (Queue).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Thay thế đoạn code trong main:</span>
+</span></span><span style="display:flex;"><span>ExecutorService pool <span style="color:#f92672">=</span> Executors.<span style="color:#a6e22e">newFixedThreadPool</span>(10); <span style="color:#75715e">// Chỉ cho phép 10 luồng chạy đồng thời</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">true</span>) {
+</span></span><span style="display:flex;"><span>    Socket clientSocket <span style="color:#f92672">=</span> serverSocket.<span style="color:#a6e22e">accept</span>();
+</span></span><span style="display:flex;"><span>    ClientHandler handler <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ClientHandler(clientSocket);
+</span></span><span style="display:flex;"><span>    pool.<span style="color:#a6e22e">execute</span>(handler); <span style="color:#75715e">// Giao việc cho Pool quản lý</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="6-kết-luận">6. Kết luận<a hidden class="anchor" aria-hidden="true" href="#6-kết-luận">#</a></h2>
+<p>Đa luồng là chìa khóa để xây dựng các hệ thống mạng hiệu năng cao.</p>
+<ul>
+<li><strong>Main Thread:</strong> Chỉ làm nhiệm vụ <code>accept</code>.</li>
+<li><strong>Worker Thread:</strong> Làm nhiệm vụ I/O (<code>read</code>/<code>write</code>).</li>
+</ul>
+<p>Tuy nhiên, đa luồng cũng sinh ra các vấn đề phức tạp về đồng bộ hóa dữ liệu (Synchronization) khi nhiều luồng cùng truy cập một biến chung (ví dụ: danh sách người đang online).</p>
+<p>Trong bài cuối cùng (Bài 9), chúng ta sẽ tìm hiểu về RMI - một công nghệ cho phép gọi hàm từ xa như thể nó đang nằm trên máy cục bộ, giúp đơn giản hóa việc lập trình phân tán.</p>
+<hr>
+<h2 id="tài-liệu-tham-khảo">Tài liệu tham khảo<a hidden class="anchor" aria-hidden="true" href="#tài-liệu-tham-khảo">#</a></h2>
+<ol>
+<li>Oracle Java Docs. &ldquo;Defining and Starting a Thread&rdquo;.</li>
+<li>Baeldung. &ldquo;Java ExecutorService&rdquo;.</li>
+<li>Giáo trình Lập trình mạng - Hutech.</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/java/">Java</a></li>
+      <li><a href="http://localhost:1313/tags/multithreading/">Multithreading</a></li>
+      <li><a href="http://localhost:1313/tags/socket/">Socket</a></li>
+      <li><a href="http://localhost:1313/tags/concurrency/">Concurrency</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>
+        © 2025 BNGroup - All Rights Reserved
+    </span>
+</footer></body>
+
+</html>

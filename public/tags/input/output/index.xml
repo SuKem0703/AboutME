@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Input/Output on BNGroup</title>
+    <link>http://localhost:1313/tags/input/output/</link>
+    <description>Recent content in Input/Output on BNGroup</description>
+    <generator>Hugo -- 0.153.1</generator>
+    <language>vi</language>
+    <copyright>2025 BNGroup - All Rights Reserved</copyright>
+    <lastBuildDate>Sun, 21 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/input/output/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bài 5: Java I/O Streams - Quản lý luồng nhập xuất</title>
+      <link>http://localhost:1313/courses/bai-5-java-i-o-streams-quan-ly-luong-nhap-xuat/</link>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/courses/bai-5-java-i-o-streams-quan-ly-luong-nhap-xuat/</guid>
+      <description>Tìm hiểu kiến trúc I/O trong Java: Phân biệt Byte Stream và Character Stream, kỹ thuật Buffered để tối ưu hiệu suất và ứng dụng của chúng trong truyền tải dữ liệu mạng.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+{{- if not (.Param "hideFooter") }}
+  {{- if not .IsHome }} <footer class="footer">
+        
+        {{- if .Site.Params.socialIcons }}
+        <div class="social-icons" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 15px;">
+            {{- range .Site.Params.socialIcons }}
+            <a href="{{ .url }}" target="_blank" rel="noopener noreferrer me" title="{{ .name | title }}">
+                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;">
+                    {{- partial "svg.html" (dict "name" .name) -}}
+                </span>
+            </a>
+            {{- end }}
+        </div>
+        {{- end }}
+
+        <span>
+            {{- if .Site.Copyright }}
+            {{ .Site.Copyright | safeHTML }}
+            {{- else }}
+            &copy; {{ now.Year }} <a href="{{ "" | absLangURL }}">{{ .Site.Title }}</a>
+            {{- end }}
+        </span>
+    </footer>
+
+  {{- end }} {{- end }}

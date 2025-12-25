@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Bài 3: Xử lý Bất đồng bộ - Từ Promise đến Async/Await | BNGroup</title>
+<meta name="keywords" content="JavaScript, Async/Await, Promise, Network Programming">
+<meta name="description" content="Giải quyết vấn đề Callback Hell, tìm hiểu cơ chế Promise trong ES6 và cú pháp Async/Await trong ES8 để xử lý các tác vụ mạng hiệu quả.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/courses/bai-3-xu-ly-bat-dong-bo-tu-promise-den-async-await/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/courses/bai-3-xu-ly-bat-dong-bo-tu-promise-den-async-await/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="BNGroup (Alt + H)">BNGroup</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Trang Chủ">
+                    <span>Trang Chủ</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/projects/chronicles-of-knight-and-mage/" title="Dự Án (Projects)">
+                    <span>Dự Án (Projects)</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/courses/" title="Khóa Học (LTM)">
+                    <span>Khóa Học (LTM)</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Blog Cá Nhân">
+                    <span>Blog Cá Nhân</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="Về Tôi (Profile)">
+                    <span>Về Tôi (Profile)</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Bài 3: Xử lý Bất đồng bộ - Từ Promise đến Async/Await
+    </h1>
+    <div class="post-meta"><span title='2025-12-21 00:00:00 +0000 UTC'>December 21, 2025</span>&nbsp;·&nbsp;<span>5 phút</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Trong lập trình mạng, hầu hết các tác vụ đều là <strong>bất đồng bộ (asynchronous)</strong>. Khi Client gửi một request đến Server, nó không thể biết chắc chắn bao lâu sau Server sẽ phản hồi (vài mili giây hay vài phút).</p>
+<p>Nếu dùng tư duy đồng bộ (synchronous) như lập trình C thuần túy, chương trình sẽ bị &ldquo;đơ&rdquo; (block) cho đến khi nhận được phản hồi. JavaScript giải quyết vấn đề này bằng cơ chế Event Loop và các mô hình xử lý bất đồng bộ.</p>
+<h2 id="1-vấn-đề-callback-hell">1. Vấn đề: &ldquo;Callback Hell&rdquo;<a hidden class="anchor" aria-hidden="true" href="#1-vấn-đề-callback-hell">#</a></h2>
+<p>Ở bài trước, ta đã biết Callback dùng để xử lý kết quả trả về sau một tác vụ. Tuy nhiên, khi các tác vụ phụ thuộc lẫn nhau (Task B cần kết quả của Task A, Task C cần kết quả của Task B&hellip;), ta buộc phải lồng các callback vào nhau.</p>
+<p>Ví dụ mô phỏng quy trình đăng nhập và lấy dữ liệu người dùng:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Mô hình Callback Hell (Pyramid of Doom)
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">login</span>(<span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">password</span>, (<span style="color:#a6e22e">user</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Logged in:&#34;</span>, <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">getUserDetails</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">id</span>, (<span style="color:#a6e22e">details</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Got details:&#34;</span>, <span style="color:#a6e22e">details</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">getFriends</span>(<span style="color:#a6e22e">details</span>.<span style="color:#a6e22e">friendListId</span>, (<span style="color:#a6e22e">friends</span>) =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Friend list loaded:&#34;</span>, <span style="color:#a6e22e">friends</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Cứ thế lồng tiếp...
+</span></span></span><span style="display:flex;"><span>        }, (<span style="color:#a6e22e">error</span>) =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>));
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    }, (<span style="color:#a6e22e">error</span>) =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>));
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>}, (<span style="color:#a6e22e">error</span>) =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>));
+</span></span></code></pre></div><p><strong>Nhược điểm:</strong></p>
+<ul>
+<li><strong>Khó đọc:</strong> Code bị thụt lề quá sâu hình tháp.</li>
+<li><strong>Khó xử lý lỗi:</strong> Phải viết hàm xử lý lỗi cho từng tầng callback riêng biệt.</li>
+</ul>
+<h2 id="2-giải-pháp-1-promise-es6">2. Giải pháp 1: Promise (ES6)<a hidden class="anchor" aria-hidden="true" href="#2-giải-pháp-1-promise-es6">#</a></h2>
+<p>ES6 giới thiệu <strong>Promise</strong> - một đối tượng đại diện cho sự hoàn thành (hoặc thất bại) của một tác vụ bất đồng bộ trong tương lai.</p>
+<h3 id="21-ba-trạng-thái-của-promise">2.1. Ba trạng thái của Promise<a hidden class="anchor" aria-hidden="true" href="#21-ba-trạng-thái-của-promise">#</a></h3>
+<p>Một Promise luôn ở trong một trong ba trạng thái:</p>
+<ol>
+<li><strong>Pending (Đang chờ):</strong> Trạng thái khởi tạo, chưa có kết quả.</li>
+<li><strong>Fulfilled (Thành công):</strong> Tác vụ hoàn thành, trả về giá trị (value).</li>
+<li><strong>Rejected (Thất bại):</strong> Tác vụ lỗi, trả về lý do (reason/error).</li>
+</ol>
+<h3 id="22-chaining-chuỗi-hóa">2.2. Chaining (Chuỗi hóa)<a hidden class="anchor" aria-hidden="true" href="#22-chaining-chuỗi-hóa">#</a></h3>
+<p>Promise giúp &ldquo;làm phẳng&rdquo; cấu trúc callback bằng phương thức <code>.then()</code>.</p>
+<p>Ví dụ viết lại quy trình trên bằng Promise:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">login</span>(<span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">password</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">user</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Logged in:&#34;</span>, <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Return một Promise mới để tiếp tục chuỗi
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">getUserDetails</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">details</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Got details:&#34;</span>, <span style="color:#a6e22e">details</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">getFriends</span>(<span style="color:#a6e22e">details</span>.<span style="color:#a6e22e">friendListId</span>);
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">friends</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Friend list loaded:&#34;</span>, <span style="color:#a6e22e">friends</span>);
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#66d9ef">catch</span>((<span style="color:#a6e22e">error</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Chỉ cần một hàm catch duy nhất cho toàn bộ chuỗi
+</span></span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;Lỗi xảy ra:&#34;</span>, <span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span></code></pre></div><p>Cơ chế này giúp luồng code chạy từ trên xuống dưới, dễ đọc hơn hẳn so với Callback Hell.</p>
+<h2 id="3-giải-pháp-2-asyncawait-es8">3. Giải pháp 2: Async/Await (ES8)<a hidden class="anchor" aria-hidden="true" href="#3-giải-pháp-2-asyncawait-es8">#</a></h2>
+<p>Dù Promise đã tốt, nhưng cú pháp <code>.then()</code> vẫn còn mang hơi hướng của lập trình hàm. Những lập trình viên quen với C# hay Java mong muốn viết code bất đồng bộ trông giống như code đồng bộ (tuần tự). Đó là lý do <strong>Async/Await</strong> ra đời trong ES2017 (ES8).</p>
+<h3 id="31-cú-pháp">3.1. Cú pháp<a hidden class="anchor" aria-hidden="true" href="#31-cú-pháp">#</a></h3>
+<ul>
+<li><code>async</code>: Đặt trước khai báo hàm, báo hiệu hàm này sẽ trả về một Promise.</li>
+<li><code>await</code>: Chỉ dùng được trong hàm <code>async</code>. Nó tạm dừng việc thực thi hàm cho đến khi Promise được giải quyết (resolve).</li>
+</ul>
+<h3 id="32-ví-dụ-chuyển-đổi">3.2. Ví dụ chuyển đổi<a hidden class="anchor" aria-hidden="true" href="#32-ví-dụ-chuyển-đổi">#</a></h3>
+<p>Đoạn code trên được viết lại bằng Async/Await:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">mainFlow</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Code chạy tuần tự, trông rất giống C#
+</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">login</span>(<span style="color:#a6e22e">username</span>, <span style="color:#a6e22e">password</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Logged in:&#34;</span>, <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">details</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getUserDetails</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Got details:&#34;</span>, <span style="color:#a6e22e">details</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">friends</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getFriends</span>(<span style="color:#a6e22e">details</span>.<span style="color:#a6e22e">friendListId</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Friend list loaded:&#34;</span>, <span style="color:#a6e22e">friends</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Dùng try/catch truyền thống để bắt lỗi
+</span></span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;Lỗi xảy ra:&#34;</span>, <span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">mainFlow</span>();
+</span></span></code></pre></div><h3 id="33-so-sánh-với-c">3.3. So sánh với C#<a hidden class="anchor" aria-hidden="true" href="#33-so-sánh-với-c">#</a></h3>
+<p>Nếu bạn đã học C#, bạn sẽ thấy sự tương đồng rất lớn:</p>
+<ul>
+<li>JS <code>async function</code> ≈ C# <code>async Task</code>.</li>
+<li>JS <code>await</code> ≈ C# <code>await</code>.</li>
+<li>JS <code>Promise</code> ≈ C# <code>Task</code>.</li>
+</ul>
+<p>Sự khác biệt chính là JavaScript chạy đơn luồng (Single-thread) dựa trên Event Loop, trong khi C# có thể sử dụng đa luồng (Multi-thread) thực sự. Tuy nhiên, về mặt cú pháp và tư duy lập trình, chúng tương tự nhau 90%.</p>
+<h2 id="4-thực-hành-giả-lập-gọi-api-mạng">4. Thực hành: Giả lập gọi API mạng<a hidden class="anchor" aria-hidden="true" href="#4-thực-hành-giả-lập-gọi-api-mạng">#</a></h2>
+<p>Dưới đây là một ví dụ thực tế mô phỏng việc lấy dữ liệu từ Server với độ trễ ngẫu nhiên.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Hàm giả lập gọi Server, trả về Promise
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fetchUserData</span>(<span style="color:#a6e22e">userId</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Đang kết nối đến Server...&#34;</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">setTimeout</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">isSuccess</span> <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0.2</span>; <span style="color:#75715e">// 80% thành công
+</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isSuccess</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">resolve</span>({ <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">userId</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Nguyen Van A&#34;</span>, <span style="color:#a6e22e">role</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Admin&#34;</span> });
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">reject</span>(<span style="color:#e6db74">&#34;Lỗi 500: Server quá tải!&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }, <span style="color:#ae81ff">2000</span>); <span style="color:#75715e">// Giả lập độ trễ 2 giây
+</span></span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Client sử dụng Async/Await
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">showProfile</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchUserData</span>(<span style="color:#ae81ff">101</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Dữ liệu nhận được:&#34;</span>, <span style="color:#a6e22e">data</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Thất bại:&#34;</span>, <span style="color:#a6e22e">err</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">finally</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Kết thúc phiên làm việc.&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">showProfile</span>();
+</span></span></code></pre></div><h2 id="5-kết-luận">5. Kết luận<a hidden class="anchor" aria-hidden="true" href="#5-kết-luận">#</a></h2>
+<ul>
+<li><strong>Callback:</strong> Cơ bản nhưng dễ gây rối rắm (Callback Hell).</li>
+<li><strong>Promise:</strong> Giải quyết vấn đề lồng nhau, quản lý lỗi tập trung.</li>
+<li><strong>Async/Await:</strong> Cú pháp hiện đại nhất, giúp code sạch, dễ đọc và dễ bảo trì, đặc biệt phù hợp cho các tác vụ gọi API mạng phức tạp.</li>
+</ul>
+<p>Trong bài tiếp theo, chúng ta sẽ áp dụng ngay kiến thức này với <strong>Fetch API</strong> để thực hiện các kết nối mạng thực tế.</p>
+<hr>
+<h2 id="tài-liệu-tham-khảo">Tài liệu tham khảo<a hidden class="anchor" aria-hidden="true" href="#tài-liệu-tham-khảo">#</a></h2>
+<ol>
+<li>MDN Web Docs. &ldquo;Using Promises&rdquo;.</li>
+<li>MDN Web Docs. &ldquo;async function&rdquo;.</li>
+<li>JavaScript.info. &ldquo;Async/await&rdquo;.</li>
+<li>Cisco Networking Academy. &ldquo;JavaScript Essentials 1: Module 4&rdquo;.</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/javascript/">JavaScript</a></li>
+      <li><a href="http://localhost:1313/tags/async/await/">Async/Await</a></li>
+      <li><a href="http://localhost:1313/tags/promise/">Promise</a></li>
+      <li><a href="http://localhost:1313/tags/network-programming/">Network Programming</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+     <footer class="footer">
+        <div class="social-icons" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 15px;">
+            <a href="https://github.com/SuKem0703/" target="_blank" rel="noopener noreferrer me" title="Github">
+                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg></span>
+            </a>
+            <a href="https://www.facebook.com/binh.nguyen.250862" target="_blank" rel="noopener noreferrer me" title="Facebook">
+                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+</svg></span>
+            </a>
+            <a href="https://www.youtube.com/@Sheeppp" target="_blank" rel="noopener noreferrer me" title="Youtube">
+                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg></span>
+            </a>
+        </div>
+
+        <span>
+            © 2025 BNGroup - All Rights Reserved
+        </span>
+    </footer></body>
+
+</html>

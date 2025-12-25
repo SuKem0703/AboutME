@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Roadmap on BNGroup</title>
+    <link>http://localhost:1313/tags/roadmap/</link>
+    <description>Recent content in Roadmap on BNGroup</description>
+    <generator>Hugo -- 0.153.1</generator>
+    <language>vi</language>
+    <copyright>2025 BNGroup - All Rights Reserved</copyright>
+    <lastBuildDate>Sat, 20 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/roadmap/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lộ trình thực hiện đồ án: Java &amp; JavaScript</title>
+      <link>http://localhost:1313/courses/00-lo-trinh-do-an/</link>
+      <pubDate>Sat, 20 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/courses/00-lo-trinh-do-an/</guid>
+      <description>Dàn ý chi tiết 9 bài viết cốt lõi về Frontend (JS) và Backend (Java Network) nhằm đáp ứng yêu cầu đồ án học phần.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Bài 9: Java RMI - Bước đệm tới Hệ thống phân tán | BNGroup</title>
+<meta name="keywords" content="Java, RMI, Distributed Systems, RPC">
+<meta name="description" content="Khám phá Java RMI (Remote Method Invocation): Cơ chế cho phép gọi phương thức trên máy chủ từ xa như thể đang gọi hàm cục bộ. Tìm hiểu kiến trúc Stub, Skeleton và RMI Registry.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/courses/bai-9-tong-quan-ve-rmi-remote-method-invocation/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/courses/bai-9-tong-quan-ve-rmi-remote-method-invocation/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="BNGroup (Alt + H)">BNGroup</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/" title="Trang Chủ">
+                    <span>Trang Chủ</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/projects/chronicles-of-knight-and-mage/" title="Dự Án (Projects)">
+                    <span>Dự Án (Projects)</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/courses/" title="Khóa Học (LTM)">
+                    <span>Khóa Học (LTM)</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Blog Cá Nhân">
+                    <span>Blog Cá Nhân</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="Về Tôi (Profile)">
+                    <span>Về Tôi (Profile)</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Bài 9: Java RMI - Bước đệm tới Hệ thống phân tán
+    </h1>
+    <div class="post-meta"><span title='2025-12-25 00:00:00 +0000 UTC'>December 25, 2025</span>&nbsp;·&nbsp;<span>4 phút</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Trong 8 bài trước, chúng ta đã làm việc với Socket. Mặc dù Socket rất mạnh mẽ, nhưng việc phải tự tay đóng gói dữ liệu (Marshalling) thành dòng byte rồi gửi đi, sau đó bên kia lại phải giải mã (Unmarshalling) rất tốn công sức và dễ sai sót.</p>
+<p>Liệu có cách nào để Client gọi một hàm trên Server (ví dụ: <code>server.tinhTong(5, 10)</code>) đơn giản như đang gọi hàm trên chính máy mình không? Câu trả lời là <strong>Java RMI</strong>.</p>
+<h2 id="1-rmi-là-gì">1. RMI là gì?<a hidden class="anchor" aria-hidden="true" href="#1-rmi-là-gì">#</a></h2>
+<p>RMI (Remote Method Invocation) là một cơ chế cho phép một đối tượng đang chạy trên máy ảo Java này (Client) có thể gọi các phương thức của một đối tượng đang chạy trên máy ảo Java khác (Server).</p>
+<p><strong>Triết lý:</strong> &ldquo;Làm cho việc gọi xa (remote call) trong suốt như gọi gần (local call).&rdquo;</p>
+<h2 id="2-kiến-trúc-rmi-stub-và-skeleton">2. Kiến trúc RMI (Stub và Skeleton)<a hidden class="anchor" aria-hidden="true" href="#2-kiến-trúc-rmi-stub-và-skeleton">#</a></h2>
+<p>Để tạo ra sự &ldquo;ảo thuật&rdquo; này, RMI sử dụng hai lớp trung gian ẩn bên dưới:</p>
+<ol>
+<li><strong>Stub (Client-side proxy):</strong>
+<ul>
+<li>Nằm ở phía Client.</li>
+<li>Khi Client gọi hàm, thực chất là gọi vào Stub.</li>
+<li>Stub đóng gói tham số, gửi yêu cầu qua mạng đến Server.</li>
+</ul>
+</li>
+<li><strong>Skeleton (Server-side dispatcher):</strong> (Trong các bản Java mới, Skeleton đã được tích hợp vào hệ thống RMI nhưng khái niệm vẫn còn giá trị).
+<ul>
+<li>Nằm ở phía Server.</li>
+<li>Nhận yêu cầu từ mạng, giải mã tham số.</li>
+<li>Gọi hàm thực sự trên Server Object.</li>
+<li>Nhận kết quả trả về, đóng gói và gửi ngược lại cho Stub.</li>
+</ul>
+</li>
+</ol>
+<p><strong>RMI Registry:</strong> Là một cuốn &ldquo;danh bạ điện thoại&rdquo;. Server đăng ký tên dịch vụ của mình lên đây (ví dụ: &ldquo;MayTinhToan&rdquo;). Client tra cứu cái tên này để lấy về Stub tương ứng.</p>
+<h2 id="3-quy-trình-xây-dựng-ứng-dụng-rmi">3. Quy trình xây dựng ứng dụng RMI<a hidden class="anchor" aria-hidden="true" href="#3-quy-trình-xây-dựng-ứng-dụng-rmi">#</a></h2>
+<p>Chúng ta sẽ làm một ví dụ đơn giản: Máy tính cộng trừ nhân chia từ xa.</p>
+<h3 id="bước-1-định-nghĩa-interface-remote-interface">Bước 1: Định nghĩa Interface (Remote Interface)<a hidden class="anchor" aria-hidden="true" href="#bước-1-định-nghĩa-interface-remote-interface">#</a></h3>
+<p>Cả Client và Server đều phải biết Interface này. Nó bắt buộc phải kế thừa <code>java.rmi.Remote</code> và mọi phương thức phải ném ra <code>RemoteException</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.rmi.Remote;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.rmi.RemoteException;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">CalculatorService</span> <span style="color:#66d9ef">extends</span> Remote {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">add</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b) <span style="color:#66d9ef">throws</span> RemoteException;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">subtract</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b) <span style="color:#66d9ef">throws</span> RemoteException;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="bước-2-hiện-thực-interface-server-implementation">Bước 2: Hiện thực Interface (Server Implementation)<a hidden class="anchor" aria-hidden="true" href="#bước-2-hiện-thực-interface-server-implementation">#</a></h3>
+<p>Đây là logic nghiệp vụ thực sự nằm trên Server. Lớp này thường kế thừa <code>UnicastRemoteObject</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.rmi.server.UnicastRemoteObject;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.rmi.RemoteException;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CalculatorImpl</span> <span style="color:#66d9ef">extends</span> UnicastRemoteObject <span style="color:#66d9ef">implements</span> CalculatorService {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Constructor bắt buộc phải ném RemoteException</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">CalculatorImpl</span>() <span style="color:#66d9ef">throws</span> RemoteException {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">add</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b) <span style="color:#66d9ef">throws</span> RemoteException {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Client yêu cầu cộng: &#34;</span> <span style="color:#f92672">+</span> a <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; + &#34;</span> <span style="color:#f92672">+</span> b);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">subtract</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b) <span style="color:#66d9ef">throws</span> RemoteException {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> a <span style="color:#f92672">-</span> b;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="bước-3-tạo-server-và-đăng-ký-dịch-vụ">Bước 3: Tạo Server và Đăng ký dịch vụ<a hidden class="anchor" aria-hidden="true" href="#bước-3-tạo-server-và-đăng-ký-dịch-vụ">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.rmi.registry.LocateRegistry;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.rmi.Naming;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RMIServer</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 1. Khởi tạo Registry tại port 1099 (Port mặc định của RMI)</span>
+</span></span><span style="display:flex;"><span>            LocateRegistry.<span style="color:#a6e22e">createRegistry</span>(1099);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 2. Tạo đối tượng dịch vụ</span>
+</span></span><span style="display:flex;"><span>            CalculatorService service <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> CalculatorImpl();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 3. Đăng ký tên dịch vụ vào danh bạ</span>
+</span></span><span style="display:flex;"><span>            Naming.<span style="color:#a6e22e">rebind</span>(<span style="color:#e6db74">&#34;rmi://localhost:1099/MyCalculator&#34;</span>, service);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;RMI Server đang chạy...&#34;</span>);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (Exception e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="bước-4-tạo-client-để-gọi-hàm">Bước 4: Tạo Client để gọi hàm<a hidden class="anchor" aria-hidden="true" href="#bước-4-tạo-client-để-gọi-hàm">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.rmi.Naming;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RMIClient</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 1. Tra cứu dịch vụ trong danh bạ</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Kết quả trả về thực chất là cái STUB</span>
+</span></span><span style="display:flex;"><span>            CalculatorService stub <span style="color:#f92672">=</span> (CalculatorService) Naming.<span style="color:#a6e22e">lookup</span>(<span style="color:#e6db74">&#34;rmi://localhost:1099/MyCalculator&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 2. Gọi hàm như thể nó đang ở local</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> sum <span style="color:#f92672">=</span> stub.<span style="color:#a6e22e">add</span>(10, 20);
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Kết quả cộng: &#34;</span> <span style="color:#f92672">+</span> sum);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> sub <span style="color:#f92672">=</span> stub.<span style="color:#a6e22e">subtract</span>(50, 15);
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Kết quả trừ: &#34;</span> <span style="color:#f92672">+</span> sub);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (Exception e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="4-so-sánh-socket-vs-rmi">4. So sánh Socket vs RMI<a hidden class="anchor" aria-hidden="true" href="#4-so-sánh-socket-vs-rmi">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Tiêu chí</th>
+          <th style="text-align: left">Java Socket</th>
+          <th style="text-align: left">Java RMI</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Mức độ</strong></td>
+          <td style="text-align: left">Thấp (Low-level)</td>
+          <td style="text-align: left">Cao (High-level)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Giao thức</strong></td>
+          <td style="text-align: left">TCP/UDP thuần túy</td>
+          <td style="text-align: left">JRMP (Java Remote Method Protocol)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Dữ liệu</strong></td>
+          <td style="text-align: left">Phải tự đóng gói (byte/text)</td>
+          <td style="text-align: left">Tự động đóng gói Object</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Hiệu năng</strong></td>
+          <td style="text-align: left">Cao hơn (do ít overhead)</td>
+          <td style="text-align: left">Thấp hơn một chút</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Đa ngôn ngữ</strong></td>
+          <td style="text-align: left">Dễ dàng (Java nói chuyện với C# được)</td>
+          <td style="text-align: left">Khó (Chỉ Java nói chuyện với Java)</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="5-kết-luận-và-hướng-phát-triển">5. Kết luận và Hướng phát triển<a hidden class="anchor" aria-hidden="true" href="#5-kết-luận-và-hướng-phát-triển">#</a></h2>
+<p>RMI là bước tiến lớn giúp lập trình viên thoát khỏi sự phức tạp của Socket. Tuy nhiên, do hạn chế chỉ dùng được trong môi trường Java thuần túy, ngày nay RMI ít được dùng trực tiếp.</p>
+<p>Thay vào đó, thế giới đã chuyển sang các chuẩn mở hơn nhưng có tư tưởng tương tự RMI:</p>
+<ul>
+<li><strong>Web Services (SOAP/REST):</strong> Dùng HTTP và XML/JSON, cho phép mọi ngôn ngữ giao tiếp với nhau.</li>
+<li><strong>gRPC (Google):</strong> Hiệu năng cực cao, dùng Protobuf.</li>
+</ul>
+<p>Tuy nhiên, hiểu RMI chính là hiểu nền tảng của mọi hệ thống phân tán (Distributed Systems) hiện đại.</p>
+<hr>
+<h2 id="tài-liệu-tham-khảo">Tài liệu tham khảo<a hidden class="anchor" aria-hidden="true" href="#tài-liệu-tham-khảo">#</a></h2>
+<ol>
+<li>Oracle Java Docs. &ldquo;Java RMI Tutorial&rdquo;.</li>
+<li>GeeksforGeeks. &ldquo;Remote Method Invocation in Java&rdquo;.</li>
+<li>Giáo trình Lập trình mạng - Hutech.</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/java/">Java</a></li>
+      <li><a href="http://localhost:1313/tags/rmi/">RMI</a></li>
+      <li><a href="http://localhost:1313/tags/distributed-systems/">Distributed Systems</a></li>
+      <li><a href="http://localhost:1313/tags/rpc/">RPC</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+     <footer class="footer">
+        <div class="social-icons" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 15px;">
+            <a href="https://github.com/SuKem0703/" target="_blank" rel="noopener noreferrer me" title="Github">
+                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg></span>
+            </a>
+            <a href="https://www.facebook.com/binh.nguyen.250862" target="_blank" rel="noopener noreferrer me" title="Facebook">
+                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+</svg></span>
+            </a>
+            <a href="https://www.youtube.com/@Sheeppp" target="_blank" rel="noopener noreferrer me" title="Youtube">
+                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+    </path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg></span>
+            </a>
+        </div>
+
+        <span>
+            © 2025 BNGroup - All Rights Reserved
+        </span>
+    </footer></body>
+
+</html>
