@@ -1,6 +1,6 @@
-baseURL = "https://buibinhnguyen.onrender.com/"
-languageCode = "vi"
-title = "Blog Lập Trình Mạng"
+baseURL = 'https://buibinhnguyen.onrender.com/'
+languageCode = 'vi'
+title = 'Blog Lập Trình Mạng'
 theme = "PaperMod"
 
 [params]
