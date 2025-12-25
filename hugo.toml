@@ -1,0 +1,46 @@
+baseURL = "https://buibinhnguyen.onrender.com/"
+languageCode = "vi"
+title = "Blog Lập Trình Mạng"
+theme = "PaperMod"
+
+[params]
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowCodeCopyButtons = true
+
+  [params.profileMode]
+    enabled = true
+    title = "Xin chào, tôi là Bùi Bình Nguyên"
+    subtitle = "Sinh viên CNTT | Đam mê C# & Java Network Programming"
+    imageUrl = "portrait/BuiBinhNguyen.png"
+    imageTitle = "Avatar"
+    imageWidth = 120
+    imageHeight = 120
+
+    [[params.profileMode.buttons]]
+      name = "Dự án cá nhân"
+      url = "https://github.com/SuKem0703/"
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/SuKem0703/"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Trang Chủ"
+    url = "/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "posts"
+    name = "Bài Viết (Blog)"
+    url = "/posts/"
+    weight = 20
+
+  [[menu.main]]
+    identifier = "about"
+    name = "Về Tôi (Profile)"
+    url = "/about/"
+    weight = 30
