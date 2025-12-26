@@ -1,30 +1,54 @@
 baseURL = 'https://aboutme-gtap.onrender.com/'
 languageCode = 'vi'
 title = 'BNGroup'
-theme = "PaperMod"
+theme = "stack"
 
 copyright = "© 2025 BNGroup - All Rights Reserved"
 
 [params]
-  defaultTheme = "auto"
-  ShowReadingTime = true
-  ShowShareButtons = false
-  ShowCodeCopyButtons = true
-  label.text = "BNGroup"
-
-  [params.profileMode]
-    enabled = true
-    title = "Chào mừng đến với BNGroup" 
+  [params.sidebar]
+    emoji = "👋"
+    title = "BNGroup"
     subtitle = "Code • Guitar • Game • Business"
-    imageUrl = "portrait/BuiBinhNguyen.png"
-    imageTitle = "CEO BNGroup"
-    imageWidth = 120
-    imageHeight = 120
+    [params.sidebar.avatar]
+      enabled = true
+      local = false
+      src = "/portrait/BuiBinhNguyen.png"
 
-    [[params.profileMode.buttons]]
-      name = "Dự án cá nhân"
-      url = "https://github.com/SuKem0703/"
-  
+  [params.footer]
+    since = 2025
+    customText = "© BNGroup - All Rights Reserved"
+
+  [params.dateFormat]
+    published = "Jan 02, 2006"
+    lastUpdated = "Jan 02, 2006 15:04 MST"
+
+  [params.article]
+    math = false
+    toc = true
+    readingTime = true
+    [params.article.license]
+      enabled = true
+      default = "Licensed under CC BY-NC-SA 4.0"
+
+  [params.widgets]
+    [[params.widgets.homepage]]
+      type = "search"
+    [[params.widgets.homepage]]
+      type = "archives"
+      [params.widgets.homepage.params]
+        limit = 5
+    [[params.widgets.homepage]]
+      type = "categories"
+      [params.widgets.homepage.params]
+        limit = 10
+    [[params.widgets.homepage]]
+      type = "tag-cloud"
+      [params.widgets.homepage.params]
+        limit = 10
+    [[params.widgets.page]]
+      type = "toc"
+
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/SuKem0703/"
