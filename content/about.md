@@ -8,19 +8,19 @@ summary: "Giới thiệu về Bùi Bình Nguyên - Sinh viên CNTT và hành tr�
 
 <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
 <img src="/portrait/BuiBinhNguyen.png" alt="Bùi Bình Nguyên" style="width: 250px; height: auto; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); margin-bottom: 15px;">
-<em style="opacity: 0.8; font-size: 0.95rem;">"Code là nghề, nhưng trải nghiệm sống mới là đam mê."</em>
+<em style="opacity: 0.8; font-size: 0.95rem;">"Kiến tạo thế giới ảo bằng thuật toán, làm giàu giá trị thật bằng trải nghiệm."</em>
 </div>
 
 ---
 
-### 👤 Hồ sơ trích ngang
+### Hồ sơ trích ngang
 
 Chào bạn, mình là **Bùi Bình Nguyên**. Blog này là nơi mình ghi lại hành trình chinh phục môn **Lập trình mạng**, đồng thời chia sẻ những góc nhìn cá nhân về công nghệ.
 
 * **Lớp:** 22DTHE5
 * **Chuyên ngành:** Công nghệ thông tin - Công nghệ phần mềm
 
-### 🛠 Kỹ năng chuyên môn (Tech Stack)
+### Kỹ năng chuyên môn
 
 Mình định hướng phát triển theo con đường Backend chuyên sâu, với nền tảng hiện tại bao gồm:
 
@@ -32,9 +32,9 @@ Mình định hướng phát triển theo con đường Backend chuyên sâu, v�
 
 ### "Full Stack" Đời sống
 
-Ngoài thời gian gõ phím ("Coder"), mình tự nhận bản thân là một phiên bản "Full Stack" trong cuộc sống với những mảnh ghép thú vị:
+Ngoài thời gian gõ phím, mình tự nhận bản thân là một phiên bản "Full Stack" trong cuộc sống với những mảnh ghép thú vị:
 
-* **Nhạc công:** Người giữ nhịp và tạo giai điệu cho những cuộc vui.
+* **Guitarist nghiệp dư:** Người giữ nhịp và tạo giai điệu cho những cuộc vui.
 * **Nhà làm game:** Không chỉ chơi, mình thích mày mò cách tạo ra thế giới ảo (Game Design).
 * **Dân buôn:** Có chút máu kinh doanh, thích sự nhạy bén của thị trường.
 * **Nho sinh:** Một chút hoài cổ, yêu thích sự tĩnh lặng và tri thức.
