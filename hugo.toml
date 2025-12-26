@@ -15,7 +15,7 @@ copyright = "© 2025 BNGroup - All Rights Reserved"
   [params.profileMode]
     enabled = true
     title = "Chào mừng đến với BNGroup" 
-    subtitle = "Nơi hội tụ công nghệ, nghệ thuật và kinh doanh của Bùi Bình Nguyên"
+    subtitle = "Code • Guitar • Game • Business"
     imageUrl = "portrait/BuiBinhNguyen.png"
     imageTitle = "CEO BNGroup"
     imageWidth = 120

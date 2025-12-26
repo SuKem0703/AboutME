@@ -52,6 +52,13 @@
       <description></description>
     </item>
     <item>
+      <title>Hồ Chí Minh</title>
+      <link>http://localhost:1313/tags/h%E1%BB%93-ch%C3%AD-minh/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/h%E1%BB%93-ch%C3%AD-minh/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Java</title>
       <link>http://localhost:1313/tags/java/</link>
       <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
@@ -70,6 +77,13 @@
       <link>http://localhost:1313/tags/multithreading/</link>
       <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/multithreading/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nghiên Cứu</title>
+      <link>http://localhost:1313/tags/nghi%C3%AAn-c%E1%BB%A9u/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/nghi%C3%AAn-c%E1%BB%A9u/</guid>
       <description></description>
     </item>
     <item>
@@ -108,6 +122,13 @@
       <description></description>
     </item>
     <item>
+      <title>Triết Học</title>
+      <link>http://localhost:1313/tags/tri%E1%BA%BFt-h%E1%BB%8Dc/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/tri%E1%BA%BFt-h%E1%BB%8Dc/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>UDP</title>
       <link>http://localhost:1313/tags/udp/</link>
       <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
@@ -119,6 +140,13 @@
       <link>http://localhost:1313/tags/unity/</link>
       <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/unity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Văn Hóa</title>
+      <link>http://localhost:1313/tags/v%C4%83n-h%C3%B3a/</link>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/v%C4%83n-h%C3%B3a/</guid>
       <description></description>
     </item>
     <item>
@@ -238,55 +266,6 @@
       <link>http://localhost:1313/tags/roadmap/</link>
       <pubDate>Sat, 20 Dec 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/roadmap/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>C#</title>
-      <link>http://localhost:1313/tags/c%23/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/c%23/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>GameDev</title>
-      <link>http://localhost:1313/tags/gamedev/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/gamedev/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Hồ Chí Minh</title>
-      <link>http://localhost:1313/tags/h%E1%BB%93-ch%C3%AD-minh/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/h%E1%BB%93-ch%C3%AD-minh/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Nghiên Cứu</title>
-      <link>http://localhost:1313/tags/nghi%C3%AAn-c%E1%BB%A9u/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/nghi%C3%AAn-c%E1%BB%A9u/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>RestAPI</title>
-      <link>http://localhost:1313/tags/restapi/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/restapi/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Triết Học</title>
-      <link>http://localhost:1313/tags/tri%E1%BA%BFt-h%E1%BB%8Dc/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/tri%E1%BA%BFt-h%E1%BB%8Dc/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Văn Hóa</title>
-      <link>http://localhost:1313/tags/v%C4%83n-h%C3%B3a/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/v%C4%83n-h%C3%B3a/</guid>
       <description></description>
     </item>
   </channel>
