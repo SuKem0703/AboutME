@@ -13,14 +13,14 @@ summary: "Giới thiệu về Bùi Bình Nguyên - Sinh viên CNTT và hành tr�
 
 ---
 
-### Hồ sơ trích ngang
+### 👤 Hồ sơ trích ngang
 
 Chào bạn, mình là **Bùi Bình Nguyên**. Blog này là nơi mình ghi lại hành trình chinh phục môn **Lập trình mạng**, đồng thời chia sẻ những góc nhìn cá nhân về công nghệ.
 
 * **Lớp:** 22DTHE5
 * **Chuyên ngành:** Công nghệ thông tin - Công nghệ phần mềm
 
-### Kỹ năng chuyên môn
+### 🛠 Kỹ năng chuyên môn
 
 Mình định hướng phát triển theo con đường Backend chuyên sâu, với nền tảng hiện tại bao gồm:
 
@@ -28,9 +28,21 @@ Mình định hướng phát triển theo con đường Backend chuyên sâu, v�
 * **Đang nghiên cứu:** Java & Network Programming (Socket, RMI).
 * **Mục tiêu đồ án:** Xây dựng hệ thống Blog chia sẻ kiến thức Lập trình mạng, áp dụng mô hình Client-Server và giao tiếp đa luồng.
 
+### 📜 Chứng chỉ & Bằng cấp
+
+Các chứng chỉ chuyên môn đã đạt được từ **Cisco Networking Academy**:
+
+* **[JavaScript Essentials 1](/certificate/JavaScriptEssentials1.pdf)**
+    * *Cấp bởi: Cisco Networking Academy & OpenEDG*
+    * *Ngày cấp: 01/12/2025*
+
+* **[JavaScript Essentials 2](/certificate/JavaScriptEssentials2.pdf)**
+    * *Cấp bởi: Cisco Networking Academy & OpenEDG*
+    * *Ngày cấp: 21/12/2025*
+
 ---
 
-### "Full Stack" Đời sống
+### 🎭 "Full Stack" Đời sống
 
 Ngoài thời gian gõ phím, mình tự nhận bản thân là một phiên bản "Full Stack" trong cuộc sống với những mảnh ghép thú vị:
 
