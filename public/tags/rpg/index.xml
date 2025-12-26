@@ -1,20 +1,116 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>RPG on BNGroup</title>
-    <link>http://localhost:1313/tags/rpg/</link>
-    <description>Recent content in RPG on BNGroup</description>
-    <generator>Hugo -- 0.153.1</generator>
-    <language>vi</language>
-    <copyright>2025 BNGroup - All Rights Reserved</copyright>
-    <lastBuildDate>Thu, 25 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/rpg/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Chronicles of Knight and Mage</title>
-      <link>http://localhost:1313/projects/chronicles-of-knight-and-mage/</link>
-      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/chronicles-of-knight-and-mage/</guid>
-      <description>Game nhập vai hành động 2D với thế giới mở, hệ thống trồng trọt và vật phẩm ngẫu nhiên.</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>RPG on BNGroup</title>
+        <link>http://localhost:1313/tags/rpg/</link>
+        <description>Recent content in RPG on BNGroup</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>vi</language>
+        <copyright>BNGroup - All Rights Reserved</copyright>
+        <lastBuildDate>Thu, 25 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/rpg/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Chronicles of Knight and Mage</title>
+        <link>http://localhost:1313/projects/chronicles-of-knight-and-mage/</link>
+        <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/projects/chronicles-of-knight-and-mage/</guid>
+        <description>&lt;div style=&#34;display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 30px;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/projects/images/knight-mage-cover.png&#34; 
+         alt=&#34;Chronicles of Knight and Mage&#34; 
+         style=&#34;width: 280px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.15);&#34;&gt;
+    &lt;em style=&#34;opacity: 0.8; font-size: 0.9rem; margin-top: 10px;&#34;&gt;
+        Dự án Game Action RPG 2D phát triển bởi Bùi Bình Nguyên
+    &lt;/em&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Trải nghiệm ngay:&lt;/strong&gt; &lt;a class=&#34;link&#34; href=&#34;https://chronicles-of-knight-and-mage.onrender.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Truy cập trang chủ dự án&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;giới-thiệu-chung&#34;&gt;Giới thiệu chung
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Chronicles of Knight and Mage&lt;/strong&gt; là tựa game nhập vai hành động (Action RPG) với đồ họa Pixel Art hoài cổ. Trò chơi đưa bạn vào một thế giới mở, nơi bạn không chỉ chiến đấu chống lại quái vật mà còn có thể trải nghiệm cuộc sống qua việc trồng trọt, khám phá và giải mã những bí ẩn của vùng đất Elaria.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Thể loại:&lt;/strong&gt; Nhập vai hành động, Phiêu lưu, Mô phỏng.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Góc nhìn:&lt;/strong&gt; Top-down (Từ trên xuống).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Nền tảng phát triển:&lt;/strong&gt; Unity Engine.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;cốt-truyện&#34;&gt;Cốt truyện
+&lt;/h2&gt;&lt;p&gt;Vùng đất &lt;strong&gt;Elaria&lt;/strong&gt; từng phồn thịnh nhờ sự cân bằng giữa Khoa học và Ma thuật. Tuy nhiên, sự cân bằng đó đã sụp đổ vào &amp;ldquo;Ngày Tan Vỡ&amp;rdquo;, khi phong ấn cổ xưa bị phá vỡ, đánh thức các Tàn Thần trỗi dậy và gieo rắc hỗn loạn.&lt;/p&gt;
+&lt;p&gt;Người chơi sẽ hóa thân thành một Hiệp sĩ lang thang hoặc một Pháp sư lưu vong. Bạn mang trong mình sứ mệnh tái thiết trật tự, đối đầu với thế lực bóng tối và tìm lại những ký ức đã bị lãng quên của chính mình.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tính-năng-nổi-bật&#34;&gt;Tính năng nổi bật
+&lt;/h2&gt;&lt;h3 id=&#34;1-cơ-chế-chiến-đấu-đa-dạng&#34;&gt;1. Cơ chế chiến đấu đa dạng
+&lt;/h3&gt;&lt;p&gt;Bạn có thể chuyển đổi linh hoạt giữa hai lối chơi hoàn toàn khác biệt:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Hiệp sĩ (Knight):&lt;/strong&gt; Sở hữu khả năng cận chiến mạnh mẽ với các đòn Combo liên hoàn, sức chống chịu cao, thích hợp cho những ai thích xông pha.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pháp sư (Mage):&lt;/strong&gt; Sử dụng phép thuật tầm xa với sát thương diện rộng, yêu cầu kỹ năng di chuyển khéo léo để giữ khoảng cách với kẻ thù.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-hệ-thống-trang-bị-và-vật-phẩm&#34;&gt;2. Hệ thống trang bị và Vật phẩm
+&lt;/h3&gt;&lt;p&gt;Game sở hữu hệ thống vật phẩm có chiều sâu với cơ chế ngẫu nhiên (RNG) hấp dẫn:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Phân cấp độ hiếm:&lt;/strong&gt; Vật phẩm được chia thành 9 cấp độ từ Thường (Rusty) đến Thần Thoại (Mythic). Mỗi cấp độ sẽ có màu sắc và khung viền riêng biệt.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chỉ số ngẫu nhiên:&lt;/strong&gt; Ngay cả khi nhặt được hai món đồ giống nhau, chỉ số sức mạnh của chúng cũng có thể khác biệt, tạo động lực để bạn săn tìm những trang bị hoàn hảo nhất.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kho đồ thông minh:&lt;/strong&gt; Dễ dàng quản lý, so sánh sức mạnh trang bị và sắp xếp túi đồ bằng thao tác kéo thả.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-trồng-trọt-và-sinh-hoạt&#34;&gt;3. Trồng trọt và Sinh hoạt
+&lt;/h3&gt;&lt;p&gt;Giữa những cuộc chiến căng thẳng, bạn có thể trở về vùng an toàn để làm nông. Hệ thống trồng trọt mô phỏng thời gian thực cho phép gieo hạt, chăm sóc và thu hoạch nông sản để chế tạo vật phẩm hỗ trợ.&lt;/p&gt;
+&lt;h3 id=&#34;4-thế-giới-mở-và-npc&#34;&gt;4. Thế giới mở và NPC
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Hệ thống nhiệm vụ đa dạng dẫn dắt người chơi khám phá cốt truyện.&lt;/li&gt;
+&lt;li&gt;Tương tác với các NPC để nhận nhiệm vụ, mua bán vật phẩm hoặc tìm hiểu thêm về lịch sử của thế giới Elaria.&lt;/li&gt;
+&lt;li&gt;Dữ liệu nhân vật được lưu trữ an toàn trên đám mây, giúp bạn yên tâm trải nghiệm mà không lo mất file save.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;hình-ảnh-trong-game&#34;&gt;Hình ảnh trong game
+&lt;/h2&gt;&lt;p&gt;&lt;em&gt;(Phần này hiển thị các hình ảnh thực tế từ Gameplay)&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;giao-diện-chiến-đấu&#34;&gt;Giao diện chiến đấu
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/projects/images/combat-demo.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Combat Gameplay&#34;
+	
+	
+&gt;
+&lt;em&gt;Hệ thống chiến đấu với kỹ năng và hiệu ứng hình ảnh&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;hệ-thống-túi-đồ&#34;&gt;Hệ thống túi đồ
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/projects/images/inventory-ui.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Inventory UI&#34;
+	
+	
+&gt;
+&lt;em&gt;Giao diện thùng đồ và trang bị nhân vật&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;đối-thoại-cốt-truyện&#34;&gt;Đối thoại cốt truyện
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/projects/images/dialogue.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Dialogue System&#34;
+	
+	
+&gt;
+&lt;em&gt;Tương tác hội thoại với nhân vật trong game&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;định-hướng-phát-triển&#34;&gt;Định hướng phát triển
+&lt;/h2&gt;&lt;p&gt;Hiện tại game đã hoàn thiện các tính năng cốt lõi. Trong tương lai, dự án sẽ mở rộng thêm:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Thêm chế độ chơi nhiều người (Multiplayer) để cùng săn Boss.&lt;/li&gt;
+&lt;li&gt;Mở rộng bản đồ thế giới và thêm các chương cốt truyện mới.&lt;/li&gt;
+&lt;li&gt;Phát triển phiên bản dành cho thiết bị di động.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;© 2025 BNGroup - Developed by Bùi Bình Nguyên&lt;/em&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

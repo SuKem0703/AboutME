@@ -1,20 +1,174 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>RMI on BNGroup</title>
-    <link>http://localhost:1313/tags/rmi/</link>
-    <description>Recent content in RMI on BNGroup</description>
-    <generator>Hugo -- 0.153.1</generator>
-    <language>vi</language>
-    <copyright>2025 BNGroup - All Rights Reserved</copyright>
-    <lastBuildDate>Thu, 25 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/rmi/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Bài 9: Java RMI - Bước đệm tới Hệ thống phân tán</title>
-      <link>http://localhost:1313/courses/bai-9-tong-quan-ve-rmi-remote-method-invocation/</link>
-      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/courses/bai-9-tong-quan-ve-rmi-remote-method-invocation/</guid>
-      <description>Khám phá Java RMI (Remote Method Invocation): Cơ chế cho phép gọi phương thức trên máy chủ từ xa như thể đang gọi hàm cục bộ. Tìm hiểu kiến trúc Stub, Skeleton và RMI Registry.</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>RMI on BNGroup</title>
+        <link>http://localhost:1313/tags/rmi/</link>
+        <description>Recent content in RMI on BNGroup</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>vi</language>
+        <copyright>BNGroup - All Rights Reserved</copyright>
+        <lastBuildDate>Thu, 25 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/rmi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Bài 9: Java RMI - Bước đệm tới Hệ thống phân tán</title>
+        <link>http://localhost:1313/courses/bai-9-tong-quan-ve-rmi-remote-method-invocation/</link>
+        <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/courses/bai-9-tong-quan-ve-rmi-remote-method-invocation/</guid>
+        <description>&lt;p&gt;Trong 8 bài trước, chúng ta đã làm việc với Socket. Mặc dù Socket rất mạnh mẽ, nhưng việc phải tự tay đóng gói dữ liệu (Marshalling) thành dòng byte rồi gửi đi, sau đó bên kia lại phải giải mã (Unmarshalling) rất tốn công sức và dễ sai sót.&lt;/p&gt;
+&lt;p&gt;Liệu có cách nào để Client gọi một hàm trên Server (ví dụ: &lt;code&gt;server.tinhTong(5, 10)&lt;/code&gt;) đơn giản như đang gọi hàm trên chính máy mình không? Câu trả lời là &lt;strong&gt;Java RMI&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;1-rmi-là-gì&#34;&gt;1. RMI là gì?
+&lt;/h2&gt;&lt;p&gt;RMI (Remote Method Invocation) là một cơ chế cho phép một đối tượng đang chạy trên máy ảo Java này (Client) có thể gọi các phương thức của một đối tượng đang chạy trên máy ảo Java khác (Server).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Triết lý:&lt;/strong&gt; &amp;ldquo;Làm cho việc gọi xa (remote call) trong suốt như gọi gần (local call).&amp;rdquo;&lt;/p&gt;
+&lt;h2 id=&#34;2-kiến-trúc-rmi-stub-và-skeleton&#34;&gt;2. Kiến trúc RMI (Stub và Skeleton)
+&lt;/h2&gt;&lt;p&gt;Để tạo ra sự &amp;ldquo;ảo thuật&amp;rdquo; này, RMI sử dụng hai lớp trung gian ẩn bên dưới:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Stub (Client-side proxy):&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Nằm ở phía Client.&lt;/li&gt;
+&lt;li&gt;Khi Client gọi hàm, thực chất là gọi vào Stub.&lt;/li&gt;
+&lt;li&gt;Stub đóng gói tham số, gửi yêu cầu qua mạng đến Server.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Skeleton (Server-side dispatcher):&lt;/strong&gt; (Trong các bản Java mới, Skeleton đã được tích hợp vào hệ thống RMI nhưng khái niệm vẫn còn giá trị).
+&lt;ul&gt;
+&lt;li&gt;Nằm ở phía Server.&lt;/li&gt;
+&lt;li&gt;Nhận yêu cầu từ mạng, giải mã tham số.&lt;/li&gt;
+&lt;li&gt;Gọi hàm thực sự trên Server Object.&lt;/li&gt;
+&lt;li&gt;Nhận kết quả trả về, đóng gói và gửi ngược lại cho Stub.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;RMI Registry:&lt;/strong&gt; Là một cuốn &amp;ldquo;danh bạ điện thoại&amp;rdquo;. Server đăng ký tên dịch vụ của mình lên đây (ví dụ: &amp;ldquo;MayTinhToan&amp;rdquo;). Client tra cứu cái tên này để lấy về Stub tương ứng.&lt;/p&gt;
+&lt;h2 id=&#34;3-quy-trình-xây-dựng-ứng-dụng-rmi&#34;&gt;3. Quy trình xây dựng ứng dụng RMI
+&lt;/h2&gt;&lt;p&gt;Chúng ta sẽ làm một ví dụ đơn giản: Máy tính cộng trừ nhân chia từ xa.&lt;/p&gt;
+&lt;h3 id=&#34;bước-1-định-nghĩa-interface-remote-interface&#34;&gt;Bước 1: Định nghĩa Interface (Remote Interface)
+&lt;/h3&gt;&lt;p&gt;Cả Client và Server đều phải biết Interface này. Nó bắt buộc phải kế thừa &lt;code&gt;java.rmi.Remote&lt;/code&gt; và mọi phương thức phải ném ra &lt;code&gt;RemoteException&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.rmi.Remote;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.rmi.RemoteException;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;interface&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;CalculatorService&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;extends&lt;/span&gt; Remote {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; b) &lt;span style=&#34;color:#66d9ef&#34;&gt;throws&lt;/span&gt; RemoteException;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;subtract&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; b) &lt;span style=&#34;color:#66d9ef&#34;&gt;throws&lt;/span&gt; RemoteException;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;bước-2-hiện-thực-interface-server-implementation&#34;&gt;Bước 2: Hiện thực Interface (Server Implementation)
+&lt;/h3&gt;&lt;p&gt;Đây là logic nghiệp vụ thực sự nằm trên Server. Lớp này thường kế thừa &lt;code&gt;UnicastRemoteObject&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.rmi.server.UnicastRemoteObject;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.rmi.RemoteException;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;CalculatorImpl&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;extends&lt;/span&gt; UnicastRemoteObject &lt;span style=&#34;color:#66d9ef&#34;&gt;implements&lt;/span&gt; CalculatorService {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// Constructor bắt buộc phải ném RemoteException&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;CalculatorImpl&lt;/span&gt;() &lt;span style=&#34;color:#66d9ef&#34;&gt;throws&lt;/span&gt; RemoteException {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;super&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; b) &lt;span style=&#34;color:#66d9ef&#34;&gt;throws&lt;/span&gt; RemoteException {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Client yêu cầu cộng: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; a &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; + &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; b);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; a &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; b;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;subtract&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; b) &lt;span style=&#34;color:#66d9ef&#34;&gt;throws&lt;/span&gt; RemoteException {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; a &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; b;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;bước-3-tạo-server-và-đăng-ký-dịch-vụ&#34;&gt;Bước 3: Tạo Server và Đăng ký dịch vụ
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.rmi.registry.LocateRegistry;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.rmi.Naming;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;RMIServer&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 1. Khởi tạo Registry tại port 1099 (Port mặc định của RMI)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            LocateRegistry.&lt;span style=&#34;color:#a6e22e&#34;&gt;createRegistry&lt;/span&gt;(1099);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 2. Tạo đối tượng dịch vụ&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            CalculatorService service &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; CalculatorImpl();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 3. Đăng ký tên dịch vụ vào danh bạ&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            Naming.&lt;span style=&#34;color:#a6e22e&#34;&gt;rebind&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;rmi://localhost:1099/MyCalculator&amp;#34;&lt;/span&gt;, service);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;RMI Server đang chạy...&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (Exception e) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            e.&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;bước-4-tạo-client-để-gọi-hàm&#34;&gt;Bước 4: Tạo Client để gọi hàm
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.rmi.Naming;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;RMIClient&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 1. Tra cứu dịch vụ trong danh bạ&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// Kết quả trả về thực chất là cái STUB&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            CalculatorService stub &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (CalculatorService) Naming.&lt;span style=&#34;color:#a6e22e&#34;&gt;lookup&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;rmi://localhost:1099/MyCalculator&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 2. Gọi hàm như thể nó đang ở local&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; sum &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; stub.&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(10, 20);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Kết quả cộng: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; sum);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; sub &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; stub.&lt;span style=&#34;color:#a6e22e&#34;&gt;subtract&lt;/span&gt;(50, 15);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Kết quả trừ: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; sub);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (Exception e) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            e.&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;4-so-sánh-socket-vs-rmi&#34;&gt;4. So sánh Socket vs RMI
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Tiêu chí&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Java Socket&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Java RMI&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Mức độ&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Thấp (Low-level)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Cao (High-level)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Giao thức&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;TCP/UDP thuần túy&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;JRMP (Java Remote Method Protocol)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Dữ liệu&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Phải tự đóng gói (byte/text)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Tự động đóng gói Object&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Hiệu năng&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Cao hơn (do ít overhead)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Thấp hơn một chút&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Đa ngôn ngữ&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Dễ dàng (Java nói chuyện với C# được)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Khó (Chỉ Java nói chuyện với Java)&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;5-kết-luận-và-hướng-phát-triển&#34;&gt;5. Kết luận và Hướng phát triển
+&lt;/h2&gt;&lt;p&gt;RMI là bước tiến lớn giúp lập trình viên thoát khỏi sự phức tạp của Socket. Tuy nhiên, do hạn chế chỉ dùng được trong môi trường Java thuần túy, ngày nay RMI ít được dùng trực tiếp.&lt;/p&gt;
+&lt;p&gt;Thay vào đó, thế giới đã chuyển sang các chuẩn mở hơn nhưng có tư tưởng tương tự RMI:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Web Services (SOAP/REST):&lt;/strong&gt; Dùng HTTP và XML/JSON, cho phép mọi ngôn ngữ giao tiếp với nhau.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;gRPC (Google):&lt;/strong&gt; Hiệu năng cực cao, dùng Protobuf.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Tuy nhiên, hiểu RMI chính là hiểu nền tảng của mọi hệ thống phân tán (Distributed Systems) hiện đại.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tài-liệu-tham-khảo&#34;&gt;Tài liệu tham khảo
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Oracle Java Docs. &amp;ldquo;Java RMI Tutorial&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;GeeksforGeeks. &amp;ldquo;Remote Method Invocation in Java&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Giáo trình Lập trình mạng - Hutech.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

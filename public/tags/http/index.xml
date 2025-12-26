@@ -1,20 +1,195 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>HTTP on BNGroup</title>
-    <link>http://localhost:1313/tags/http/</link>
-    <description>Recent content in HTTP on BNGroup</description>
-    <generator>Hugo -- 0.153.1</generator>
-    <language>vi</language>
-    <copyright>2025 BNGroup - All Rights Reserved</copyright>
-    <lastBuildDate>Sun, 21 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/http/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Bài 4: JSON và Fetch API - Giao tiếp Client-Server</title>
-      <link>http://localhost:1313/courses/bai-4-json-va-fetch-api-giao-tiep-client-server/</link>
-      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/courses/bai-4-json-va-fetch-api-giao-tiep-client-server/</guid>
-      <description>Tìm hiểu cấu trúc JSON, cơ chế Serialization và cách sử dụng Fetch API để thực hiện các yêu cầu HTTP (GET, POST) trong mô hình Client-Server.</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>HTTP on BNGroup</title>
+        <link>http://localhost:1313/tags/http/</link>
+        <description>Recent content in HTTP on BNGroup</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>vi</language>
+        <copyright>BNGroup - All Rights Reserved</copyright>
+        <lastBuildDate>Sun, 21 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/http/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Bài 4: JSON và Fetch API - Giao tiếp Client-Server</title>
+        <link>http://localhost:1313/courses/bai-4-json-va-fetch-api-giao-tiep-client-server/</link>
+        <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/courses/bai-4-json-va-fetch-api-giao-tiep-client-server/</guid>
+        <description>&lt;p&gt;Trong các bài trước, chúng ta đã học cách xử lý logic bất đồng bộ. Tuy nhiên, một ứng dụng mạng thực thụ cần phải giao tiếp với thế giới bên ngoài: gửi dữ liệu lên Server và nhận kết quả trả về. Để làm được điều này, Client và Server cần thống nhất hai việc:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Định dạng dữ liệu:&lt;/strong&gt; Chúng ta nói chuyện bằng ngôn ngữ gì? (JSON).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Giao thức vận chuyển:&lt;/strong&gt; Chúng ta gửi dữ liệu đi như thế nào? (HTTP/Fetch API).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Bài viết này sẽ giải quyết tường tận hai vấn đề trên.&lt;/p&gt;
+&lt;h2 id=&#34;1-json-javascript-object-notation&#34;&gt;1. JSON (JavaScript Object Notation)
+&lt;/h2&gt;&lt;h3 id=&#34;11-json-là-gì&#34;&gt;1.1. JSON là gì?
+&lt;/h3&gt;&lt;p&gt;JSON là một định dạng hoán đổi dữ liệu văn bản nhẹ (lightweight text-based data interchange format). Mặc dù tên gọi có chữ &amp;ldquo;JavaScript&amp;rdquo;, JSON hiện nay độc lập với ngôn ngữ và được hỗ trợ bởi hầu hết các ngôn ngữ lập trình (C#, Java, Python, Go&amp;hellip;).&lt;/p&gt;
+&lt;p&gt;Trong lập trình mạng, JSON đóng vai trò là &amp;ldquo;payload&amp;rdquo; (hàng hóa) được đóng gói trong các gói tin HTTP để truyền qua lại giữa Client và Server.&lt;/p&gt;
+&lt;h3 id=&#34;12-cấu-trúc-và-quy-tắc-cú-pháp&#34;&gt;1.2. Cấu trúc và Quy tắc cú pháp
+&lt;/h3&gt;&lt;p&gt;JSON được xây dựng dựa trên hai cấu trúc:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Một tập hợp các cặp key/value (tương đương Object trong JS).&lt;/li&gt;
+&lt;li&gt;Một danh sách các giá trị có thứ tự (tương đương Array trong JS).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Quy tắc nghiêm ngặt của JSON:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dữ liệu nằm trong các cặp name/value.&lt;/li&gt;
+&lt;li&gt;Key (tên trường) &lt;strong&gt;bắt buộc&lt;/strong&gt; phải đặt trong dấu nháy kép &lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt;. (Đây là điểm khác biệt lớn nhất so với JS Object).&lt;/li&gt;
+&lt;li&gt;Chuỗi (String) phải dùng nháy kép &lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt;. Không được dùng nháy đơn &lt;code&gt;&#39;&#39;&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Không được phép có dấu phẩy &lt;code&gt;,&lt;/code&gt; ở phần tử cuối cùng (trailing comma).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Ví dụ một đoạn JSON hợp lệ:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;101&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;username&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;nguyenvana&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;isActive&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;roles&amp;#34;&lt;/span&gt;: [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;admin&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;editor&amp;#34;&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;metadata&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;lastLogin&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2025-12-28T10:00:00Z&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;13-serialization-và-deserialization&#34;&gt;1.3. Serialization và Deserialization
+&lt;/h3&gt;&lt;p&gt;Khi truyền dữ liệu qua mạng (Socket hoặc HTTP), chúng ta chỉ có thể truyền chuỗi văn bản (String) hoặc byte. Chúng ta không thể truyền nguyên cả một Object đang nằm trong bộ nhớ RAM. Do đó, cần có quy trình chuyển đổi:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Serialization (Tuần tự hóa):&lt;/strong&gt; Chuyển Object JavaScript thành chuỗi JSON để gửi đi.
+&lt;ul&gt;
+&lt;li&gt;Phương thức: &lt;code&gt;JSON.stringify(object)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deserialization (Giải tuần tự hóa):&lt;/strong&gt; Nhận chuỗi JSON từ mạng và chuyển lại thành Object JavaScript để xử lý.
+&lt;ul&gt;
+&lt;li&gt;Phương thức: &lt;code&gt;JSON.parse(string)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Ví dụ:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;user&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;An&amp;#34;&lt;/span&gt; };
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 1. Client gửi đi (Serialize)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dataToSend&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;JSON&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;stringify&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;user&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;typeof&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;dataToSend&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;// &amp;#34;string&amp;#34; -&amp;gt; &amp;#39;{&amp;#34;id&amp;#34;:1,&amp;#34;name&amp;#34;:&amp;#34;An&amp;#34;}&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 2. Server gửi về (Deserialize)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;jsonString&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{&amp;#34;id&amp;#34;:2, &amp;#34;name&amp;#34;:&amp;#34;Binh&amp;#34;}&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;receivedUser&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;JSON&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;parse&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;jsonString&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;receivedUser&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;// &amp;#34;Binh&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;2-giao-thức-http-cơ-bản&#34;&gt;2. Giao thức HTTP cơ bản
+&lt;/h2&gt;&lt;p&gt;Trước khi dùng Fetch API, cần hiểu Client và Server giao tiếp qua HTTP (Hypertext Transfer Protocol) như thế nào.&lt;/p&gt;
+&lt;p&gt;Một HTTP Request bao gồm:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;URL:&lt;/strong&gt; Địa chỉ tài nguyên (VD: &lt;code&gt;https://api.example.com/users&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Method (Phương thức):&lt;/strong&gt; Hành động muốn thực hiện.
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;GET&lt;/code&gt;: Lấy dữ liệu.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;POST&lt;/code&gt;: Tạo mới dữ liệu.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PUT&lt;/code&gt;: Cập nhật toàn bộ dữ liệu.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PATCH&lt;/code&gt;: Cập nhật một phần dữ liệu.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DELETE&lt;/code&gt;: Xóa dữ liệu.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Headers:&lt;/strong&gt; Thông tin bổ sung (VD: &lt;code&gt;Content-Type: application/json&lt;/code&gt;, &lt;code&gt;Authorization: Bearer token...&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Body:&lt;/strong&gt; Dữ liệu gửi đi (thường là chuỗi JSON), chỉ có trong POST/PUT/PATCH.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-fetch-api&#34;&gt;3. Fetch API
+&lt;/h2&gt;&lt;p&gt;Fetch API là chuẩn mới thay thế cho &lt;code&gt;XMLHttpRequest&lt;/code&gt; cũ kỹ, cung cấp giao diện lập trình mạnh mẽ và linh hoạt hơn để thao tác với HTTP Pipeline. Fetch sử dụng &lt;strong&gt;Promise&lt;/strong&gt; (và tương thích hoàn toàn với Async/Await).&lt;/p&gt;
+&lt;h3 id=&#34;31-cú-pháp-cơ-bản&#34;&gt;3.1. Cú pháp cơ bản
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;fetch&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;options&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  .&lt;span style=&#34;color:#a6e22e&#34;&gt;then&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;response&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;response&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;json&lt;/span&gt;())
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  .&lt;span style=&#34;color:#a6e22e&#34;&gt;then&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  .&lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;error&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;error&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;error&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;32-quy-trình-xử-lý-response-2-giai-đoạn&#34;&gt;3.2. Quy trình xử lý Response 2 giai đoạn
+&lt;/h3&gt;&lt;p&gt;Một điểm cần lưu ý đặc biệt khi dùng Fetch là nó trả về Promise qua 2 bước:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Bước 1:&lt;/strong&gt; Nhận Headers và trạng thái kết nối (Response Object). Lúc này body chưa được tải về hoàn toàn.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bước 2:&lt;/strong&gt; Đọc luồng dữ liệu (Stream) từ body và parse nó (thường dùng &lt;code&gt;.json()&lt;/code&gt; hoặc &lt;code&gt;.text()&lt;/code&gt;).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Đó là lý do tại sao chúng ta thường thấy 2 lần &lt;code&gt;await&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;4-thực-hành-client-server-simulation&#34;&gt;4. Thực hành: Client-Server Simulation
+&lt;/h2&gt;&lt;p&gt;Chúng ta sẽ sử dụng &lt;code&gt;JSONPlaceholder&lt;/code&gt; - một dịch vụ REST API miễn phí để thực hành giả lập.&lt;/p&gt;
+&lt;h3 id=&#34;41-kịch-bản-1-lấy-danh-sách-get-request&#34;&gt;4.1. Kịch bản 1: Lấy danh sách (GET Request)
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;API_URL&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;[https://jsonplaceholder.typicode.com/posts](https://jsonplaceholder.typicode.com/posts)&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;async&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;getPosts&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// Mặc định fetch dùng method GET
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;response&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;fetch&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;API_URL&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// Kiểm tra mã trạng thái HTTP (200-299 là thành công)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;response&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;ok&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;throw&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Error(&lt;span style=&#34;color:#e6db74&#34;&gt;`HTTP error! Status: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;response&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;status&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// Chuyển đổi stream body sang JSON
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;posts&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;response&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;json&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;`Đã tải &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;posts&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; bài viết.`&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Bài đầu tiên:&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;posts&lt;/span&gt;[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;].&lt;span style=&#34;color:#a6e22e&#34;&gt;title&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;error&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;error&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Lỗi tải dữ liệu:&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;error&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;message&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getPosts&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;42-kịch-bản-2-gửi-dữ-liệu-mới-post-request&#34;&gt;4.2. Kịch bản 2: Gửi dữ liệu mới (POST Request)
+&lt;/h3&gt;&lt;p&gt;Khi gửi dữ liệu (POST), chúng ta cần cấu hình tham số &lt;code&gt;options&lt;/code&gt; kỹ hơn: khai báo method, headers và body.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;async&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;createPost&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;title&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;body&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;userId&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;newPost&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;title&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;title&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;body&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;body&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;userId&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;userId&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    };
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;response&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;fetch&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;[https://jsonplaceholder.typicode.com/posts](https://jsonplaceholder.typicode.com/posts)&amp;#39;&lt;/span&gt;, {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#a6e22e&#34;&gt;method&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;POST&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#75715e&#34;&gt;// Chỉ định phương thức
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#a6e22e&#34;&gt;headers&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// Báo cho Server biết ta đang gửi JSON
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Content-Type&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;application/json; charset=UTF-8&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// Quan trọng: Phải chuyển Object sang chuỗi JSON
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#a6e22e&#34;&gt;body&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;JSON&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;stringify&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;newPost&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        });
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;response&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;ok&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;throw&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Error(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Gửi dữ liệu thất bại&amp;#39;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;await&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;response&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;json&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Đăng bài thành công! ID mới:&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (&lt;span style=&#34;color:#a6e22e&#34;&gt;error&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;error&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Lỗi:&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;error&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;createPost&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Học Lập trình mạng&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Fetch API rất thú vị&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;5-các-vấn-đề-thường-gặp-trong-lập-trình-mạng&#34;&gt;5. Các vấn đề thường gặp trong Lập trình mạng
+&lt;/h2&gt;&lt;h3 id=&#34;51-cors-cross-origin-resource-sharing&#34;&gt;5.1. CORS (Cross-Origin Resource Sharing)
+&lt;/h3&gt;&lt;p&gt;Đây là lỗi kinh điển nhất. Trình duyệt có cơ chế bảo mật chặn các request từ domain này (ví dụ &lt;code&gt;localhost:3000&lt;/code&gt;) sang domain khác (ví dụ &lt;code&gt;api.server.com&lt;/code&gt;) nếu Server không cho phép.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Dấu hiệu:&lt;/strong&gt; Console báo lỗi đỏ lòm có chữ &amp;ldquo;Access-Control-Allow-Origin&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cách sửa:&lt;/strong&gt; Cấu hình tại Server (Backend) để cho phép Origin của Client.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;52-quên-serialize-body&#34;&gt;5.2. Quên Serialize Body
+&lt;/h3&gt;&lt;p&gt;Nếu bạn gửi trực tiếp Object (&lt;code&gt;body: newPost&lt;/code&gt;) thay vì &lt;code&gt;JSON.stringify(newPost)&lt;/code&gt;, Server sẽ nhận được dữ liệu rác &lt;code&gt;[object Object]&lt;/code&gt; và không xử lý được.&lt;/p&gt;
+&lt;h3 id=&#34;53-không-kiểm-tra-responseok&#34;&gt;5.3. Không kiểm tra &lt;code&gt;response.ok&lt;/code&gt;
+&lt;/h3&gt;&lt;p&gt;Fetch API chỉ reject Promise khi mất mạng (network failure). Nếu Server trả về lỗi 404 hay 500, Fetch vẫn coi là &amp;ldquo;thành công&amp;rdquo; (fulfilled). Do đó, lập trình viên phải thủ công kiểm tra &lt;code&gt;if (!response.ok)&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;6-kết-luận&#34;&gt;6. Kết luận
+&lt;/h2&gt;&lt;p&gt;Hiểu về JSON và Fetch API là bạn đã nắm được cách Client &amp;ldquo;trò chuyện&amp;rdquo; với Server.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;JSON&lt;/strong&gt; là định dạng tin nhắn.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fetch API&lt;/strong&gt; là người đưa thư.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Kiến thức này sẽ được áp dụng trực tiếp khi chúng ta xây dựng ứng dụng Chat Client-Server bằng Java Socket ở các bài sau, nơi bạn sẽ phải tự tay đóng gói chuỗi JSON và gửi qua luồng TCP.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tài-liệu-tham-khảo&#34;&gt;Tài liệu tham khảo
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;MDN Web Docs. &amp;ldquo;Fetch API - Web APIs&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;MDN Web Docs. &amp;ldquo;Working with JSON&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;JSON.org. &amp;ldquo;Introducing JSON&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;W3Schools. &amp;ldquo;JSON Data Types&amp;rdquo;.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

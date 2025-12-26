@@ -1,55 +1,891 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Java on BNGroup</title>
-    <link>http://localhost:1313/tags/java/</link>
-    <description>Recent content in Java on BNGroup</description>
-    <generator>Hugo -- 0.153.1</generator>
-    <language>vi</language>
-    <copyright>2025 BNGroup - All Rights Reserved</copyright>
-    <lastBuildDate>Thu, 25 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/java/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Lộ trình thực hiện đồ án: Java &amp; JavaScript</title>
-      <link>http://localhost:1313/courses/00-lo-trinh-do-an/</link>
-      <pubDate>Sat, 20 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/courses/00-lo-trinh-do-an/</guid>
-      <description>Dàn ý chi tiết 9 bài viết cốt lõi về Frontend (JS) và Backend (Java Network) nhằm đáp ứng yêu cầu đồ án học phần.</description>
-    </item>
-    <item>
-      <title>Bài 5: Java I/O Streams - Quản lý luồng nhập xuất</title>
-      <link>http://localhost:1313/courses/bai-5-java-i-o-streams-quan-ly-luong-nhap-xuat/</link>
-      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/courses/bai-5-java-i-o-streams-quan-ly-luong-nhap-xuat/</guid>
-      <description>Tìm hiểu kiến trúc I/O trong Java: Phân biệt Byte Stream và Character Stream, kỹ thuật Buffered để tối ưu hiệu suất và ứng dụng của chúng trong truyền tải dữ liệu mạng.</description>
-    </item>
-    <item>
-      <title>Bài 6: Lập trình Socket TCP - Xây dựng ứng dụng Chat</title>
-      <link>http://localhost:1313/courses/bai-6-lap-trinh-socket-tcp-mo-hinh-client-server/</link>
-      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/courses/bai-6-lap-trinh-socket-tcp-mo-hinh-client-server/</guid>
-      <description>Hướng dẫn lập trình mạng cơ bản với giao thức TCP trong Java. Tìm hiểu về ServerSocket, Socket và quy trình bắt tay 3 bước để xây dựng ứng dụng Chat Client-Server.</description>
-    </item>
-    <item>
-      <title>Bài 7: Socket UDP - Giao thức &#39;Nhanh nhưng Ẩu&#39;</title>
-      <link>http://localhost:1313/courses/bai-7-socket-udp-truyen-tai-du-lieu-khong-ket-noi/</link>
-      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/courses/bai-7-socket-udp-truyen-tai-du-lieu-khong-ket-noi/</guid>
-      <description>Phân tích đặc điểm giao thức UDP, so sánh với TCP. Hướng dẫn lập trình Socket UDP bằng Java với DatagramPacket để xây dựng ứng dụng gửi tin nhắn Broadcast.</description>
-    </item>
-    <item>
-      <title>Bài 8: Đa luồng (Multithreading) - Nâng cấp Server phục vụ nhiều Client</title>
-      <link>http://localhost:1313/courses/bai-8-da-luong-multithreading/</link>
-      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/courses/bai-8-da-luong-multithreading/</guid>
-      <description>Giải quyết vấn đề Blocking I/O bằng đa luồng. Hướng dẫn sử dụng Interface Runnable để xây dựng Multithreaded Server xử lý đồng thời nhiều kết nối.</description>
-    </item>
-    <item>
-      <title>Bài 9: Java RMI - Bước đệm tới Hệ thống phân tán</title>
-      <link>http://localhost:1313/courses/bai-9-tong-quan-ve-rmi-remote-method-invocation/</link>
-      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/courses/bai-9-tong-quan-ve-rmi-remote-method-invocation/</guid>
-      <description>Khám phá Java RMI (Remote Method Invocation): Cơ chế cho phép gọi phương thức trên máy chủ từ xa như thể đang gọi hàm cục bộ. Tìm hiểu kiến trúc Stub, Skeleton và RMI Registry.</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Java on BNGroup</title>
+        <link>http://localhost:1313/tags/java/</link>
+        <description>Recent content in Java on BNGroup</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>vi</language>
+        <copyright>BNGroup - All Rights Reserved</copyright>
+        <lastBuildDate>Thu, 25 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/java/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Lộ trình thực hiện đồ án: Java &amp; JavaScript</title>
+        <link>http://localhost:1313/courses/00-lo-trinh-do-an/</link>
+        <pubDate>Sat, 20 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/courses/00-lo-trinh-do-an/</guid>
+        <description>&lt;p&gt;Dựa trên yêu cầu của đồ án học phần, chuỗi bài viết này được xây dựng để chia sẻ kiến thức về hai ngôn ngữ chính là &lt;strong&gt;Java&lt;/strong&gt; và &lt;strong&gt;JavaScript&lt;/strong&gt;, với mục tiêu hoàn thành tối thiểu 9 bài viết trước hạn chót.&lt;/p&gt;
+&lt;p&gt;Dưới đây là checklist theo dõi tiến độ thực hiện:&lt;/p&gt;
+&lt;h3 id=&#34;phần-1-javascript--nền-tảng-web&#34;&gt;Phần 1: JavaScript &amp;amp; Nền tảng Web
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;(Kiến thức nền tảng dựa trên khóa học Cisco JavaScript Essentials)&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Bài 1: Khởi động với JavaScript - Biến và Kiểu dữ liệu&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Nội dung:&lt;/em&gt; Các kiểu dữ liệu cơ bản, Dynamic typing. Sự khác biệt giữa &lt;code&gt;var&lt;/code&gt;, &lt;code&gt;let&lt;/code&gt;, &lt;code&gt;const&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Liên hệ:&lt;/em&gt; Vai trò của JS trong trình duyệt và sự trỗi dậy của Node.js.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Bài 2: Hàm (Functions) và Xử lý sự kiện&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Nội dung:&lt;/em&gt; Cấu trúc hàm, Arrow Function (ES6), và Callback function.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Liên hệ:&lt;/em&gt; Bước đệm quan trọng để hiểu về lập trình bất đồng bộ.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Bài 3: Xử lý Bất đồng bộ: Promise và Async/Await&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Nội dung:&lt;/em&gt; Giải quyết vấn đề &amp;ldquo;Callback hell&amp;rdquo;. Cơ chế &lt;code&gt;Promise&lt;/code&gt; và cú pháp &lt;code&gt;async/await&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Liên hệ:&lt;/em&gt; Kỹ thuật bắt buộc khi làm việc với các tác vụ mạng tốn thời gian.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Bài 4: JSON và Fetch API - Giao tiếp Client-Server&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Nội dung:&lt;/em&gt; Cấu trúc JSON. Sử dụng &lt;code&gt;Fetch API&lt;/code&gt; để gửi request HTTP (GET, POST).&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Liên hệ:&lt;/em&gt; Mô phỏng Client gửi yêu cầu và nhận dữ liệu từ Server.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;phần-2-java--lập-trình-mạng-socket&#34;&gt;Phần 2: Java &amp;amp; Lập trình mạng (Socket)
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;(Kiến thức cốt lõi từ các buổi học Lập trình mạng)&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Bài 5: Java I/O Streams - Quản lý luồng nhập xuất&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Nội dung:&lt;/em&gt; Phân biệt Byte Stream và Character Stream. Kỹ thuật Buffered.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Liên hệ:&lt;/em&gt; Cơ sở để truyền tải dữ liệu qua mạng.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Bài 6: Lập trình Socket TCP (Mô hình Client-Server)&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Nội dung:&lt;/em&gt; Giao thức TCP, &lt;code&gt;ServerSocket&lt;/code&gt;, quy trình Bind -&amp;gt; Listen -&amp;gt; Accept.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Demo:&lt;/em&gt; Ứng dụng Chat đơn giản (1-1).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Bài 7: Socket UDP - Truyền tải dữ liệu không kết nối&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Nội dung:&lt;/em&gt; Đặc điểm của UDP. Sử dụng &lt;code&gt;DatagramPacket&lt;/code&gt; và &lt;code&gt;DatagramSocket&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Demo:&lt;/em&gt; Ứng dụng gửi tin nhắn Broadcast hoặc Streaming.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Bài 8: Đa luồng (Multithreading) trong Lập trình mạng&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Nội dung:&lt;/em&gt; Tại sao Server cần đa luồng? Sử dụng &lt;code&gt;Thread&lt;/code&gt;/&lt;code&gt;Runnable&lt;/code&gt; để xử lý nhiều Client.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Nâng cấp:&lt;/em&gt; Tối ưu bài toán TCP Server để phục vụ nhiều người dùng cùng lúc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Bài 9: Tổng quan về RMI (Remote Method Invocation)&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Nội dung:&lt;/em&gt; Cơ chế gọi phương thức từ xa, kiến trúc Stub và Skeleton.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Liên hệ:&lt;/em&gt; Bước chuyển từ Socket sang các kiến trúc phân tán hiện đại.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Trạng thái cập nhật lần cuối: 25/12/2025&lt;/em&gt;
+&lt;em&gt;Tiến độ hiện tại: 0/9 bài viết.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
+        <title>Bài 5: Java I/O Streams - Quản lý luồng nhập xuất</title>
+        <link>http://localhost:1313/courses/bai-5-java-i-o-streams-quan-ly-luong-nhap-xuat/</link>
+        <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/courses/bai-5-java-i-o-streams-quan-ly-luong-nhap-xuat/</guid>
+        <description>&lt;p&gt;Trong lập trình mạng, bản chất của việc giao tiếp giữa Client và Server chính là quá trình Nhập (Input) và Xuất (Output) dữ liệu. Dù dữ liệu đó là một tin nhắn văn bản, một bức ảnh hay một video, chúng đều phải được chuyển thành dòng dữ liệu (Stream) để di chuyển qua dây dẫn mạng.&lt;/p&gt;
+&lt;p&gt;Java cung cấp gói thư viện &lt;code&gt;java.io&lt;/code&gt; rất mạnh mẽ để xử lý vấn đề này. Nếu bạn đến từ C#, bạn sẽ thấy sự tương đồng giữa &lt;code&gt;System.IO&lt;/code&gt; của .NET và &lt;code&gt;java.io&lt;/code&gt; của Java.&lt;/p&gt;
+&lt;h2 id=&#34;1-khái-niệm-về-stream-luồng&#34;&gt;1. Khái niệm về Stream (Luồng)
+&lt;/h2&gt;&lt;p&gt;Stream là một khái niệm trừu tượng biểu diễn một dòng dữ liệu chảy từ nguồn (Source) đến đích (Destination).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;InputStream (Luồng nhập):&lt;/strong&gt; Dùng để đọc dữ liệu từ nguồn (bàn phím, file, mạng) vào chương trình.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OutputStream (Luồng xuất):&lt;/strong&gt; Dùng để ghi dữ liệu từ chương trình ra đích (màn hình, file, mạng).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Nguyên tắc vàng: Stream trong Java hoạt động theo cơ chế tuần tự (FIFO - First In First Out). Bạn đọc byte số 1, sau đó mới đến byte số 2, không thể nhảy cóc ngẫu nhiên (trừ khi dùng &lt;code&gt;RandomAccessFile&lt;/code&gt;).&lt;/p&gt;
+&lt;h2 id=&#34;2-phân-loại-stream-byte-vs-character&#34;&gt;2. Phân loại Stream: Byte vs Character
+&lt;/h2&gt;&lt;p&gt;Đây là sự phân biệt quan trọng nhất mà mọi lập trình viên Java cần nắm vững để tránh lỗi hiển thị ký tự (font lỗi).&lt;/p&gt;
+&lt;h3 id=&#34;21-byte-stream-luồng-byte&#34;&gt;2.1. Byte Stream (Luồng Byte)
+&lt;/h3&gt;&lt;p&gt;Byte Stream làm việc với dữ liệu thô dạng nhị phân, xử lý từng byte (8-bit) một.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Lớp cha:&lt;/strong&gt; &lt;code&gt;InputStream&lt;/code&gt; và &lt;code&gt;OutputStream&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Các lớp cài đặt phổ biến:&lt;/strong&gt; &lt;code&gt;FileInputStream&lt;/code&gt;, &lt;code&gt;FileOutputStream&lt;/code&gt;, &lt;code&gt;BufferedInputStream&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ứng dụng:&lt;/strong&gt; Dùng để xử lý các dữ liệu không phải văn bản như: Hình ảnh (PNG, JPG), Video (MP4), File âm thanh, hoặc File thực thi (.exe).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Nếu bạn dùng Byte Stream để đọc file văn bản tiếng Việt có dấu, khả năng cao sẽ bị lỗi font vì một ký tự UTF-8 có thể tốn 2-3 byte, việc đọc từng byte rời rạc sẽ làm gãy mã ký tự.&lt;/p&gt;
+&lt;h3 id=&#34;22-character-stream-luồng-ký-tự&#34;&gt;2.2. Character Stream (Luồng Ký tự)
+&lt;/h3&gt;&lt;p&gt;Character Stream được thiết kế để xử lý văn bản, tự động chuyển đổi các byte thành ký tự (16-bit Unicode) dựa trên bảng mã (encoding) của hệ thống.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Lớp cha:&lt;/strong&gt; &lt;code&gt;Reader&lt;/code&gt; và &lt;code&gt;Writer&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Các lớp cài đặt phổ biến:&lt;/strong&gt; &lt;code&gt;FileReader&lt;/code&gt;, &lt;code&gt;FileWriter&lt;/code&gt;, &lt;code&gt;BufferedReader&lt;/code&gt;, &lt;code&gt;PrintWriter&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ứng dụng:&lt;/strong&gt; Chuyên dùng để đọc/ghi file text, log file, hoặc tin nhắn chat.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;23-bảng-so-sánh&#34;&gt;2.3. Bảng so sánh
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Đặc điểm&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Byte Stream&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Character Stream&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Đơn vị xử lý&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;1 byte (8-bit)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;1 char (16-bit Unicode)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Lớp gốc&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;InputStream / OutputStream&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Reader / Writer&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Dữ liệu phù hợp&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Binary (Ảnh, Nhạc, Video)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Text (Văn bản, JSON, XML)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Ví dụ&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;FileInputStream&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;FileReader&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;3-kỹ-thuật-buffered-bộ-đệm&#34;&gt;3. Kỹ thuật Buffered (Bộ đệm)
+&lt;/h2&gt;&lt;p&gt;Trong thực tế, việc đọc/ghi từng byte trực tiếp vào ổ cứng hoặc card mạng là cực kỳ tốn kém về hiệu năng (do chi phí gọi hệ thống - system calls).&lt;/p&gt;
+&lt;p&gt;Để giải quyết, Java cung cấp các lớp Wrapper có chức năng đệm: &lt;code&gt;BufferedInputStream&lt;/code&gt;, &lt;code&gt;BufferedOutputStream&lt;/code&gt;, &lt;code&gt;BufferedReader&lt;/code&gt;, &lt;code&gt;BufferedWriter&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cơ chế hoạt động:&lt;/strong&gt;
+Thay vì ghi từng byte ngay lập tức, Buffered Stream sẽ gom dữ liệu vào một mảng bộ nhớ đệm (buffer array, mặc định thường là 8KB). Khi bộ đệm đầy (hoặc khi gọi lệnh &lt;code&gt;flush()&lt;/code&gt;), nó mới thực hiện ghi một lần xuống thiết bị vật lý. Điều này giúp giảm số lần truy xuất I/O, tăng tốc độ chương trình lên hàng trăm lần.&lt;/p&gt;
+&lt;h2 id=&#34;4-cầu-nối-inputstreamreader-và-outputstreamwriter&#34;&gt;4. Cầu nối: InputStreamReader và OutputStreamWriter
+&lt;/h2&gt;&lt;p&gt;Trong lập trình Socket (mà chúng ta sẽ học ở Bài 6), luồng dữ liệu nhận được từ mạng luôn là &lt;strong&gt;Byte Stream&lt;/strong&gt; (&lt;code&gt;socket.getInputStream()&lt;/code&gt;). Để xử lý tin nhắn chat (văn bản), chúng ta cần chuyển đổi nó sang &lt;strong&gt;Character Stream&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Lớp &lt;code&gt;InputStreamReader&lt;/code&gt; đóng vai trò là cầu nối: Nó đọc các byte và giải mã chúng thành ký tự.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mô hình wrapper thường thấy trong lập trình mạng:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 1. Lấy luồng byte từ Socket&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;InputStream is &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; socket.&lt;span style=&#34;color:#a6e22e&#34;&gt;getInputStream&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 2. Chuyển đổi sang luồng ký tự (Bridge)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;InputStreamReader isr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; InputStreamReader(is, StandardCharsets.&lt;span style=&#34;color:#a6e22e&#34;&gt;UTF_8&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 3. Đưa vào bộ đệm để đọc từng dòng (Performance)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;BufferedReader reader &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; BufferedReader(isr);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 4. Đọc dữ liệu&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;String message &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; reader.&lt;span style=&#34;color:#a6e22e&#34;&gt;readLine&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;5-ví-dụ-thực-hành&#34;&gt;5. Ví dụ thực hành
+&lt;/h2&gt;&lt;h3 id=&#34;51-copy-file-dùng-byte-stream-buffered&#34;&gt;5.1. Copy file dùng Byte Stream (Buffered)
+&lt;/h3&gt;&lt;p&gt;Đoạn code này có thể copy bất kỳ loại file nào (ảnh, nhạc, text).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.io.*;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;FileCopyDemo&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// Sử dụng try-with-resources để tự động đóng stream (Java 7+)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            BufferedInputStream bis &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; BufferedInputStream(&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; FileInputStream(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;source.jpg&amp;#34;&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            BufferedOutputStream bos &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; BufferedOutputStream(&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; FileOutputStream(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dest.jpg&amp;#34;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;byte&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; buffer &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;byte&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1024&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;// Đọc mỗi lần 1KB&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; bytesRead;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; ((bytesRead &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; bis.&lt;span style=&#34;color:#a6e22e&#34;&gt;read&lt;/span&gt;(buffer)) &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                bos.&lt;span style=&#34;color:#a6e22e&#34;&gt;write&lt;/span&gt;(buffer, 0, bytesRead);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Copy file thành công!&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (IOException e) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            e.&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;52-đọc-ghi-văn-bản-dùng-character-stream&#34;&gt;5.2. Đọc ghi văn bản dùng Character Stream
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.io.*;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;TextReadWriteDemo&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            BufferedReader reader &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; BufferedReader(&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; FileReader(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;input.txt&amp;#34;&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            BufferedWriter writer &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; BufferedWriter(&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; FileWriter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;output.txt&amp;#34;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            String line;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// Đọc từng dòng cho đến hết file&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; ((line &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; reader.&lt;span style=&#34;color:#a6e22e&#34;&gt;readLine&lt;/span&gt;()) &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Đọc được: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; line);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                writer.&lt;span style=&#34;color:#a6e22e&#34;&gt;write&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Copy: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; line);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                writer.&lt;span style=&#34;color:#a6e22e&#34;&gt;newLine&lt;/span&gt;(); &lt;span style=&#34;color:#75715e&#34;&gt;// Xuống dòng&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (IOException e) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            e.&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;6-kết-luận-và-liên-hệ-lập-trình-mạng&#34;&gt;6. Kết luận và Liên hệ Lập trình mạng
+&lt;/h2&gt;&lt;p&gt;Kiến thức về I/O Stream là nền móng bắt buộc. Khi làm việc với mạng (Network Programming):&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Socket&lt;/strong&gt; chỉ cung cấp hai luồng cơ bản: &lt;code&gt;InputStream&lt;/code&gt; và &lt;code&gt;OutputStream&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Bạn phải tự quyết định bọc (wrap) chúng thành &lt;code&gt;DataInputStream&lt;/code&gt; (nếu gửi dữ liệu nguyên thủy như int, float), &lt;code&gt;ObjectInputStream&lt;/code&gt; (nếu gửi đối tượng Java) hay &lt;code&gt;BufferedReader&lt;/code&gt; (nếu gửi văn bản chat).&lt;/li&gt;
+&lt;li&gt;Luôn nhớ &lt;strong&gt;flush()&lt;/strong&gt; dữ liệu khi gửi qua mạng để đảm bảo gói tin được đẩy đi ngay lập tức.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Trong bài tiếp theo, chúng ta sẽ áp dụng trực tiếp các kiến thức này để xây dựng một chương trình Chat Client-Server bằng giao thức TCP.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tài-liệu-tham-khảo&#34;&gt;Tài liệu tham khảo
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Oracle Java Documentation. &amp;ldquo;Basic I/O&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;GeeksforGeeks. &amp;ldquo;Difference between Byte Stream and Character Stream Class in Java&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Baeldung. &amp;ldquo;Java InputStreamReader and OutputStreamWriter&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Giáo trình Lập trình mạng - Hutech.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>Bài 6: Lập trình Socket TCP - Xây dựng ứng dụng Chat</title>
+        <link>http://localhost:1313/courses/bai-6-lap-trinh-socket-tcp-mo-hinh-client-server/</link>
+        <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/courses/bai-6-lap-trinh-socket-tcp-mo-hinh-client-server/</guid>
+        <description>&lt;p&gt;Trong các bài trước, chúng ta đã chuẩn bị đầy đủ hành trang: hiểu về biến/hàm (JS), cơ chế bất đồng bộ, và cách quản lý luồng dữ liệu (Java I/O). Hôm nay, chúng ta sẽ ghép nối tất cả để xây dựng ứng dụng mạng đầu tiên sử dụng giao thức TCP.&lt;/p&gt;
+&lt;p&gt;Đây là bài học quan trọng nhất, vì 90% các ứng dụng mạng bạn sử dụng hàng ngày (Web, Email, File Transfer) đều chạy trên nền tảng TCP.&lt;/p&gt;
+&lt;h2 id=&#34;1-tổng-quan-về-giao-thức-tcp&#34;&gt;1. Tổng quan về Giao thức TCP
+&lt;/h2&gt;&lt;h3 id=&#34;11-tcp-là-gì&#34;&gt;1.1. TCP là gì?
+&lt;/h3&gt;&lt;p&gt;TCP (Transmission Control Protocol) là giao thức hướng kết nối (connection-oriented). Trước khi hai máy tính có thể trao đổi dữ liệu, chúng phải thiết lập một &amp;ldquo;đường ống&amp;rdquo; ảo thông qua quy trình &lt;strong&gt;Bắt tay 3 bước (3-way Handshake)&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;12-đặc-điểm-cốt-lõi&#34;&gt;1.2. Đặc điểm cốt lõi
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Tin cậy (Reliable):&lt;/strong&gt; TCP đảm bảo gói tin gửi đi chắc chắn đến đích. Nếu gói tin bị mất trên đường truyền, TCP sẽ tự động gửi lại (retransmission).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Có thứ tự (Ordered):&lt;/strong&gt; Nếu bạn gửi A rồi gửi B, bên nhận chắc chắn sẽ nhận A trước rồi mới đến B.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Luồng dữ liệu (Byte Stream):&lt;/strong&gt; TCP không giới hạn kích thước gói tin, dữ liệu được truyền đi như một dòng chảy liên tục (Stream).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;13-mô-hình-client-server&#34;&gt;1.3. Mô hình Client-Server
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Server (Máy chủ):&lt;/strong&gt; Đóng vai trò thụ động. Nó mở một cổng (Port) và lắng nghe, chờ đợi ai đó kết nối đến.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Client (Máy khách):&lt;/strong&gt; Đóng vai trò chủ động. Nó biết địa chỉ IP và Port của Server để khởi tạo kết nối.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;2-các-lớp-java-hỗ-trợ-tcp-socket&#34;&gt;2. Các lớp Java hỗ trợ TCP Socket
+&lt;/h2&gt;&lt;p&gt;Java cung cấp gói &lt;code&gt;java.net&lt;/code&gt; để làm việc với tầng giao vận này.&lt;/p&gt;
+&lt;h3 id=&#34;21-lớp-javanetserversocket&#34;&gt;2.1. Lớp &lt;code&gt;java.net.ServerSocket&lt;/code&gt;
+&lt;/h3&gt;&lt;p&gt;Lớp này chỉ được sử dụng ở phía &lt;strong&gt;Server&lt;/strong&gt;. Nhiệm vụ duy nhất của nó là chờ đợi các yêu cầu kết nối từ Client.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ServerSocket(int port)&lt;/code&gt;: Tạo server lắng nghe tại port chỉ định.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Socket accept()&lt;/code&gt;: Phương thức quan trọng nhất. Khi gọi lệnh này, chương trình sẽ &lt;strong&gt;dừng lại (block)&lt;/strong&gt; và chờ cho đến khi có một Client kết nối đến. Khi có kết nối, nó trả về một đối tượng &lt;code&gt;Socket&lt;/code&gt; để giao tiếp với Client đó.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;22-lớp-javanetsocket&#34;&gt;2.2. Lớp &lt;code&gt;java.net.Socket&lt;/code&gt;
+&lt;/h3&gt;&lt;p&gt;Lớp này được sử dụng ở cả hai phía (nhưng thường được khởi tạo chủ động từ phía Client). Nó đại diện cho một đầu mối kết nối (endpoint).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Socket(String host, int port)&lt;/code&gt;: Tạo socket và thử kết nối đến Server tại địa chỉ host:port.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;getInputStream()&lt;/code&gt;: Lấy luồng nhập để đọc dữ liệu đối phương gửi sang.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;getOutputStream()&lt;/code&gt;: Lấy luồng xuất để gửi dữ liệu sang đối phương.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-quy-trình-hoạt-động-workflow&#34;&gt;3. Quy trình hoạt động (Workflow)
+&lt;/h2&gt;&lt;p&gt;Để xây dựng một ứng dụng chat đơn giản, quy trình diễn ra như sau:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Server:&lt;/strong&gt; Khởi tạo &lt;code&gt;ServerSocket&lt;/code&gt; tại port 5000.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Server:&lt;/strong&gt; Gọi &lt;code&gt;accept()&lt;/code&gt; và đi vào trạng thái chờ (Listening).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Client:&lt;/strong&gt; Khởi tạo &lt;code&gt;Socket&lt;/code&gt; kết nối đến IP Server tại port 5000.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kết nối thiết lập:&lt;/strong&gt; Server thoát khỏi trạng thái chờ, trả về một &lt;code&gt;Socket&lt;/code&gt; riêng biệt để quản lý kết nối này.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Trao đổi dữ liệu:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Cả hai bên lấy &lt;code&gt;InputStream&lt;/code&gt; và &lt;code&gt;OutputStream&lt;/code&gt; từ Socket.&lt;/li&gt;
+&lt;li&gt;Client viết vào OutputStream -&amp;gt; Server đọc từ InputStream (và ngược lại).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Đóng kết nối:&lt;/strong&gt; Gọi &lt;code&gt;close()&lt;/code&gt; để giải phóng tài nguyên.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;4-demo-ứng-dụng-console-chat-1-1&#34;&gt;4. Demo: Ứng dụng Console Chat (1-1)
+&lt;/h2&gt;&lt;p&gt;Chúng ta sẽ viết hai chương trình riêng biệt: &lt;code&gt;SimpleServer.java&lt;/code&gt; và &lt;code&gt;SimpleClient.java&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;41-mã-nguồn-server-simpleserverjava&#34;&gt;4.1. Mã nguồn Server (SimpleServer.java)
+&lt;/h3&gt;&lt;p&gt;Server này sẽ lắng nghe ở cổng 5000. Khi Client kết nối, nó sẽ cho phép chat qua lại trên màn hình Console.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.io.*;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.net.*;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;SimpleServer&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; port &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 5000;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Server đang khởi động tại port &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; port);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; (ServerSocket serverSocket &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ServerSocket(port)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// Chờ kết nối (Code sẽ dừng tại đây cho đến khi có Client)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            Socket socket &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; serverSocket.&lt;span style=&#34;color:#a6e22e&#34;&gt;accept&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Client đã kết nối: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; socket.&lt;span style=&#34;color:#a6e22e&#34;&gt;getInetAddress&lt;/span&gt;());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// Tạo luồng đọc/ghi dữ liệu&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// Sử dụng BufferedReader để đọc từng dòng text&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            BufferedReader in &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; BufferedReader(&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; InputStreamReader(socket.&lt;span style=&#34;color:#a6e22e&#34;&gt;getInputStream&lt;/span&gt;()));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// Sử dụng PrintWriter với autoFlush = true để gửi dữ liệu đi ngay lập tức&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            PrintWriter out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; PrintWriter(socket.&lt;span style=&#34;color:#a6e22e&#34;&gt;getOutputStream&lt;/span&gt;(), &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// Luồng đọc từ bàn phím server để chat lại&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            BufferedReader stdIn &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; BufferedReader(&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; InputStreamReader(System.&lt;span style=&#34;color:#a6e22e&#34;&gt;in&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            String messageFromClient;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; ((messageFromClient &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; in.&lt;span style=&#34;color:#a6e22e&#34;&gt;readLine&lt;/span&gt;()) &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Client: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; messageFromClient);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// Nhập tin nhắn từ bàn phím server và gửi lại&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Server: &amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                String response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; stdIn.&lt;span style=&#34;color:#a6e22e&#34;&gt;readLine&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                out.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(response);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (IOException e) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            e.&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;42-mã-nguồn-client-simpleclientjava&#34;&gt;4.2. Mã nguồn Client (SimpleClient.java)
+&lt;/h3&gt;&lt;p&gt;Client kết nối đến &lt;code&gt;localhost&lt;/code&gt; (chính máy hiện tại) cổng 5000.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.io.*;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.net.*;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;SimpleClient&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        String hostname &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;localhost&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; port &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 5000;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; (Socket socket &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Socket(hostname, port)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Đã kết nối đến Server!&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// Thiết lập luồng gửi nhận tương tự Server&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            PrintWriter out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; PrintWriter(socket.&lt;span style=&#34;color:#a6e22e&#34;&gt;getOutputStream&lt;/span&gt;(), &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            BufferedReader in &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; BufferedReader(&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; InputStreamReader(socket.&lt;span style=&#34;color:#a6e22e&#34;&gt;getInputStream&lt;/span&gt;()));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            BufferedReader stdIn &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; BufferedReader(&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; InputStreamReader(System.&lt;span style=&#34;color:#a6e22e&#34;&gt;in&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            String userInput;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Client: &amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; ((userInput &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; stdIn.&lt;span style=&#34;color:#a6e22e&#34;&gt;readLine&lt;/span&gt;()) &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// Gửi tin nhắn sang Server&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                out.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(userInput);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// Đọc phản hồi từ Server&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Server: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; in.&lt;span style=&#34;color:#a6e22e&#34;&gt;readLine&lt;/span&gt;());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Client: &amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (UnknownHostException e) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            System.&lt;span style=&#34;color:#a6e22e&#34;&gt;err&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Không tìm thấy Host: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; hostname);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (IOException e) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            System.&lt;span style=&#34;color:#a6e22e&#34;&gt;err&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Lỗi I/O khi kết nối: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; e.&lt;span style=&#34;color:#a6e22e&#34;&gt;getMessage&lt;/span&gt;());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;43-cách-chạy-chương-trình&#34;&gt;4.3. Cách chạy chương trình
+&lt;/h3&gt;&lt;p&gt;Để kiểm thử ứng dụng này, bạn cần mở 2 cửa sổ Terminal (hoặc CMD):&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Terminal 1 (Chạy Server trước):&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Biên dịch: &lt;code&gt;javac SimpleServer.java&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Chạy: &lt;code&gt;java SimpleServer&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Hiện trạng:&lt;/em&gt; Màn hình sẽ hiện &amp;ldquo;Server đang khởi động&amp;hellip;&amp;rdquo; và chờ đợi.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Terminal 2 (Chạy Client):&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Biên dịch: &lt;code&gt;javac SimpleClient.java&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Chạy: &lt;code&gt;java SimpleClient&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Hiện trạng:&lt;/em&gt; Màn hình báo &amp;ldquo;Đã kết nối đến Server!&amp;rdquo;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Thử nghiệm:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Tại Terminal Client, gõ &amp;ldquo;Xin chào&amp;rdquo; -&amp;gt; Enter.&lt;/li&gt;
+&lt;li&gt;Nhìn sang Terminal Server, bạn sẽ thấy dòng chữ hiện lên.&lt;/li&gt;
+&lt;li&gt;Tại Terminal Server, gõ trả lời &amp;ldquo;Chào bạn&amp;rdquo; -&amp;gt; Enter.&lt;/li&gt;
+&lt;li&gt;Client sẽ nhận được tin nhắn.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;5-các-lưu-ý-quan-trọng&#34;&gt;5. Các lưu ý quan trọng
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Cổng (Port):&lt;/strong&gt; Port 0-1023 là cổng hệ thống (well-known ports). Nên dùng port từ 1024 trở lên (ví dụ 3000, 5000, 8080) để tránh xung đột quyền hạn.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Firewall (Tường lửa):&lt;/strong&gt; Nếu bạn chạy Server và Client trên 2 máy khác nhau, Tường lửa của máy Server có thể chặn kết nối. Cần mở port hoặc tắt firewall tạm thời.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Blocking I/O:&lt;/strong&gt; Trong ví dụ trên, khi gọi &lt;code&gt;in.readLine()&lt;/code&gt;, chương trình sẽ dừng lại chờ dữ liệu. Điều này dẫn đến việc Server chỉ có thể phục vụ 1 Client tại một thời điểm và phải đợi Client nói xong mới được trả lời (Chat kiểu bộ đàm). Để chat song song (Full-duplex) và phục vụ nhiều người, ta cần dùng &lt;strong&gt;Đa luồng (Multithreading)&lt;/strong&gt; sẽ học ở Bài 8.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;6-kết-luận&#34;&gt;6. Kết luận
+&lt;/h2&gt;&lt;p&gt;Chúng ta đã xây dựng thành công &amp;ldquo;xương sống&amp;rdquo; của một ứng dụng mạng. Mô hình Client-Server dùng Socket TCP đảm bảo dữ liệu truyền đi an toàn và chính xác.
+Tuy nhiên, TCP có nhược điểm là tốc độ chậm hơn do quá trình kiểm tra lỗi và thiết lập kết nối chặt chẽ. Ở bài tiếp theo, chúng ta sẽ tìm hiểu về UDP - người anh em nhanh nhẹn nhưng &amp;ldquo;ẩu&amp;rdquo; hơn của TCP.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tài-liệu-tham-khảo&#34;&gt;Tài liệu tham khảo
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Oracle Java Docs. &amp;ldquo;Socket Programming&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;GeeksforGeeks. &amp;ldquo;Socket Programming in Java&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Giáo trình Lập trình mạng - Hutech.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>Bài 7: Socket UDP - Giao thức &#39;Nhanh nhưng Ẩu&#39;</title>
+        <link>http://localhost:1313/courses/bai-7-socket-udp-truyen-tai-du-lieu-khong-ket-noi/</link>
+        <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/courses/bai-7-socket-udp-truyen-tai-du-lieu-khong-ket-noi/</guid>
+        <description>&lt;p&gt;Nếu TCP là một nhân viên bưu điện cẩn thận (giao tận tay, xin chữ ký), thì UDP giống như một người phát tờ rơi: cứ ném đi và không quan tâm người nhận có nhặt được hay không. Nghe có vẻ &amp;ldquo;vô trách nhiệm&amp;rdquo;, nhưng trong thế giới mạng, sự &amp;ldquo;vô trách nhiệm&amp;rdquo; này lại mang đến tốc độ tuyệt vời.&lt;/p&gt;
+&lt;p&gt;Hôm nay, chúng ta sẽ tìm hiểu về giao thức UDP và cách lập trình nó trong Java.&lt;/p&gt;
+&lt;h2 id=&#34;1-tổng-quan-về-udp-user-datagram-protocol&#34;&gt;1. Tổng quan về UDP (User Datagram Protocol)
+&lt;/h2&gt;&lt;h3 id=&#34;11-udp-là-gì&#34;&gt;1.1. UDP là gì?
+&lt;/h3&gt;&lt;p&gt;UDP là giao thức &lt;strong&gt;không hướng kết nối (connectionless)&lt;/strong&gt;. Điều này có nghĩa là trước khi gửi dữ liệu, Client không cần bắt tay với Server. Nó cứ thế đóng gói dữ liệu và bắn đi.&lt;/p&gt;
+&lt;h3 id=&#34;12-đặc-điểm-cốt-lõi-so-sánh-với-tcp&#34;&gt;1.2. Đặc điểm cốt lõi (So sánh với TCP)
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Đặc điểm&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;TCP (Transmission Control Protocol)&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;UDP (User Datagram Protocol)&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Kết nối&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Hướng kết nối (3-way handshake)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Không kết nối (Gửi ngay lập tức)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Độ tin cậy&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Cao (Gửi lại nếu mất gói tin)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Thấp (Mất gói tin thì thôi)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Thứ tự&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Đảm bảo đúng thứ tự&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Không đảm bảo (Gói đến sau có thể nhận trước)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Tốc độ&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Chậm hơn (do overhead kiểm tra lỗi)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Rất nhanh&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Ứng dụng&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Web (HTTP), Email (SMTP), File (FTP)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Video Streaming, Game Online, DNS, VoIP&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;13-tại-sao-streaminggame-lại-dùng-udp&#34;&gt;1.3. Tại sao Streaming/Game lại dùng UDP?
+&lt;/h3&gt;&lt;p&gt;Khi bạn xem livestream bóng đá, nếu mất một vài khung hình (packet loss), bạn chỉ thấy hình bị giật nhẹ rồi thôi. Nếu dùng TCP, video sẽ bị dừng lại (buffering) để chờ tải lại khung hình đã mất đó, làm trễ trải nghiệm thực tế. Với Game hay Video, &lt;strong&gt;thời gian thực (real-time)&lt;/strong&gt; quan trọng hơn sự hoàn hảo của dữ liệu.&lt;/p&gt;
+&lt;h2 id=&#34;2-các-lớp-java-hỗ-trợ-udp&#34;&gt;2. Các lớp Java hỗ trợ UDP
+&lt;/h2&gt;&lt;p&gt;Trong UDP, chúng ta không dùng &lt;code&gt;Socket&lt;/code&gt; hay &lt;code&gt;ServerSocket&lt;/code&gt;. Thay vào đó, Java cung cấp cặp đôi: &lt;code&gt;DatagramSocket&lt;/code&gt; và &lt;code&gt;DatagramPacket&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;21-datagramsocket&#34;&gt;2.1. DatagramSocket
+&lt;/h3&gt;&lt;p&gt;Đóng vai trò như cái &amp;ldquo;bưu điện&amp;rdquo; để gửi và nhận thư.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;send(DatagramPacket p)&lt;/code&gt;: Gửi gói tin đi.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;receive(DatagramPacket p)&lt;/code&gt;: Nhận gói tin về (Hàm này cũng &lt;strong&gt;block&lt;/strong&gt; chương trình cho đến khi có dữ liệu đến).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;22-datagrampacket&#34;&gt;2.2. DatagramPacket
+&lt;/h3&gt;&lt;p&gt;Đóng vai trò như cái &amp;ldquo;phong bì thư&amp;rdquo;, chứa:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Data:&lt;/strong&gt; Dữ liệu thực (mảng byte).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Length:&lt;/strong&gt; Độ dài dữ liệu.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Address &amp;amp; Port:&lt;/strong&gt; Địa chỉ người nhận (khi gửi) hoặc địa chỉ người gửi (khi nhận).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;3-demo-ứng-dụng-gửi-tin-nhắn-sender---receiver&#34;&gt;3. Demo: Ứng dụng Gửi tin nhắn (Sender - Receiver)
+&lt;/h2&gt;&lt;p&gt;Khác với mô hình Client-Server của TCP, trong UDP các bên thường được gọi là Sender (Người gửi) và Receiver (Người nhận) vì vai trò của chúng bình đẳng và độc lập hơn.&lt;/p&gt;
+&lt;h3 id=&#34;31-phía-người-nhận-udpserverjava&#34;&gt;3.1. Phía Người nhận (UDPServer.java)
+&lt;/h3&gt;&lt;p&gt;Người nhận phải chạy trước để mở cổng lắng nghe.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.io.*;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.net.*;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;UDPServer&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; port &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 9876;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; (DatagramSocket socket &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; DatagramSocket(port)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;UDP Server đang lắng nghe tại port &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; port);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;byte&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; receiveBuffer &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;byte&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1024&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;// Chuẩn bị thùng chứa 1KB&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// 1. Tạo gói tin rỗng để hứng dữ liệu&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                DatagramPacket receivePacket &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; DatagramPacket(receiveBuffer, receiveBuffer.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// 2. Chờ nhận (Block)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                socket.&lt;span style=&#34;color:#a6e22e&#34;&gt;receive&lt;/span&gt;(receivePacket);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// 3. Xử lý dữ liệu nhận được&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                String message &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; String(receivePacket.&lt;span style=&#34;color:#a6e22e&#34;&gt;getData&lt;/span&gt;(), 0, receivePacket.&lt;span style=&#34;color:#a6e22e&#34;&gt;getLength&lt;/span&gt;());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                InetAddress senderIP &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; receivePacket.&lt;span style=&#34;color:#a6e22e&#34;&gt;getAddress&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; senderPort &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; receivePacket.&lt;span style=&#34;color:#a6e22e&#34;&gt;getPort&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Từ &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; senderIP &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;:&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; senderPort &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; -&amp;gt; &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; message);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// 4. (Tùy chọn) Gửi phản hồi lại&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                String response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Đã nhận: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; message.&lt;span style=&#34;color:#a6e22e&#34;&gt;toUpperCase&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;byte&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; sendData &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; response.&lt;span style=&#34;color:#a6e22e&#34;&gt;getBytes&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                DatagramPacket sendPacket &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; DatagramPacket(sendData, sendData.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;, senderIP, senderPort);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                socket.&lt;span style=&#34;color:#a6e22e&#34;&gt;send&lt;/span&gt;(sendPacket);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (Exception e) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            e.&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;32-phía-người-gửi-udpclientjava&#34;&gt;3.2. Phía Người gửi (UDPClient.java)
+&lt;/h3&gt;&lt;p&gt;Người gửi không cần bind port cố định (hệ điều hành sẽ tự cấp), chỉ cần biết đích đến.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.io.*;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.net.*;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.util.Scanner;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;UDPClient&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        String serverHost &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;localhost&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; serverPort &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 9876;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; (DatagramSocket socket &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; DatagramSocket();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             Scanner scanner &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Scanner(System.&lt;span style=&#34;color:#a6e22e&#34;&gt;in&lt;/span&gt;)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            InetAddress serverIP &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; InetAddress.&lt;span style=&#34;color:#a6e22e&#34;&gt;getByName&lt;/span&gt;(serverHost);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;byte&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; receiveBuffer &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;byte&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1024&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Đã sẵn sàng gửi tin nhắn qua UDP...&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Client: &amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                String message &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; scanner.&lt;span style=&#34;color:#a6e22e&#34;&gt;nextLine&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;exit&amp;#34;&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;equalsIgnoreCase&lt;/span&gt;(message)) &lt;span style=&#34;color:#66d9ef&#34;&gt;break&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// 1. Đóng gói dữ liệu&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;byte&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; sendData &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; message.&lt;span style=&#34;color:#a6e22e&#34;&gt;getBytes&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                DatagramPacket sendPacket &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; DatagramPacket(sendData, sendData.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;, serverIP, serverPort);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// 2. Bắn đi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                socket.&lt;span style=&#34;color:#a6e22e&#34;&gt;send&lt;/span&gt;(sendPacket);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// 3. Chờ phản hồi (Nếu Server có gửi lại)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                DatagramPacket receivePacket &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; DatagramPacket(receiveBuffer, receiveBuffer.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                socket.&lt;span style=&#34;color:#a6e22e&#34;&gt;receive&lt;/span&gt;(receivePacket);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                String response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; String(receivePacket.&lt;span style=&#34;color:#a6e22e&#34;&gt;getData&lt;/span&gt;(), 0, receivePacket.&lt;span style=&#34;color:#a6e22e&#34;&gt;getLength&lt;/span&gt;());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Server: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; response);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (Exception e) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            e.&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;4-udp-broadcast-gửi-quảng-bá&#34;&gt;4. UDP Broadcast (Gửi quảng bá)
+&lt;/h2&gt;&lt;p&gt;Một tính năng mạnh mẽ của UDP mà TCP khó làm được là &lt;strong&gt;Broadcast&lt;/strong&gt;. Bạn có thể gửi 1 tin nhắn duy nhất và tất cả các máy tính trong cùng mạng LAN đều nhận được.&lt;/p&gt;
+&lt;p&gt;Để làm điều này, bạn chỉ cần thay đổi địa chỉ IP đích thành địa chỉ Broadcast của mạng (thường là &lt;code&gt;255.255.255.255&lt;/code&gt; hoặc địa chỉ cuối cùng của dải mạng, ví dụ &lt;code&gt;192.168.1.255&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Code thay đổi ở phía Sender:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;socket.&lt;span style=&#34;color:#a6e22e&#34;&gt;setBroadcast&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;// Bắt buộc bật cờ Broadcast&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;InetAddress broadcastIP &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; InetAddress.&lt;span style=&#34;color:#a6e22e&#34;&gt;getByName&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;255.255.255.255&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;DatagramPacket packet &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; DatagramPacket(data, data.&lt;span style=&#34;color:#a6e22e&#34;&gt;length&lt;/span&gt;, broadcastIP, 9876);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;socket.&lt;span style=&#34;color:#a6e22e&#34;&gt;send&lt;/span&gt;(packet);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ứng dụng: Dùng để server &amp;ldquo;quảng cáo&amp;rdquo; sự hiện diện của mình (Service Discovery). Ví dụ: Khi bạn mở app tìm máy in trong mạng LAN, app sẽ bắn gói UDP Broadcast hỏi &amp;ldquo;Ai là máy in?&amp;rdquo;, và các máy in sẽ trả lời lại.&lt;/p&gt;
+&lt;h2 id=&#34;5-kết-luận&#34;&gt;5. Kết luận
+&lt;/h2&gt;&lt;p&gt;UDP là công cụ tuyệt vời khi bạn cần tốc độ và hiệu suất, chấp nhận hy sinh một chút độ tin cậy.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;TCP:&lt;/strong&gt; Chat, gửi file, web (cần chính xác).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;UDP:&lt;/strong&gt; Gọi video, game, stream nhạc (cần nhanh).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Tuy nhiên, trong các bài trước (Bài 6) và bài này, Server của chúng ta mới chỉ phục vụ được &lt;strong&gt;1 người tại 1 thời điểm&lt;/strong&gt; (do cơ chế Blocking I/O). Trong bài tiếp theo (Bài 8), chúng ta sẽ giải quyết vấn đề này bằng &lt;strong&gt;Đa luồng (Multithreading)&lt;/strong&gt; để Server có thể tiếp hàng ngàn Client cùng lúc.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tài-liệu-tham-khảo&#34;&gt;Tài liệu tham khảo
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Oracle Java Docs. &amp;ldquo;DatagramSocket &amp;amp; DatagramPacket&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Baeldung. &amp;ldquo;UDP in Java&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Giáo trình Lập trình mạng - Hutech.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>Bài 8: Đa luồng (Multithreading) - Nâng cấp Server phục vụ nhiều Client</title>
+        <link>http://localhost:1313/courses/bai-8-da-luong-multithreading/</link>
+        <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/courses/bai-8-da-luong-multithreading/</guid>
+        <description>&lt;p&gt;Trong Bài 6, chúng ta đã xây dựng thành công một TCP Server. Tuy nhiên, nó có một điểm yếu chí mạng: &lt;strong&gt;Chỉ phục vụ được 1 người tại một thời điểm&lt;/strong&gt;. Nếu Client A đang kết nối, Client B kết nối đến sẽ bị &amp;ldquo;treo&amp;rdquo; cho đến khi A thoát.&lt;/p&gt;
+&lt;p&gt;Tại sao lại như vậy? Đó là do cơ chế &lt;strong&gt;Blocking I/O&lt;/strong&gt;. Khi chương trình chạy lệnh đọc dữ liệu (&lt;code&gt;in.readLine()&lt;/code&gt;), nó sẽ dừng toàn bộ hoạt động để chờ. Hôm nay, chúng ta sẽ giải quyết vấn đề này bằng &lt;strong&gt;Đa luồng (Multithreading)&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;1-tại-sao-server-cần-đa-luồng&#34;&gt;1. Tại sao Server cần Đa luồng?
+&lt;/h2&gt;&lt;p&gt;Hãy tưởng tượng Server giống như một nhân viên ngân hàng.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Mô hình Đơn luồng (Single-threaded):&lt;/strong&gt; Chỉ có 1 nhân viên. Nếu khách hàng A đang điền giấy tờ (tốn 10 phút), nhân viên ngồi chờ và khách hàng B xếp hàng phía sau cũng phải chờ.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mô hình Đa luồng (Multi-threaded):&lt;/strong&gt; Ngân hàng có 1 quản lý và nhiều nhân viên.
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Quản lý (Main Thread):&lt;/strong&gt; Chỉ đứng cửa chào khách và chỉ định nhân viên phục vụ.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Nhân viên (Worker Thread):&lt;/strong&gt; Mỗi nhân viên phục vụ riêng một khách hàng.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Trong lập trình Socket, Main Thread sẽ chạy vòng lặp vô tận để đón kết nối (&lt;code&gt;accept()&lt;/code&gt;). Ngay khi có kết nối, nó giao &lt;code&gt;Socket&lt;/code&gt; đó cho một Thread con xử lý, rồi quay lại tiếp tục đón khách mới.&lt;/p&gt;
+&lt;h2 id=&#34;2-cách-tạo-luồng-trong-java&#34;&gt;2. Cách tạo luồng trong Java
+&lt;/h2&gt;&lt;p&gt;Java cung cấp 2 cách cơ bản để tạo luồng: kế thừa lớp &lt;code&gt;Thread&lt;/code&gt; hoặc hiện thực interface &lt;code&gt;Runnable&lt;/code&gt;. Trong thực tế, cách dùng &lt;code&gt;Runnable&lt;/code&gt; được ưu tiên hơn vì tính linh hoạt (Java không hỗ trợ đa kế thừa).&lt;/p&gt;
+&lt;h3 id=&#34;cấu-trúc-cơ-bản-của-runnable&#34;&gt;Cấu trúc cơ bản của Runnable
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ClientHandler&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;implements&lt;/span&gt; Runnable {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; Socket socket;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ClientHandler&lt;/span&gt;(Socket socket) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;socket&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; socket;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;run&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// Code xử lý giao tiếp với Client nằm ở đây&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// Đọc/Ghi dữ liệu...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;3-nâng-cấp-multithreaded-chat-server&#34;&gt;3. Nâng cấp: Multithreaded Chat Server
+&lt;/h2&gt;&lt;p&gt;Chúng ta sẽ tách code Server thành 2 phần:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;ServerMain:&lt;/strong&gt; Chịu trách nhiệm lắng nghe cổng 5000.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ClientHandler:&lt;/strong&gt; Chịu trách nhiệm chat với từng Client riêng biệt.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;31-clienthandlerjava-nhân-viên-phục-vụ&#34;&gt;3.1. ClientHandler.java (Nhân viên phục vụ)
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.io.*;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.net.*;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ClientHandler&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;implements&lt;/span&gt; Runnable {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; Socket clientSocket;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ClientHandler&lt;/span&gt;(Socket socket) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;this&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;clientSocket&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; socket;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;run&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// Tạo luồng Input/Output&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            BufferedReader in &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; BufferedReader(&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; InputStreamReader(clientSocket.&lt;span style=&#34;color:#a6e22e&#34;&gt;getInputStream&lt;/span&gt;()));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            PrintWriter out &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; PrintWriter(clientSocket.&lt;span style=&#34;color:#a6e22e&#34;&gt;getOutputStream&lt;/span&gt;(), &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            out.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Xin chào! Bạn đang được phục vụ bởi Thread: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; Thread.&lt;span style=&#34;color:#a6e22e&#34;&gt;currentThread&lt;/span&gt;().&lt;span style=&#34;color:#a6e22e&#34;&gt;getName&lt;/span&gt;());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            String request;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; ((request &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; in.&lt;span style=&#34;color:#a6e22e&#34;&gt;readLine&lt;/span&gt;()) &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Client nói: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; request);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// Giả lập xử lý chậm để test đa luồng&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (request.&lt;span style=&#34;color:#a6e22e&#34;&gt;equalsIgnoreCase&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sleep&amp;#34;&lt;/span&gt;)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    Thread.&lt;span style=&#34;color:#a6e22e&#34;&gt;sleep&lt;/span&gt;(5000); 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    out.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Server vừa ngủ dậy sau 5s&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                } &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    out.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Server phản hồi: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; request.&lt;span style=&#34;color:#a6e22e&#34;&gt;toUpperCase&lt;/span&gt;());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (IOException &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; InterruptedException e) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            e.&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;finally&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// Luôn đóng socket khi hoàn thành&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                clientSocket.&lt;span style=&#34;color:#a6e22e&#34;&gt;close&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (IOException e) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                e.&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;32-multithreadserverjava-quản-lý&#34;&gt;3.2. MultiThreadServer.java (Quản lý)
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.io.*;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.net.*;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;MultiThreadServer&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; port &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 5000;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Server đa luồng đang chạy tại port &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; port);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; (ServerSocket serverSocket &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ServerSocket(port)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// 1. Chờ kết nối (Block tại đây)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                Socket clientSocket &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; serverSocket.&lt;span style=&#34;color:#a6e22e&#34;&gt;accept&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Client mới kết nối: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; clientSocket.&lt;span style=&#34;color:#a6e22e&#34;&gt;getInetAddress&lt;/span&gt;());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// 2. Tạo đối tượng xử lý (Handler)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                ClientHandler handler &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ClientHandler(clientSocket);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#75715e&#34;&gt;// 3. Tạo luồng mới và khởi chạy&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                Thread thread &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; Thread(handler);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                thread.&lt;span style=&#34;color:#a6e22e&#34;&gt;start&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (IOException e) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            e.&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;4-kiểm-thử&#34;&gt;4. Kiểm thử
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Chạy &lt;code&gt;MultiThreadServer&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Chạy &lt;code&gt;SimpleClient&lt;/code&gt; (code bài 6) ở Terminal 1 -&amp;gt; Gửi tin nhắn &amp;ldquo;Hello&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Chạy thêm một &lt;code&gt;SimpleClient&lt;/code&gt; nữa ở Terminal 2 -&amp;gt; Gửi tin nhắn &amp;ldquo;Hi&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kết quả:&lt;/strong&gt; Cả hai Client đều nhận được phản hồi ngay lập tức mà không phải chờ nhau. Nếu là Server cũ, Terminal 2 sẽ bị treo.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;5-tối-ưu-hóa-với-thread-pool&#34;&gt;5. Tối ưu hóa với Thread Pool
+&lt;/h2&gt;&lt;p&gt;Việc tạo mới một Thread (&lt;code&gt;new Thread()&lt;/code&gt;) cho mỗi Client là rất tốn kém tài nguyên. Nếu có 10.000 Client kết nối cùng lúc, Server sẽ bị sập vì hết bộ nhớ (Out of Memory).&lt;/p&gt;
+&lt;p&gt;Giải pháp chuyên nghiệp là sử dụng &lt;strong&gt;Thread Pool&lt;/strong&gt; (Hồ chứa luồng) thông qua &lt;code&gt;ExecutorService&lt;/code&gt;. Nó giới hạn số lượng Thread cố định, các Client đến sau sẽ được đưa vào hàng đợi (Queue).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Thay thế đoạn code trong main:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ExecutorService pool &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Executors.&lt;span style=&#34;color:#a6e22e&#34;&gt;newFixedThreadPool&lt;/span&gt;(10); &lt;span style=&#34;color:#75715e&#34;&gt;// Chỉ cho phép 10 luồng chạy đồng thời&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Socket clientSocket &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; serverSocket.&lt;span style=&#34;color:#a6e22e&#34;&gt;accept&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ClientHandler handler &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; ClientHandler(clientSocket);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pool.&lt;span style=&#34;color:#a6e22e&#34;&gt;execute&lt;/span&gt;(handler); &lt;span style=&#34;color:#75715e&#34;&gt;// Giao việc cho Pool quản lý&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;6-kết-luận&#34;&gt;6. Kết luận
+&lt;/h2&gt;&lt;p&gt;Đa luồng là chìa khóa để xây dựng các hệ thống mạng hiệu năng cao.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Main Thread:&lt;/strong&gt; Chỉ làm nhiệm vụ &lt;code&gt;accept&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Worker Thread:&lt;/strong&gt; Làm nhiệm vụ I/O (&lt;code&gt;read&lt;/code&gt;/&lt;code&gt;write&lt;/code&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Tuy nhiên, đa luồng cũng sinh ra các vấn đề phức tạp về đồng bộ hóa dữ liệu (Synchronization) khi nhiều luồng cùng truy cập một biến chung (ví dụ: danh sách người đang online).&lt;/p&gt;
+&lt;p&gt;Trong bài cuối cùng (Bài 9), chúng ta sẽ tìm hiểu về RMI - một công nghệ cho phép gọi hàm từ xa như thể nó đang nằm trên máy cục bộ, giúp đơn giản hóa việc lập trình phân tán.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tài-liệu-tham-khảo&#34;&gt;Tài liệu tham khảo
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Oracle Java Docs. &amp;ldquo;Defining and Starting a Thread&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Baeldung. &amp;ldquo;Java ExecutorService&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Giáo trình Lập trình mạng - Hutech.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>Bài 9: Java RMI - Bước đệm tới Hệ thống phân tán</title>
+        <link>http://localhost:1313/courses/bai-9-tong-quan-ve-rmi-remote-method-invocation/</link>
+        <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/courses/bai-9-tong-quan-ve-rmi-remote-method-invocation/</guid>
+        <description>&lt;p&gt;Trong 8 bài trước, chúng ta đã làm việc với Socket. Mặc dù Socket rất mạnh mẽ, nhưng việc phải tự tay đóng gói dữ liệu (Marshalling) thành dòng byte rồi gửi đi, sau đó bên kia lại phải giải mã (Unmarshalling) rất tốn công sức và dễ sai sót.&lt;/p&gt;
+&lt;p&gt;Liệu có cách nào để Client gọi một hàm trên Server (ví dụ: &lt;code&gt;server.tinhTong(5, 10)&lt;/code&gt;) đơn giản như đang gọi hàm trên chính máy mình không? Câu trả lời là &lt;strong&gt;Java RMI&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;1-rmi-là-gì&#34;&gt;1. RMI là gì?
+&lt;/h2&gt;&lt;p&gt;RMI (Remote Method Invocation) là một cơ chế cho phép một đối tượng đang chạy trên máy ảo Java này (Client) có thể gọi các phương thức của một đối tượng đang chạy trên máy ảo Java khác (Server).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Triết lý:&lt;/strong&gt; &amp;ldquo;Làm cho việc gọi xa (remote call) trong suốt như gọi gần (local call).&amp;rdquo;&lt;/p&gt;
+&lt;h2 id=&#34;2-kiến-trúc-rmi-stub-và-skeleton&#34;&gt;2. Kiến trúc RMI (Stub và Skeleton)
+&lt;/h2&gt;&lt;p&gt;Để tạo ra sự &amp;ldquo;ảo thuật&amp;rdquo; này, RMI sử dụng hai lớp trung gian ẩn bên dưới:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Stub (Client-side proxy):&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Nằm ở phía Client.&lt;/li&gt;
+&lt;li&gt;Khi Client gọi hàm, thực chất là gọi vào Stub.&lt;/li&gt;
+&lt;li&gt;Stub đóng gói tham số, gửi yêu cầu qua mạng đến Server.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Skeleton (Server-side dispatcher):&lt;/strong&gt; (Trong các bản Java mới, Skeleton đã được tích hợp vào hệ thống RMI nhưng khái niệm vẫn còn giá trị).
+&lt;ul&gt;
+&lt;li&gt;Nằm ở phía Server.&lt;/li&gt;
+&lt;li&gt;Nhận yêu cầu từ mạng, giải mã tham số.&lt;/li&gt;
+&lt;li&gt;Gọi hàm thực sự trên Server Object.&lt;/li&gt;
+&lt;li&gt;Nhận kết quả trả về, đóng gói và gửi ngược lại cho Stub.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;RMI Registry:&lt;/strong&gt; Là một cuốn &amp;ldquo;danh bạ điện thoại&amp;rdquo;. Server đăng ký tên dịch vụ của mình lên đây (ví dụ: &amp;ldquo;MayTinhToan&amp;rdquo;). Client tra cứu cái tên này để lấy về Stub tương ứng.&lt;/p&gt;
+&lt;h2 id=&#34;3-quy-trình-xây-dựng-ứng-dụng-rmi&#34;&gt;3. Quy trình xây dựng ứng dụng RMI
+&lt;/h2&gt;&lt;p&gt;Chúng ta sẽ làm một ví dụ đơn giản: Máy tính cộng trừ nhân chia từ xa.&lt;/p&gt;
+&lt;h3 id=&#34;bước-1-định-nghĩa-interface-remote-interface&#34;&gt;Bước 1: Định nghĩa Interface (Remote Interface)
+&lt;/h3&gt;&lt;p&gt;Cả Client và Server đều phải biết Interface này. Nó bắt buộc phải kế thừa &lt;code&gt;java.rmi.Remote&lt;/code&gt; và mọi phương thức phải ném ra &lt;code&gt;RemoteException&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.rmi.Remote;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.rmi.RemoteException;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;interface&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;CalculatorService&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;extends&lt;/span&gt; Remote {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; b) &lt;span style=&#34;color:#66d9ef&#34;&gt;throws&lt;/span&gt; RemoteException;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;subtract&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; b) &lt;span style=&#34;color:#66d9ef&#34;&gt;throws&lt;/span&gt; RemoteException;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;bước-2-hiện-thực-interface-server-implementation&#34;&gt;Bước 2: Hiện thực Interface (Server Implementation)
+&lt;/h3&gt;&lt;p&gt;Đây là logic nghiệp vụ thực sự nằm trên Server. Lớp này thường kế thừa &lt;code&gt;UnicastRemoteObject&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.rmi.server.UnicastRemoteObject;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.rmi.RemoteException;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;CalculatorImpl&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;extends&lt;/span&gt; UnicastRemoteObject &lt;span style=&#34;color:#66d9ef&#34;&gt;implements&lt;/span&gt; CalculatorService {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// Constructor bắt buộc phải ném RemoteException&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;CalculatorImpl&lt;/span&gt;() &lt;span style=&#34;color:#66d9ef&#34;&gt;throws&lt;/span&gt; RemoteException {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;super&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; b) &lt;span style=&#34;color:#66d9ef&#34;&gt;throws&lt;/span&gt; RemoteException {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Client yêu cầu cộng: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; a &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; + &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; b);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; a &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; b;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;@Override&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;subtract&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a, &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; b) &lt;span style=&#34;color:#66d9ef&#34;&gt;throws&lt;/span&gt; RemoteException {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; a &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; b;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;bước-3-tạo-server-và-đăng-ký-dịch-vụ&#34;&gt;Bước 3: Tạo Server và Đăng ký dịch vụ
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.rmi.registry.LocateRegistry;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.rmi.Naming;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;RMIServer&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 1. Khởi tạo Registry tại port 1099 (Port mặc định của RMI)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            LocateRegistry.&lt;span style=&#34;color:#a6e22e&#34;&gt;createRegistry&lt;/span&gt;(1099);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 2. Tạo đối tượng dịch vụ&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            CalculatorService service &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; CalculatorImpl();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 3. Đăng ký tên dịch vụ vào danh bạ&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            Naming.&lt;span style=&#34;color:#a6e22e&#34;&gt;rebind&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;rmi://localhost:1099/MyCalculator&amp;#34;&lt;/span&gt;, service);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;RMI Server đang chạy...&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (Exception e) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            e.&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;bước-4-tạo-client-để-gọi-hàm&#34;&gt;Bước 4: Tạo Client để gọi hàm
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.rmi.Naming;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;RMIClient&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 1. Tra cứu dịch vụ trong danh bạ&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// Kết quả trả về thực chất là cái STUB&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            CalculatorService stub &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (CalculatorService) Naming.&lt;span style=&#34;color:#a6e22e&#34;&gt;lookup&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;rmi://localhost:1099/MyCalculator&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 2. Gọi hàm như thể nó đang ở local&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; sum &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; stub.&lt;span style=&#34;color:#a6e22e&#34;&gt;add&lt;/span&gt;(10, 20);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Kết quả cộng: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; sum);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; sub &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; stub.&lt;span style=&#34;color:#a6e22e&#34;&gt;subtract&lt;/span&gt;(50, 15);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Kết quả trừ: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; sub);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (Exception e) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            e.&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;4-so-sánh-socket-vs-rmi&#34;&gt;4. So sánh Socket vs RMI
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Tiêu chí&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Java Socket&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Java RMI&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Mức độ&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Thấp (Low-level)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Cao (High-level)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Giao thức&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;TCP/UDP thuần túy&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;JRMP (Java Remote Method Protocol)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Dữ liệu&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Phải tự đóng gói (byte/text)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Tự động đóng gói Object&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Hiệu năng&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Cao hơn (do ít overhead)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Thấp hơn một chút&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Đa ngôn ngữ&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Dễ dàng (Java nói chuyện với C# được)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Khó (Chỉ Java nói chuyện với Java)&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;5-kết-luận-và-hướng-phát-triển&#34;&gt;5. Kết luận và Hướng phát triển
+&lt;/h2&gt;&lt;p&gt;RMI là bước tiến lớn giúp lập trình viên thoát khỏi sự phức tạp của Socket. Tuy nhiên, do hạn chế chỉ dùng được trong môi trường Java thuần túy, ngày nay RMI ít được dùng trực tiếp.&lt;/p&gt;
+&lt;p&gt;Thay vào đó, thế giới đã chuyển sang các chuẩn mở hơn nhưng có tư tưởng tương tự RMI:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Web Services (SOAP/REST):&lt;/strong&gt; Dùng HTTP và XML/JSON, cho phép mọi ngôn ngữ giao tiếp với nhau.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;gRPC (Google):&lt;/strong&gt; Hiệu năng cực cao, dùng Protobuf.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Tuy nhiên, hiểu RMI chính là hiểu nền tảng của mọi hệ thống phân tán (Distributed Systems) hiện đại.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tài-liệu-tham-khảo&#34;&gt;Tài liệu tham khảo
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Oracle Java Docs. &amp;ldquo;Java RMI Tutorial&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;GeeksforGeeks. &amp;ldquo;Remote Method Invocation in Java&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Giáo trình Lập trình mạng - Hutech.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

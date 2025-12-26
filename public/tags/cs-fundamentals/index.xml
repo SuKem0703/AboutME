@@ -1,20 +1,109 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>CS Fundamentals on BNGroup</title>
-    <link>http://localhost:1313/tags/cs-fundamentals/</link>
-    <description>Recent content in CS Fundamentals on BNGroup</description>
-    <generator>Hugo -- 0.153.1</generator>
-    <language>vi</language>
-    <copyright>2025 BNGroup - All Rights Reserved</copyright>
-    <lastBuildDate>Thu, 25 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/cs-fundamentals/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Bài 1: Khởi động với JavaScript - Biến và Kiểu dữ liệu</title>
-      <link>http://localhost:1313/courses/bai-1-khoi-dong-voi-javascript-bien-va-kieu-du-lieu/</link>
-      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/courses/bai-1-khoi-dong-voi-javascript-bien-va-kieu-du-lieu/</guid>
-      <description>Phân tích chuyên sâu về cơ chế quản lý bộ nhớ, dynamic typing, Scope Chain và sự tiến hóa từ ES5 (var) sang ES6 (let, const) trong JavaScript.</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>CS Fundamentals on BNGroup</title>
+        <link>http://localhost:1313/tags/cs-fundamentals/</link>
+        <description>Recent content in CS Fundamentals on BNGroup</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>vi</language>
+        <copyright>BNGroup - All Rights Reserved</copyright>
+        <lastBuildDate>Thu, 25 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/cs-fundamentals/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Bài 1: Khởi động với JavaScript - Biến và Kiểu dữ liệu</title>
+        <link>http://localhost:1313/courses/bai-1-khoi-dong-voi-javascript-bien-va-kieu-du-lieu/</link>
+        <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/courses/bai-1-khoi-dong-voi-javascript-bien-va-kieu-du-lieu/</guid>
+        <description>&lt;p&gt;Trong ngữ cảnh của môn Lập trình mạng, việc hiểu rõ JavaScript không chỉ dừng lại ở việc tạo hiệu ứng trên giao diện web. JavaScript ngày nay đóng vai trò quan trọng trong việc xử lý dữ liệu JSON, giao tiếp API bất đồng bộ và thậm chí là lập trình phía Server (Node.js). Bài viết này sẽ phân tích nền tảng cốt lõi của ngôn ngữ: Biến và Kiểu dữ liệu dưới góc độ khoa học máy tính.&lt;/p&gt;
+&lt;h2 id=&#34;1-tổng-quan-về-javascript-và-ecmascript&#34;&gt;1. Tổng quan về JavaScript và ECMAScript
+&lt;/h2&gt;&lt;p&gt;JavaScript (JS) là một ngôn ngữ lập trình kịch bản (scripting language), thông dịch (interpreted), và hỗ trợ đa mô hình (multi-paradigm): hướng sự kiện, hướng chức năng và hướng đối tượng (prototype-based).&lt;/p&gt;
+&lt;p&gt;Khác với các ngôn ngữ biên dịch tĩnh (statically compiled) như Java hay C# - nơi mã nguồn phải được biên dịch thành bytecode hoặc mã máy trước khi chạy, JavaScript thường được thực thi bởi một trình thông dịch (engine) ngay tại thời điểm chạy (runtime). Các engine nổi tiếng bao gồm V8 (Google Chrome, Node.js), SpiderMonkey (Firefox) và JavaScriptCore (Safari).&lt;/p&gt;
+&lt;p&gt;Tiêu chuẩn kỹ thuật của JavaScript được gọi là ECMAScript (viết tắt là ES). Sự ra đời của ES6 (ECMAScript 2015) là một bước ngoặt lớn, mang lại các tính năng hiện đại giúp việc quản lý code trở nên chặt chẽ hơn.&lt;/p&gt;
+&lt;h2 id=&#34;2-biến-và-phạm-vi-scope&#34;&gt;2. Biến và Phạm vi (Scope)
+&lt;/h2&gt;&lt;p&gt;Biến trong lập trình là tên gọi tượng trưng cho một vùng nhớ máy tính nơi lưu trữ giá trị. Trong JavaScript, cách chúng ta khai báo biến sẽ quyết định &amp;ldquo;vòng đời&amp;rdquo; và &amp;ldquo;phạm vi truy cập&amp;rdquo; của biến đó.&lt;/p&gt;
+&lt;h3 id=&#34;21-cơ-chế-hoisting-và-từ-khóa-var&#34;&gt;2.1. Cơ chế Hoisting và từ khóa &lt;code&gt;var&lt;/code&gt;
+&lt;/h3&gt;&lt;p&gt;Trước phiên bản ES6, &lt;code&gt;var&lt;/code&gt; là cách duy nhất để khai báo biến. Tuy nhiên, &lt;code&gt;var&lt;/code&gt; tồn tại nhiều vấn đề liên quan đến cơ chế &lt;strong&gt;Hoisting&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Hoisting là hành vi mặc định của JavaScript, trong đó việc khai báo biến (declaration) được đưa lên đầu phạm vi (scope) của nó trước khi code được thực thi.&lt;/p&gt;
+&lt;p&gt;Ví dụ:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;x&lt;/span&gt;); &lt;span style=&#34;color:#75715e&#34;&gt;// Kết quả: undefined (Không báo lỗi)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;x&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Trong ví dụ trên, trình biên dịch hiểu đoạn code như sau:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;var x;&lt;/code&gt; (Đưa lên đầu, khởi tạo giá trị mặc định là undefined).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;console.log(x);&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;x = 5;&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Điều này gây ra sự khó hiểu và các lỗi tiềm ẩn (bug) khó phát hiện. Ngoài ra, &lt;code&gt;var&lt;/code&gt; có phạm vi là &lt;strong&gt;Function Scope&lt;/strong&gt; (phạm vi hàm), nghĩa là nếu khai báo trong một khối lệnh &lt;code&gt;if&lt;/code&gt; hoặc &lt;code&gt;for&lt;/code&gt;, biến đó vẫn rò rỉ ra ngoài khối lệnh.&lt;/p&gt;
+&lt;h3 id=&#34;22-sự-ra-đời-của-let-và-const-block-scope&#34;&gt;2.2. Sự ra đời của &lt;code&gt;let&lt;/code&gt; và &lt;code&gt;const&lt;/code&gt; (Block Scope)
+&lt;/h3&gt;&lt;p&gt;ES6 giới thiệu &lt;code&gt;let&lt;/code&gt; và &lt;code&gt;const&lt;/code&gt; để khắc phục nhược điểm của &lt;code&gt;var&lt;/code&gt;. Cả hai từ khóa này đều tuân thủ &lt;strong&gt;Block Scope&lt;/strong&gt; (Phạm vi khối), nghĩa là biến chỉ tồn tại trong cặp ngoặc nhọn &lt;code&gt;{}&lt;/code&gt; bao quanh nó.&lt;/p&gt;
+&lt;h4 id=&#34;temporal-dead-zone-tdz&#34;&gt;Temporal Dead Zone (TDZ)
+&lt;/h4&gt;&lt;p&gt;Khác với &lt;code&gt;var&lt;/code&gt;, biến khai báo bằng &lt;code&gt;let&lt;/code&gt; và &lt;code&gt;const&lt;/code&gt; cũng được hoisting nhưng chúng rơi vào trạng thái &amp;ldquo;Vùng chết tạm thời&amp;rdquo; (TDZ). Nếu truy cập trước khi khai báo, chương trình sẽ báo lỗi &lt;code&gt;ReferenceError&lt;/code&gt; thay vì trả về &lt;code&gt;undefined&lt;/code&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;phân-biệt-let-và-const&#34;&gt;Phân biệt let và const
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;let&lt;/code&gt;: Cho phép gán lại giá trị (Reassignable). Dùng cho các biến đếm, biến tích lũy.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;const&lt;/code&gt;: Không cho phép gán lại giá trị (Immutable binding). Tuy nhiên, cần lưu ý với kiểu dữ liệu đối tượng (Object), &lt;code&gt;const&lt;/code&gt; chỉ ngăn cản việc gán biến sang một địa chỉ bộ nhớ khác, chứ không ngăn cản việc thay đổi thuộc tính bên trong đối tượng đó.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ví dụ minh họa:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;student&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;An&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;age&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt; };
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;student&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;age&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;21&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;// Hợp lệ (Thay đổi giá trị tại vùng nhớ Heap)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// student = { name: &amp;#34;Binh&amp;#34; }; // Báo lỗi: Assignment to constant variable.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;3-hệ-thống-kiểu-dữ-liệu-data-types&#34;&gt;3. Hệ thống Kiểu dữ liệu (Data Types)
+&lt;/h2&gt;&lt;p&gt;JavaScript là ngôn ngữ &lt;strong&gt;Dynamic Typing&lt;/strong&gt; (Kiểu động), nghĩa là biến không bị ràng buộc kiểu dữ liệu, chỉ có giá trị mới có kiểu. Theo tiêu chuẩn ECMAScript mới nhất, có 8 kiểu dữ liệu chia làm 2 nhóm chính.&lt;/p&gt;
+&lt;h3 id=&#34;31-kiểu-dữ-liệu-nguyên-thủy-primitive-types&#34;&gt;3.1. Kiểu dữ liệu nguyên thủy (Primitive Types)
+&lt;/h3&gt;&lt;p&gt;Các kiểu dữ liệu này được lưu trữ trực tiếp trong vùng nhớ &lt;strong&gt;Stack&lt;/strong&gt; (Ngăn xếp), có kích thước cố định và truy xuất nhanh.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Undefined&lt;/strong&gt;: Một biến đã khai báo nhưng chưa được gán giá trị.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Null&lt;/strong&gt;: Đại diện cho một giá trị rỗng hoặc không tồn tại một cách có chủ đích. (Lưu ý: &lt;code&gt;typeof null&lt;/code&gt; trả về &lt;code&gt;&#39;object&#39;&lt;/code&gt; do một lỗi lịch sử của JS).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Boolean&lt;/strong&gt;: Chỉ có hai giá trị &lt;code&gt;true&lt;/code&gt; hoặc &lt;code&gt;false&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Number&lt;/strong&gt;: Trong JS, tất cả các số (nguyên hay thực) đều là số thực dấu phẩy động 64-bit (IEEE 754). Điều này dẫn đến sai số khi tính toán thập phân (Ví dụ: &lt;code&gt;0.1 + 0.2 !== 0.3&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;String&lt;/strong&gt;: Chuỗi ký tự, bất biến (immutable).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Symbol&lt;/strong&gt; (ES6): Giá trị duy nhất, thường dùng làm key cho Object để tránh xung đột.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;BigInt&lt;/strong&gt; (ES2020): Dùng để lưu trữ các số nguyên lớn vượt quá giới hạn an toàn của kiểu Number (&lt;code&gt;2^53 - 1&lt;/code&gt;).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;32-kiểu-dữ-liệu-tham-chiếu-reference-types&#34;&gt;3.2. Kiểu dữ liệu tham chiếu (Reference Types)
+&lt;/h3&gt;&lt;p&gt;Bao gồm &lt;strong&gt;Object&lt;/strong&gt;, &lt;strong&gt;Array&lt;/strong&gt;, &lt;strong&gt;Function&lt;/strong&gt;, &lt;strong&gt;Date&lt;/strong&gt;, &lt;strong&gt;RegExp&lt;/strong&gt;.
+Các kiểu này được lưu trữ trong vùng nhớ &lt;strong&gt;Heap&lt;/strong&gt; (Vùng nhớ động). Biến chỉ lưu địa chỉ tham chiếu (memory address) trỏ đến vùng nhớ đó trong Heap.&lt;/p&gt;
+&lt;p&gt;Sự khác biệt quan trọng giữa tham chiếu và nguyên thủy thể hiện khi sao chép biến:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Nguyên thủy (Copy giá trị)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;b&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;b&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Kết quả: a = 10 (Không đổi)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Tham chiếu (Copy địa chỉ)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;obj1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; { &lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; };
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;obj2&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;obj1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;obj2&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;value&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Kết quả: obj1.value = 20 (Bị thay đổi theo)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;4-dynamic-typing-và-type-coercion-ép-kiểu&#34;&gt;4. Dynamic Typing và Type Coercion (Ép kiểu)
+&lt;/h2&gt;&lt;p&gt;Sự linh hoạt của JavaScript đến từ việc nó tự động chuyển đổi kiểu dữ liệu (Type Coercion) khi cần thiết.&lt;/p&gt;
+&lt;h3 id=&#34;41-implicit-coercion-ép-kiểu-ngầm-định&#34;&gt;4.1. Implicit Coercion (Ép kiểu ngầm định)
+&lt;/h3&gt;&lt;p&gt;Trình thông dịch tự động chuyển đổi kiểu để thực hiện phép toán.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Chuỗi + Số = Chuỗi: &lt;code&gt;&#39;5&#39; + 1&lt;/code&gt; kết quả là &lt;code&gt;&#39;51&#39;&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Chuỗi - Số = Số: &lt;code&gt;&#39;5&#39; - 1&lt;/code&gt; kết quả là &lt;code&gt;4&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;42-explicit-coercion-ép-kiểu-tường-minh&#34;&gt;4.2. Explicit Coercion (Ép kiểu tường minh)
+&lt;/h3&gt;&lt;p&gt;Lập trình viên chủ động chuyển đổi kiểu để tránh lỗi logic.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Number(&#39;5&#39;)&lt;/code&gt; -&amp;gt; 5&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;String(123)&lt;/code&gt; -&amp;gt; &amp;lsquo;123&amp;rsquo;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Boolean(1)&lt;/code&gt; -&amp;gt; true&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Trong lập trình mạng, khi nhận dữ liệu từ API (thường ở dạng JSON string), việc ép kiểu tường minh là bắt buộc để đảm bảo tính toàn vẹn dữ liệu trước khi xử lý logic nghiệp vụ.&lt;/p&gt;
+&lt;h2 id=&#34;5-kết-luận&#34;&gt;5. Kết luận
+&lt;/h2&gt;&lt;p&gt;Hiểu sâu về cách JavaScript quản lý bộ nhớ thông qua các loại biến và kiểu dữ liệu giúp lập trình viên tránh được những lỗi phổ biến như tham chiếu vòng, rò rỉ bộ nhớ (memory leak) hay sai lệch tính toán.&lt;/p&gt;
+&lt;p&gt;Trong bài tiếp theo, chúng ta sẽ áp dụng các kiểu dữ liệu này vào cấu trúc &lt;strong&gt;Hàm (Function)&lt;/strong&gt; và tìm hiểu về &lt;strong&gt;Cơ chế xử lý sự kiện&lt;/strong&gt;, nền tảng cho lập trình bất đồng bộ sau này.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tài-liệu-tham-khảo&#34;&gt;Tài liệu tham khảo
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Mozilla Developer Network (MDN). &amp;ldquo;JavaScript Data Structures&amp;rdquo;. Truy cập ngày 25/12/2025.&lt;/li&gt;
+&lt;li&gt;ECMA International. &amp;ldquo;ECMAScript 2015 Language Specification (ES6)&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;W3Schools. &amp;ldquo;JavaScript Variables, Let and Const&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Cisco Networking Academy. &amp;ldquo;JavaScript Essentials 1 Course Materials&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Kyle Simpson. &amp;ldquo;You Don&amp;rsquo;t Know JS: Types &amp;amp; Grammar&amp;rdquo;. O&amp;rsquo;Reilly Media.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

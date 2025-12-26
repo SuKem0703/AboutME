@@ -1,20 +1,90 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Roadmap on BNGroup</title>
-    <link>http://localhost:1313/tags/roadmap/</link>
-    <description>Recent content in Roadmap on BNGroup</description>
-    <generator>Hugo -- 0.153.1</generator>
-    <language>vi</language>
-    <copyright>2025 BNGroup - All Rights Reserved</copyright>
-    <lastBuildDate>Sat, 20 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/roadmap/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Lộ trình thực hiện đồ án: Java &amp; JavaScript</title>
-      <link>http://localhost:1313/courses/00-lo-trinh-do-an/</link>
-      <pubDate>Sat, 20 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/courses/00-lo-trinh-do-an/</guid>
-      <description>Dàn ý chi tiết 9 bài viết cốt lõi về Frontend (JS) và Backend (Java Network) nhằm đáp ứng yêu cầu đồ án học phần.</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Roadmap on BNGroup</title>
+        <link>http://localhost:1313/tags/roadmap/</link>
+        <description>Recent content in Roadmap on BNGroup</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>vi</language>
+        <copyright>BNGroup - All Rights Reserved</copyright>
+        <lastBuildDate>Sat, 20 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/roadmap/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Lộ trình thực hiện đồ án: Java &amp; JavaScript</title>
+        <link>http://localhost:1313/courses/00-lo-trinh-do-an/</link>
+        <pubDate>Sat, 20 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/courses/00-lo-trinh-do-an/</guid>
+        <description>&lt;p&gt;Dựa trên yêu cầu của đồ án học phần, chuỗi bài viết này được xây dựng để chia sẻ kiến thức về hai ngôn ngữ chính là &lt;strong&gt;Java&lt;/strong&gt; và &lt;strong&gt;JavaScript&lt;/strong&gt;, với mục tiêu hoàn thành tối thiểu 9 bài viết trước hạn chót.&lt;/p&gt;
+&lt;p&gt;Dưới đây là checklist theo dõi tiến độ thực hiện:&lt;/p&gt;
+&lt;h3 id=&#34;phần-1-javascript--nền-tảng-web&#34;&gt;Phần 1: JavaScript &amp;amp; Nền tảng Web
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;(Kiến thức nền tảng dựa trên khóa học Cisco JavaScript Essentials)&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Bài 1: Khởi động với JavaScript - Biến và Kiểu dữ liệu&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Nội dung:&lt;/em&gt; Các kiểu dữ liệu cơ bản, Dynamic typing. Sự khác biệt giữa &lt;code&gt;var&lt;/code&gt;, &lt;code&gt;let&lt;/code&gt;, &lt;code&gt;const&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Liên hệ:&lt;/em&gt; Vai trò của JS trong trình duyệt và sự trỗi dậy của Node.js.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Bài 2: Hàm (Functions) và Xử lý sự kiện&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Nội dung:&lt;/em&gt; Cấu trúc hàm, Arrow Function (ES6), và Callback function.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Liên hệ:&lt;/em&gt; Bước đệm quan trọng để hiểu về lập trình bất đồng bộ.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Bài 3: Xử lý Bất đồng bộ: Promise và Async/Await&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Nội dung:&lt;/em&gt; Giải quyết vấn đề &amp;ldquo;Callback hell&amp;rdquo;. Cơ chế &lt;code&gt;Promise&lt;/code&gt; và cú pháp &lt;code&gt;async/await&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Liên hệ:&lt;/em&gt; Kỹ thuật bắt buộc khi làm việc với các tác vụ mạng tốn thời gian.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Bài 4: JSON và Fetch API - Giao tiếp Client-Server&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Nội dung:&lt;/em&gt; Cấu trúc JSON. Sử dụng &lt;code&gt;Fetch API&lt;/code&gt; để gửi request HTTP (GET, POST).&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Liên hệ:&lt;/em&gt; Mô phỏng Client gửi yêu cầu và nhận dữ liệu từ Server.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;phần-2-java--lập-trình-mạng-socket&#34;&gt;Phần 2: Java &amp;amp; Lập trình mạng (Socket)
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;(Kiến thức cốt lõi từ các buổi học Lập trình mạng)&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Bài 5: Java I/O Streams - Quản lý luồng nhập xuất&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Nội dung:&lt;/em&gt; Phân biệt Byte Stream và Character Stream. Kỹ thuật Buffered.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Liên hệ:&lt;/em&gt; Cơ sở để truyền tải dữ liệu qua mạng.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Bài 6: Lập trình Socket TCP (Mô hình Client-Server)&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Nội dung:&lt;/em&gt; Giao thức TCP, &lt;code&gt;ServerSocket&lt;/code&gt;, quy trình Bind -&amp;gt; Listen -&amp;gt; Accept.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Demo:&lt;/em&gt; Ứng dụng Chat đơn giản (1-1).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Bài 7: Socket UDP - Truyền tải dữ liệu không kết nối&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Nội dung:&lt;/em&gt; Đặc điểm của UDP. Sử dụng &lt;code&gt;DatagramPacket&lt;/code&gt; và &lt;code&gt;DatagramSocket&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Demo:&lt;/em&gt; Ứng dụng gửi tin nhắn Broadcast hoặc Streaming.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Bài 8: Đa luồng (Multithreading) trong Lập trình mạng&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Nội dung:&lt;/em&gt; Tại sao Server cần đa luồng? Sử dụng &lt;code&gt;Thread&lt;/code&gt;/&lt;code&gt;Runnable&lt;/code&gt; để xử lý nhiều Client.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Nâng cấp:&lt;/em&gt; Tối ưu bài toán TCP Server để phục vụ nhiều người dùng cùng lúc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;strong&gt;Bài 9: Tổng quan về RMI (Remote Method Invocation)&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Nội dung:&lt;/em&gt; Cơ chế gọi phương thức từ xa, kiến trúc Stub và Skeleton.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Liên hệ:&lt;/em&gt; Bước chuyển từ Socket sang các kiến trúc phân tán hiện đại.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Trạng thái cập nhật lần cuối: 25/12/2025&lt;/em&gt;
+&lt;em&gt;Tiến độ hiện tại: 0/9 bài viết.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

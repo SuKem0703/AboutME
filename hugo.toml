@@ -3,12 +3,13 @@ languageCode = 'vi'
 title = 'BNGroup'
 theme = "stack"
 
-copyright = "© 2025 BNGroup - All Rights Reserved"
+copyright = "BNGroup - All Rights Reserved"
 
 [params]
+  mainSections = ["posts", "projects", "courses"]
   [params.sidebar]
-    emoji = "👋"
-    title = "BNGroup"
+    emoji = "👑"
+    title = "Bùi Bình Nguyên"
     subtitle = "Code • Guitar • Game • Business"
     [params.sidebar.avatar]
       enabled = true
@@ -17,11 +18,11 @@ copyright = "© 2025 BNGroup - All Rights Reserved"
 
   [params.footer]
     since = 2025
-    customText = "© BNGroup - All Rights Reserved"
+    customText = "BNGroup - All Rights Reserved"
 
   [params.dateFormat]
-    published = "Jan 02, 2006"
-    lastUpdated = "Jan 02, 2006 15:04 MST"
+    published = "02/01/2006"
+    lastUpdated = "02/01/2006 15:04 MST"
 
   [params.article]
     math = false
@@ -45,21 +46,9 @@ copyright = "© 2025 BNGroup - All Rights Reserved"
     [[params.widgets.homepage]]
       type = "tag-cloud"
       [params.widgets.homepage.params]
-        limit = 10
+        limit = 100
     [[params.widgets.page]]
       type = "toc"
-
-  [[params.socialIcons]]
-    name = "github"
-    url = "https://github.com/SuKem0703/"
-
-  [[params.socialIcons]]
-    name = "facebook"
-    url = "https://www.facebook.com/binh.nguyen.250862"
-
-  [[params.socialIcons]]
-    name = "youtube"
-    url = "https://www.youtube.com/@Sheeppp"
 
 [menu]
   [[menu.main]]
@@ -73,24 +62,40 @@ copyright = "© 2025 BNGroup - All Rights Reserved"
     name = "Khóa Học (LTM)"
     url = "/courses/"
     weight = 20
-    
+
   [[menu.main]]
     identifier = "projects"
-    name = "Dự Án (Projects)"
+    name = "Dự Án"
     url = "/projects/chronicles-of-knight-and-mage/"
     weight = 15
 
   [[menu.main]]
     identifier = "blog"
-    name = "Blog Cá Nhân"
+    name = "Blog"
     url = "/posts/"
     weight = 30
 
   [[menu.main]]
     identifier = "about"
-    name = "Về Tôi (Profile)"
+    name = "Về Tôi"
     url = "/about/"
     weight = 40
+
+  [[menu.social]]
+    name = "GitHub"
+    url = "https://github.com/SuKem0703/"
+    params.icon = "brand-github"
+
+  [[menu.social]]
+    name = "Facebook"
+    url = "https://www.facebook.com/binh.nguyen.250862"
+    params.icon = "link"
+
+  [[menu.social]]
+    name = "YouTube"
+    url = "https://www.youtube.com/@Sheeppp"
+    params.icon = "link"
+    weight = 20
 
   [markup]
     [markup.goldmark]

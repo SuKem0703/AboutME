@@ -1,20 +1,66 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Hồ Chí Minh on BNGroup</title>
-    <link>http://localhost:1313/tags/h%E1%BB%93-ch%C3%AD-minh/</link>
-    <description>Recent content in Hồ Chí Minh on BNGroup</description>
-    <generator>Hugo -- 0.153.1</generator>
-    <language>vi</language>
-    <copyright>2025 BNGroup - All Rights Reserved</copyright>
-    <lastBuildDate>Thu, 25 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/h%E1%BB%93-ch%C3%AD-minh/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Nho giáo &amp; Tư tưởng Hồ Chí Minh: Sự kế thừa biện chứng</title>
-      <link>http://localhost:1313/posts/nho-giao-va-tu-tuong-hcm/</link>
-      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/nho-giao-va-tu-tuong-hcm/</guid>
-      <description>Phân tích chuyên sâu về cách Hồ Chí Minh đã &amp;#39;cách mạng hóa&amp;#39; các giá trị Nho giáo cổ truyền dưới ánh sáng của phép biện chứng.</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Hồ Chí Minh on BNGroup</title>
+        <link>http://localhost:1313/tags/h%E1%BB%93-ch%C3%AD-minh/</link>
+        <description>Recent content in Hồ Chí Minh on BNGroup</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>vi</language>
+        <copyright>BNGroup - All Rights Reserved</copyright>
+        <lastBuildDate>Thu, 25 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/h%E1%BB%93-ch%C3%AD-minh/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Nho giáo &amp; Tư tưởng Hồ Chí Minh: Sự kế thừa biện chứng</title>
+        <link>http://localhost:1313/posts/nho-giao-va-tu-tuong-hcm/</link>
+        <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/posts/nho-giao-va-tu-tuong-hcm/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;Tuy Khổng Tử là phong kiến và tuy trong học thuyết của ông ta có nhiều điều không đúng, song những điều hay trong đó thì chúng ta nên học.&amp;rdquo;&lt;/em&gt; — &lt;strong&gt;Hồ Chí Minh&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-dẫn-nhập-sự-gặp-gỡ-giữa-hai-dòng-chảy&#34;&gt;1. Dẫn nhập: Sự gặp gỡ giữa hai dòng chảy
+&lt;/h2&gt;&lt;p&gt;Trong lịch sử tư tưởng Việt Nam hiện đại, Hồ Chí Minh hiện lên như một sự kết tinh kỳ diệu. Người không chỉ là một nhà Mác-xít kiên trung, mà sâu thẳm trong tư duy và hành động, Người còn mang dáng dấp của một bậc &amp;ldquo;Đại nhân, Quân tử&amp;rdquo; theo ý nghĩa chân chính nhất của phương Đông.&lt;/p&gt;
+&lt;p&gt;Tuy nhiên, sự tiếp nhận Nho giáo ở Hồ Chí Minh không phải là sự sao chép giáo điều, mà là một quá trình &lt;strong&gt;cải tạo triết học&lt;/strong&gt; (philosophical reconstruction) vô cùng tinh tế. Bài viết này sẽ phân tích quá trình đó dưới góc độ biện chứng pháp.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2-từ-nhà-nho-yêu-nước-đến-nhà-cách-mạng-hiện-đại&#34;&gt;2. Từ &amp;ldquo;Nhà Nho yêu nước&amp;rdquo; đến &amp;ldquo;Nhà Cách mạng hiện đại&amp;rdquo;
+&lt;/h2&gt;&lt;p&gt;Hồ Chí Minh sinh ra trong một gia đình nhà Nho, chịu ảnh hưởng sâu sắc từ tư tưởng Khổng - Mạnh. Nhưng khác với những nhà Nho hủ lậu (tầm chương trích cú) hay những nhà Nho ẩn dật (lánh đời), Hồ Chí Minh tiếp thu tinh thần &lt;strong&gt;&amp;ldquo;Nhập thế&amp;rdquo;&lt;/strong&gt; (dấn thân vào đời) của Nho giáo tích cực.&lt;/p&gt;
+&lt;p&gt;Nho giáo nguyên thủy không dạy con người trốn tránh, mà dạy &lt;em&gt;&amp;ldquo;Tu thân, tề gia, trị quốc, bình thiên hạ&amp;rdquo;&lt;/em&gt;. Hồ Chí Minh đã kế thừa trọn vẹn lý tưởng hành đạo này. Đối với Người, học không phải để làm quan, mà học để &amp;ldquo;làm người&amp;rdquo; và để &amp;ldquo;cứu nước&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Cái cốt cách &lt;em&gt;&amp;ldquo;Uy vũ bất năng khuất, bần tiện bất năng di&amp;rdquo;&lt;/em&gt; (Uy vũ không thể khuất phục, nghèo hèn không thể lay chuyển) của kẻ sĩ quân tử đã trở thành nền tảng thép cho bản lĩnh chính trị của Người sau này.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;3-cuộc-cách-mạng-hóa-khái-niệm-trung-và-hiếu&#34;&gt;3. Cuộc cách mạng hóa khái niệm &amp;ldquo;Trung&amp;rdquo; và &amp;ldquo;Hiếu&amp;rdquo;
+&lt;/h2&gt;&lt;p&gt;Đây là đóng góp lớn nhất về mặt triết học của Hồ Chí Minh khi cải tạo Nho giáo. Trong xã hội phong kiến, &amp;ldquo;Trung&amp;rdquo; là Trung quân (Trung thành với Vua), &amp;ldquo;Hiếu&amp;rdquo; là Hiếu phụ (Hiếu thảo với cha mẹ trong phạm vi gia tộc).&lt;/p&gt;
+&lt;p&gt;Hồ Chí Minh đã thực hiện một cuộc &lt;strong&gt;&amp;ldquo;đảo chiều biện chứng&amp;rdquo;&lt;/strong&gt; ngoạn mục, tước bỏ đối tượng cũ và thay vào đó một đối tượng mới vĩ đại hơn: &lt;strong&gt;&amp;ldquo;Trung với Nước, Hiếu với Dân&amp;rdquo;&lt;/strong&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Trung với nước:&lt;/strong&gt; Là đặt lợi ích quốc gia dân tộc lên trên hết, sẵn sàng hy sinh vì độc lập tự do.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hiếu với dân:&lt;/strong&gt; Không chỉ là thương dân, mà là coi dân là gốc rễ, là người phục vụ nhân dân vô điều kiện.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Từ một đạo đức phục vụ giai cấp thống trị, Hồ Chí Minh đã biến nó thành đạo đức của người cách mạng phục vụ quần chúng bị áp bức.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;4-tu-thân-và-thuyết-đạo-đức-cách-mạng&#34;&gt;4. &amp;ldquo;Tu thân&amp;rdquo; và thuyết &amp;ldquo;Đạo đức Cách mạng&amp;rdquo;
+&lt;/h2&gt;&lt;p&gt;Nho giáo đặt việc &lt;strong&gt;&amp;ldquo;Tu thân&amp;rdquo;&lt;/strong&gt; là gốc rễ của mọi sự thành bại. Hồ Chí Minh đặc biệt tâm đắc điều này. Người khẳng định: &lt;em&gt;&amp;ldquo;Người cách mạng phải có đạo đức cách mạng làm nền tảng, mới hoàn thành được nhiệm vụ cách mạng vẻ vang&amp;rdquo;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Hệ thống các phẩm chất &lt;strong&gt;Cần, Kiệm, Liêm, Chính&lt;/strong&gt; mà Hồ Chí Minh đề ra chính là sự kế thừa và nâng cấp từ các đức tính của người quân tử xưa (Nhân, Nghĩa, Lễ, Trí, Tín):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Cần, Kiệm:&lt;/strong&gt; Không chỉ là tiết kiệm tài sản cá nhân, mà là tiết kiệm thời gian, sức lao động của công quỹ để xây dựng đất nước.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Liêm, Chính:&lt;/strong&gt; Là &amp;ldquo;Chí công vô tư&amp;rdquo;, quang minh chính đại.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Điểm khác biệt triết học ở đây là: Nho giáo tu thân để trở thành &amp;ldquo;người trên&amp;rdquo; (cai trị), còn Hồ Chí Minh tu thân để trở thành &amp;ldquo;người đầy tớ&amp;rdquo;, để làm gương cho quần chúng. Người nâng quan điểm &lt;em&gt;&amp;ldquo;Thân giáo trọng hơn ngôn giáo&amp;rdquo;&lt;/em&gt; lên thành nguyên tắc lãnh đạo tối cao.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;5-tư-tưởng-thân-dân-và-chủ-nghĩa-nhân-văn&#34;&gt;5. Tư tưởng &amp;ldquo;Thân dân&amp;rdquo; và Chủ nghĩa Nhân văn
+&lt;/h2&gt;&lt;p&gt;Mạnh Tử từng nói: &lt;em&gt;&amp;ldquo;Dân vi quý, xã tắc thứ chi, quân vi khinh&amp;rdquo;&lt;/em&gt;. Đây là hạt nhân dân chủ sơ khai và tiến bộ nhất của Nho giáo. Hồ Chí Minh đã tiếp thu hạt nhân này nhưng gạt bỏ lớp vỏ phong kiến, nâng lên thành tư tưởng: &lt;strong&gt;&amp;ldquo;Nước lấy dân làm gốc&amp;rdquo;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Sự ảnh hưởng của Nho giáo thể hiện rõ ở chữ &lt;strong&gt;&amp;ldquo;Nhân&amp;rdquo;&lt;/strong&gt; (Tình yêu thương). Chữ &amp;ldquo;Nhân&amp;rdquo; của Hồ Chí Minh là tình yêu thương mênh mông dành cho con người, đặc biệt là người cùng khổ. Nhưng cái &amp;ldquo;Nhân&amp;rdquo; của Bác có tính chiến đấu – yêu người thiện thì phải kiên quyết chống lại kẻ ác, kẻ áp bức.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;6-sự-vượt-gộp-aufheben-dùng-mác-lênin-để-giải-ảo&#34;&gt;6. Sự vượt gộp (Aufheben): Dùng Mác-Lênin để &amp;ldquo;giải ảo&amp;rdquo;
+&lt;/h2&gt;&lt;p&gt;Dù tôn trọng Nho giáo, Hồ Chí Minh với tư duy triết học sắc sảo đã nhìn thấy những hạn chế lịch sử của nó: tư tưởng đẳng cấp, khinh thường phụ nữ, bảo thủ. Người đã dùng phép biện chứng duy vật để gạn lọc:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Phê phán thói &lt;em&gt;&amp;ldquo;tầm chương trích cú&amp;rdquo;&lt;/em&gt;, danh vị hão huyền.&lt;/li&gt;
+&lt;li&gt;Loại bỏ tư tưởng &lt;em&gt;&amp;ldquo;Trọng nam khinh nữ&amp;rdquo;&lt;/em&gt; để giải phóng phụ nữ triệt để.&lt;/li&gt;
+&lt;li&gt;Xóa bỏ ranh giới &lt;em&gt;&amp;ldquo;Quân tử - Tiểu nhân&amp;rdquo;&lt;/em&gt; theo lối khinh miệt người lao động chân tay.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;7-lời-kết&#34;&gt;7. Lời kết
+&lt;/h2&gt;&lt;p&gt;Ảnh hưởng của Nho giáo đến tư tưởng Hồ Chí Minh là một minh chứng tuyệt vời cho quy luật &lt;strong&gt;phủ định của phủ định&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Người xuất thân từ Nho học, ra đi tìm đường cứu nước để tiếp thu cái mới (phủ định cái cũ), rồi lại quay về dùng ánh sáng của thời đại mới để làm sống lại những giá trị vĩnh cửu của văn hóa cũ. Chính sự kết hợp tài tình giữa Cốt cách hiền triết phương Đông và Trí tuệ cách mạng phương Tây đã tạo nên một Hồ Chí Minh vĩ đại, với tư tưởng đạo đức có sức sống mãnh liệt.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

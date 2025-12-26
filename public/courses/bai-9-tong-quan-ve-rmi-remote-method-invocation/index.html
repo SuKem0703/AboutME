@@ -1,153 +1,330 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
+<html lang="vi" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Khám phá Java RMI (Remote Method Invocation): Cơ chế cho phép gọi phương thức trên máy chủ từ xa như thể đang gọi hàm cục bộ. Tìm hiểu kiến trúc Stub, Skeleton và RMI Registry.">
+<title>Bài 9: Java RMI - Bước đệm tới Hệ thống phân tán</title>
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>Bài 9: Java RMI - Bước đệm tới Hệ thống phân tán | BNGroup</title>
-<meta name="keywords" content="Java, RMI, Distributed Systems, RPC">
-<meta name="description" content="Khám phá Java RMI (Remote Method Invocation): Cơ chế cho phép gọi phương thức trên máy chủ từ xa như thể đang gọi hàm cục bộ. Tìm hiểu kiến trúc Stub, Skeleton và RMI Registry.">
-<meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/courses/bai-9-tong-quan-ve-rmi-remote-method-invocation/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/courses/bai-9-tong-quan-ve-rmi-remote-method-invocation/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
+<link rel='canonical' href='http://localhost:1313/courses/bai-9-tong-quan-ve-rmi-remote-method-invocation/'>
+
+<link rel="stylesheet" href="/scss/style.min.efb84b7384d449b8bb667de8fcc2113386cb527d95f5315ce406021beb8040f3.css"><meta property='og:title' content="Bài 9: Java RMI - Bước đệm tới Hệ thống phân tán">
+<meta property='og:description' content="Khám phá Java RMI (Remote Method Invocation): Cơ chế cho phép gọi phương thức trên máy chủ từ xa như thể đang gọi hàm cục bộ. Tìm hiểu kiến trúc Stub, Skeleton và RMI Registry.">
+<meta property='og:url' content='http://localhost:1313/courses/bai-9-tong-quan-ve-rmi-remote-method-invocation/'>
+<meta property='og:site_name' content='BNGroup'>
+<meta property='og:type' content='article'><meta property='article:section' content='Courses' /><meta property='article:tag' content='Java' /><meta property='article:tag' content='RMI' /><meta property='article:tag' content='Distributed Systems' /><meta property='article:tag' content='RPC' /><meta property='article:published_time' content='2025-12-25T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-12-25T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Bài 9: Java RMI - Bước đệm tới Hệ thống phân tán">
+<meta name="twitter:description" content="Khám phá Java RMI (Remote Method Invocation): Cơ chế cho phép gọi phương thức trên máy chủ từ xa như thể đang gọi hàm cục bộ. Tìm hiểu kiến trúc Stub, Skeleton và RMI Registry.">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
         }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
-    }
-
+    })();
 </script>
-</head>
-<body id="top">
-    <header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="BNGroup (Alt + H)">BNGroup</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Hiển thị Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="/portrait/BuiBinhNguyen.png" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">👑</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">BNGroup</a></h1>
+            <h2 class="site-description">Code • Guitar • Game • Business</h2>
         </div>
-        <ul id="menu">
-            <li>
-                <a href="http://localhost:1313/" title="Trang Chủ">
-                    <span>Trang Chủ</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/projects/chronicles-of-knight-and-mage/" title="Dự Án (Projects)">
-                    <span>Dự Án (Projects)</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/courses/" title="Khóa Học (LTM)">
-                    <span>Khóa Học (LTM)</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/posts/" title="Blog Cá Nhân">
-                    <span>Blog Cá Nhân</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/about/" title="Về Tôi (Profile)">
-                    <span>Về Tôi (Profile)</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main">
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://www.youtube.com/@Sheeppp'
+                        target="_blank"
+                        title="YouTube"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
 
-<article class="post-single">
-  <header class="post-header">
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.facebook.com/binh.nguyen.250862'
+                        target="_blank"
+                        title="Facebook"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/SuKem0703/'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                <span>Trang Chủ</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/projects/chronicles-of-knight-and-mage/' >
+                
+                
+                
+                <span>Dự Án</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/courses/' >
+                
+                
+                
+                <span>Khóa Học (LTM)</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/posts/' >
+                
+                
+                
+                <span>Blog</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                <span>Về Tôi</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Chế độ nền tối</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Mục lục</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-rmi-là-gì">1. RMI là gì?</a></li>
+    <li><a href="#2-kiến-trúc-rmi-stub-và-skeleton">2. Kiến trúc RMI (Stub và Skeleton)</a></li>
+    <li><a href="#3-quy-trình-xây-dựng-ứng-dụng-rmi">3. Quy trình xây dựng ứng dụng RMI</a>
+      <ul>
+        <li><a href="#bước-1-định-nghĩa-interface-remote-interface">Bước 1: Định nghĩa Interface (Remote Interface)</a></li>
+        <li><a href="#bước-2-hiện-thực-interface-server-implementation">Bước 2: Hiện thực Interface (Server Implementation)</a></li>
+        <li><a href="#bước-3-tạo-server-và-đăng-ký-dịch-vụ">Bước 3: Tạo Server và Đăng ký dịch vụ</a></li>
+        <li><a href="#bước-4-tạo-client-để-gọi-hàm">Bước 4: Tạo Client để gọi hàm</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-so-sánh-socket-vs-rmi">4. So sánh Socket vs RMI</a></li>
+    <li><a href="#5-kết-luận-và-hướng-phát-triển">5. Kết luận và Hướng phát triển</a></li>
+    <li><a href="#tài-liệu-tham-khảo">Tài liệu tham khảo</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
     
-    <h1 class="post-title entry-hint-parent">
-      Bài 9: Java RMI - Bước đệm tới Hệ thống phân tán
-    </h1>
-    <div class="post-meta"><span title='2025-12-25 00:00:00 +0000 UTC'>December 25, 2025</span>&nbsp;·&nbsp;<span>4 phút</span>
 
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/courses/bai-9-tong-quan-ve-rmi-remote-method-invocation/">Bài 9: Java RMI - Bước đệm tới Hệ thống phân tán</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2025-12-25T00:00:00Z'>25/12/2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 phút đọc
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
 </div>
-  </header> 
-  <div class="post-content"><p>Trong 8 bài trước, chúng ta đã làm việc với Socket. Mặc dù Socket rất mạnh mẽ, nhưng việc phải tự tay đóng gói dữ liệu (Marshalling) thành dòng byte rồi gửi đi, sau đó bên kia lại phải giải mã (Unmarshalling) rất tốn công sức và dễ sai sót.</p>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Trong 8 bài trước, chúng ta đã làm việc với Socket. Mặc dù Socket rất mạnh mẽ, nhưng việc phải tự tay đóng gói dữ liệu (Marshalling) thành dòng byte rồi gửi đi, sau đó bên kia lại phải giải mã (Unmarshalling) rất tốn công sức và dễ sai sót.</p>
 <p>Liệu có cách nào để Client gọi một hàm trên Server (ví dụ: <code>server.tinhTong(5, 10)</code>) đơn giản như đang gọi hàm trên chính máy mình không? Câu trả lời là <strong>Java RMI</strong>.</p>
-<h2 id="1-rmi-là-gì">1. RMI là gì?<a hidden class="anchor" aria-hidden="true" href="#1-rmi-là-gì">#</a></h2>
-<p>RMI (Remote Method Invocation) là một cơ chế cho phép một đối tượng đang chạy trên máy ảo Java này (Client) có thể gọi các phương thức của một đối tượng đang chạy trên máy ảo Java khác (Server).</p>
+<h2 id="1-rmi-là-gì">1. RMI là gì?
+</h2><p>RMI (Remote Method Invocation) là một cơ chế cho phép một đối tượng đang chạy trên máy ảo Java này (Client) có thể gọi các phương thức của một đối tượng đang chạy trên máy ảo Java khác (Server).</p>
 <p><strong>Triết lý:</strong> &ldquo;Làm cho việc gọi xa (remote call) trong suốt như gọi gần (local call).&rdquo;</p>
-<h2 id="2-kiến-trúc-rmi-stub-và-skeleton">2. Kiến trúc RMI (Stub và Skeleton)<a hidden class="anchor" aria-hidden="true" href="#2-kiến-trúc-rmi-stub-và-skeleton">#</a></h2>
-<p>Để tạo ra sự &ldquo;ảo thuật&rdquo; này, RMI sử dụng hai lớp trung gian ẩn bên dưới:</p>
+<h2 id="2-kiến-trúc-rmi-stub-và-skeleton">2. Kiến trúc RMI (Stub và Skeleton)
+</h2><p>Để tạo ra sự &ldquo;ảo thuật&rdquo; này, RMI sử dụng hai lớp trung gian ẩn bên dưới:</p>
 <ol>
 <li><strong>Stub (Client-side proxy):</strong>
 <ul>
@@ -166,10 +343,10 @@
 </li>
 </ol>
 <p><strong>RMI Registry:</strong> Là một cuốn &ldquo;danh bạ điện thoại&rdquo;. Server đăng ký tên dịch vụ của mình lên đây (ví dụ: &ldquo;MayTinhToan&rdquo;). Client tra cứu cái tên này để lấy về Stub tương ứng.</p>
-<h2 id="3-quy-trình-xây-dựng-ứng-dụng-rmi">3. Quy trình xây dựng ứng dụng RMI<a hidden class="anchor" aria-hidden="true" href="#3-quy-trình-xây-dựng-ứng-dụng-rmi">#</a></h2>
-<p>Chúng ta sẽ làm một ví dụ đơn giản: Máy tính cộng trừ nhân chia từ xa.</p>
-<h3 id="bước-1-định-nghĩa-interface-remote-interface">Bước 1: Định nghĩa Interface (Remote Interface)<a hidden class="anchor" aria-hidden="true" href="#bước-1-định-nghĩa-interface-remote-interface">#</a></h3>
-<p>Cả Client và Server đều phải biết Interface này. Nó bắt buộc phải kế thừa <code>java.rmi.Remote</code> và mọi phương thức phải ném ra <code>RemoteException</code>.</p>
+<h2 id="3-quy-trình-xây-dựng-ứng-dụng-rmi">3. Quy trình xây dựng ứng dụng RMI
+</h2><p>Chúng ta sẽ làm một ví dụ đơn giản: Máy tính cộng trừ nhân chia từ xa.</p>
+<h3 id="bước-1-định-nghĩa-interface-remote-interface">Bước 1: Định nghĩa Interface (Remote Interface)
+</h3><p>Cả Client và Server đều phải biết Interface này. Nó bắt buộc phải kế thừa <code>java.rmi.Remote</code> và mọi phương thức phải ném ra <code>RemoteException</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.rmi.Remote;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.rmi.RemoteException;
 </span></span><span style="display:flex;"><span>
@@ -177,8 +354,8 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">add</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b) <span style="color:#66d9ef">throws</span> RemoteException;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">subtract</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b) <span style="color:#66d9ef">throws</span> RemoteException;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="bước-2-hiện-thực-interface-server-implementation">Bước 2: Hiện thực Interface (Server Implementation)<a hidden class="anchor" aria-hidden="true" href="#bước-2-hiện-thực-interface-server-implementation">#</a></h3>
-<p>Đây là logic nghiệp vụ thực sự nằm trên Server. Lớp này thường kế thừa <code>UnicastRemoteObject</code>.</p>
+</span></span></code></pre></div><h3 id="bước-2-hiện-thực-interface-server-implementation">Bước 2: Hiện thực Interface (Server Implementation)
+</h3><p>Đây là logic nghiệp vụ thực sự nằm trên Server. Lớp này thường kế thừa <code>UnicastRemoteObject</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.rmi.server.UnicastRemoteObject;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.rmi.RemoteException;
 </span></span><span style="display:flex;"><span>
@@ -199,8 +376,8 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> a <span style="color:#f92672">-</span> b;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="bước-3-tạo-server-và-đăng-ký-dịch-vụ">Bước 3: Tạo Server và Đăng ký dịch vụ<a hidden class="anchor" aria-hidden="true" href="#bước-3-tạo-server-và-đăng-ký-dịch-vụ">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.rmi.registry.LocateRegistry;
+</span></span></code></pre></div><h3 id="bước-3-tạo-server-và-đăng-ký-dịch-vụ">Bước 3: Tạo Server và Đăng ký dịch vụ
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.rmi.registry.LocateRegistry;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.rmi.Naming;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RMIServer</span> {
@@ -221,8 +398,8 @@
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="bước-4-tạo-client-để-gọi-hàm">Bước 4: Tạo Client để gọi hàm<a hidden class="anchor" aria-hidden="true" href="#bước-4-tạo-client-để-gọi-hàm">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.rmi.Naming;
+</span></span></code></pre></div><h3 id="bước-4-tạo-client-để-gọi-hàm">Bước 4: Tạo Client để gọi hàm
+</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.rmi.Naming;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RMIClient</span> {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
@@ -243,8 +420,8 @@
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="4-so-sánh-socket-vs-rmi">4. So sánh Socket vs RMI<a hidden class="anchor" aria-hidden="true" href="#4-so-sánh-socket-vs-rmi">#</a></h2>
-<table>
+</span></span></code></pre></div><h2 id="4-so-sánh-socket-vs-rmi">4. So sánh Socket vs RMI
+</h2><div class="table-wrapper"><table>
   <thead>
       <tr>
           <th style="text-align: left">Tiêu chí</th>
@@ -279,9 +456,9 @@
           <td style="text-align: left">Khó (Chỉ Java nói chuyện với Java)</td>
       </tr>
   </tbody>
-</table>
-<h2 id="5-kết-luận-và-hướng-phát-triển">5. Kết luận và Hướng phát triển<a hidden class="anchor" aria-hidden="true" href="#5-kết-luận-và-hướng-phát-triển">#</a></h2>
-<p>RMI là bước tiến lớn giúp lập trình viên thoát khỏi sự phức tạp của Socket. Tuy nhiên, do hạn chế chỉ dùng được trong môi trường Java thuần túy, ngày nay RMI ít được dùng trực tiếp.</p>
+</table></div>
+<h2 id="5-kết-luận-và-hướng-phát-triển">5. Kết luận và Hướng phát triển
+</h2><p>RMI là bước tiến lớn giúp lập trình viên thoát khỏi sự phức tạp của Socket. Tuy nhiên, do hạn chế chỉ dùng được trong môi trường Java thuần túy, ngày nay RMI ít được dùng trực tiếp.</p>
 <p>Thay vào đó, thế giới đã chuyển sang các chuẩn mở hơn nhưng có tư tưởng tương tự RMI:</p>
 <ul>
 <li><strong>Web Services (SOAP/REST):</strong> Dùng HTTP và XML/JSON, cho phép mọi ngôn ngữ giao tiếp với nhau.</li>
@@ -289,56 +466,237 @@
 </ul>
 <p>Tuy nhiên, hiểu RMI chính là hiểu nền tảng của mọi hệ thống phân tán (Distributed Systems) hiện đại.</p>
 <hr>
-<h2 id="tài-liệu-tham-khảo">Tài liệu tham khảo<a hidden class="anchor" aria-hidden="true" href="#tài-liệu-tham-khảo">#</a></h2>
-<ol>
+<h2 id="tài-liệu-tham-khảo">Tài liệu tham khảo
+</h2><ol>
 <li>Oracle Java Docs. &ldquo;Java RMI Tutorial&rdquo;.</li>
 <li>GeeksforGeeks. &ldquo;Remote Method Invocation in Java&rdquo;.</li>
 <li>Giáo trình Lập trình mạng - Hutech.</li>
 </ol>
 
+</section>
 
-  </div>
 
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/java/">Java</a></li>
-      <li><a href="http://localhost:1313/tags/rmi/">RMI</a></li>
-      <li><a href="http://localhost:1313/tags/distributed-systems/">Distributed Systems</a></li>
-      <li><a href="http://localhost:1313/tags/rpc/">RPC</a></li>
-    </ul>
-  </footer>
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/java/">Java</a>
+        
+            <a href="/tags/rmi/">RMI</a>
+        
+            <a href="/tags/distributed-systems/">Distributed Systems</a>
+        
+            <a href="/tags/rpc/">RPC</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
 </article>
-    </main>
-     <footer class="footer">
-        <div class="social-icons" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 15px;">
-            <a href="https://github.com/SuKem0703/" target="_blank" rel="noopener noreferrer me" title="Github">
-                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round">
-    <path
-        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-    </path>
-</svg></span>
-            </a>
-            <a href="https://www.facebook.com/binh.nguyen.250862" target="_blank" rel="noopener noreferrer me" title="Facebook">
-                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round">
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-</svg></span>
-            </a>
-            <a href="https://www.youtube.com/@Sheeppp" target="_blank" rel="noopener noreferrer me" title="Youtube">
-                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round">
-    <path
-        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
-    </path>
-    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
-</svg></span>
-            </a>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Bài viết liên quan</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/courses/bai-7-socket-udp-truyen-tai-du-lieu-khong-ket-noi/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bài 7: Socket UDP - Giao thức &#39;Nhanh nhưng Ẩu&#39;</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/courses/bai-8-da-luong-multithreading/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bài 8: Đa luồng (Multithreading) - Nâng cấp Server phục vụ nhiều Client</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/courses/bai-5-java-i-o-streams-quan-ly-luong-nhap-xuat/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bài 5: Java I/O Streams - Quản lý luồng nhập xuất</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/courses/bai-6-lap-trinh-socket-tcp-mo-hinh-client-server/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bài 6: Lập trình Socket TCP - Xây dựng ứng dụng Chat</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/courses/00-lo-trinh-do-an/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Lộ trình thực hiện đồ án: Java &amp; JavaScript</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2025 BNGroup - All Rights Reserved
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
         </div>
 
-        <span>
-            © 2025 BNGroup - All Rights Reserved
-        </span>
-    </footer></body>
+        
+        <div class="pswp__ui pswp__ui--hidden">
 
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+    
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.beeb916e67561f61cdd00315afc11f937d198bb9938b229d4dddb26e80084bab.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

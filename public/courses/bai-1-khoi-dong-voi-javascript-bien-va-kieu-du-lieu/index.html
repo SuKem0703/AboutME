@@ -1,155 +1,340 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
+<html lang="vi" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Phân tích chuyên sâu về cơ chế quản lý bộ nhớ, dynamic typing, Scope Chain và sự tiến hóa từ ES5 (var) sang ES6 (let, const) trong JavaScript.">
+<title>Bài 1: Khởi động với JavaScript - Biến và Kiểu dữ liệu</title>
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>Bài 1: Khởi động với JavaScript - Biến và Kiểu dữ liệu | BNGroup</title>
-<meta name="keywords" content="JavaScript, Frontend, CS Fundamentals">
-<meta name="description" content="Phân tích chuyên sâu về cơ chế quản lý bộ nhớ, dynamic typing, Scope Chain và sự tiến hóa từ ES5 (var) sang ES6 (let, const) trong JavaScript.">
-<meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/courses/bai-1-khoi-dong-voi-javascript-bien-va-kieu-du-lieu/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/courses/bai-1-khoi-dong-voi-javascript-bien-va-kieu-du-lieu/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
+<link rel='canonical' href='http://localhost:1313/courses/bai-1-khoi-dong-voi-javascript-bien-va-kieu-du-lieu/'>
+
+<link rel="stylesheet" href="/scss/style.min.efb84b7384d449b8bb667de8fcc2113386cb527d95f5315ce406021beb8040f3.css"><meta property='og:title' content="Bài 1: Khởi động với JavaScript - Biến và Kiểu dữ liệu">
+<meta property='og:description' content="Phân tích chuyên sâu về cơ chế quản lý bộ nhớ, dynamic typing, Scope Chain và sự tiến hóa từ ES5 (var) sang ES6 (let, const) trong JavaScript.">
+<meta property='og:url' content='http://localhost:1313/courses/bai-1-khoi-dong-voi-javascript-bien-va-kieu-du-lieu/'>
+<meta property='og:site_name' content='BNGroup'>
+<meta property='og:type' content='article'><meta property='article:section' content='Courses' /><meta property='article:tag' content='JavaScript' /><meta property='article:tag' content='Frontend' /><meta property='article:tag' content='CS Fundamentals' /><meta property='article:published_time' content='2025-12-25T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-12-25T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Bài 1: Khởi động với JavaScript - Biến và Kiểu dữ liệu">
+<meta name="twitter:description" content="Phân tích chuyên sâu về cơ chế quản lý bộ nhớ, dynamic typing, Scope Chain và sự tiến hóa từ ES5 (var) sang ES6 (let, const) trong JavaScript.">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
         }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
-    }
-
+    })();
 </script>
-</head>
-<body id="top">
-    <header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="BNGroup (Alt + H)">BNGroup</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Hiển thị Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="/portrait/BuiBinhNguyen.png" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">👑</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">BNGroup</a></h1>
+            <h2 class="site-description">Code • Guitar • Game • Business</h2>
         </div>
-        <ul id="menu">
-            <li>
-                <a href="http://localhost:1313/" title="Trang Chủ">
-                    <span>Trang Chủ</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/projects/chronicles-of-knight-and-mage/" title="Dự Án (Projects)">
-                    <span>Dự Án (Projects)</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/courses/" title="Khóa Học (LTM)">
-                    <span>Khóa Học (LTM)</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/posts/" title="Blog Cá Nhân">
-                    <span>Blog Cá Nhân</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/about/" title="Về Tôi (Profile)">
-                    <span>Về Tôi (Profile)</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main">
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://www.youtube.com/@Sheeppp'
+                        target="_blank"
+                        title="YouTube"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
 
-<article class="post-single">
-  <header class="post-header">
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.facebook.com/binh.nguyen.250862'
+                        target="_blank"
+                        title="Facebook"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/SuKem0703/'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                <span>Trang Chủ</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/projects/chronicles-of-knight-and-mage/' >
+                
+                
+                
+                <span>Dự Án</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/courses/' >
+                
+                
+                
+                <span>Khóa Học (LTM)</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/posts/' >
+                
+                
+                
+                <span>Blog</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                <span>Về Tôi</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Chế độ nền tối</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Mục lục</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-tổng-quan-về-javascript-và-ecmascript">1. Tổng quan về JavaScript và ECMAScript</a></li>
+    <li><a href="#2-biến-và-phạm-vi-scope">2. Biến và Phạm vi (Scope)</a>
+      <ul>
+        <li><a href="#21-cơ-chế-hoisting-và-từ-khóa-var">2.1. Cơ chế Hoisting và từ khóa <code>var</code></a></li>
+        <li><a href="#22-sự-ra-đời-của-let-và-const-block-scope">2.2. Sự ra đời của <code>let</code> và <code>const</code> (Block Scope)</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-hệ-thống-kiểu-dữ-liệu-data-types">3. Hệ thống Kiểu dữ liệu (Data Types)</a>
+      <ul>
+        <li><a href="#31-kiểu-dữ-liệu-nguyên-thủy-primitive-types">3.1. Kiểu dữ liệu nguyên thủy (Primitive Types)</a></li>
+        <li><a href="#32-kiểu-dữ-liệu-tham-chiếu-reference-types">3.2. Kiểu dữ liệu tham chiếu (Reference Types)</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-dynamic-typing-và-type-coercion-ép-kiểu">4. Dynamic Typing và Type Coercion (Ép kiểu)</a>
+      <ul>
+        <li><a href="#41-implicit-coercion-ép-kiểu-ngầm-định">4.1. Implicit Coercion (Ép kiểu ngầm định)</a></li>
+        <li><a href="#42-explicit-coercion-ép-kiểu-tường-minh">4.2. Explicit Coercion (Ép kiểu tường minh)</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-kết-luận">5. Kết luận</a></li>
+    <li><a href="#tài-liệu-tham-khảo">Tài liệu tham khảo</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
     
-    <h1 class="post-title entry-hint-parent">
-      Bài 1: Khởi động với JavaScript - Biến và Kiểu dữ liệu
-    </h1>
-    <div class="post-meta"><span title='2025-12-25 00:00:00 +0000 UTC'>December 25, 2025</span>&nbsp;·&nbsp;<span>6 phút</span>
 
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/courses/bai-1-khoi-dong-voi-javascript-bien-va-kieu-du-lieu/">Bài 1: Khởi động với JavaScript - Biến và Kiểu dữ liệu</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2025-12-25T00:00:00Z'>25/12/2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 phút đọc
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
 </div>
-  </header> 
-  <div class="post-content"><p>Trong ngữ cảnh của môn Lập trình mạng, việc hiểu rõ JavaScript không chỉ dừng lại ở việc tạo hiệu ứng trên giao diện web. JavaScript ngày nay đóng vai trò quan trọng trong việc xử lý dữ liệu JSON, giao tiếp API bất đồng bộ và thậm chí là lập trình phía Server (Node.js). Bài viết này sẽ phân tích nền tảng cốt lõi của ngôn ngữ: Biến và Kiểu dữ liệu dưới góc độ khoa học máy tính.</p>
-<h2 id="1-tổng-quan-về-javascript-và-ecmascript">1. Tổng quan về JavaScript và ECMAScript<a hidden class="anchor" aria-hidden="true" href="#1-tổng-quan-về-javascript-và-ecmascript">#</a></h2>
-<p>JavaScript (JS) là một ngôn ngữ lập trình kịch bản (scripting language), thông dịch (interpreted), và hỗ trợ đa mô hình (multi-paradigm): hướng sự kiện, hướng chức năng và hướng đối tượng (prototype-based).</p>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Trong ngữ cảnh của môn Lập trình mạng, việc hiểu rõ JavaScript không chỉ dừng lại ở việc tạo hiệu ứng trên giao diện web. JavaScript ngày nay đóng vai trò quan trọng trong việc xử lý dữ liệu JSON, giao tiếp API bất đồng bộ và thậm chí là lập trình phía Server (Node.js). Bài viết này sẽ phân tích nền tảng cốt lõi của ngôn ngữ: Biến và Kiểu dữ liệu dưới góc độ khoa học máy tính.</p>
+<h2 id="1-tổng-quan-về-javascript-và-ecmascript">1. Tổng quan về JavaScript và ECMAScript
+</h2><p>JavaScript (JS) là một ngôn ngữ lập trình kịch bản (scripting language), thông dịch (interpreted), và hỗ trợ đa mô hình (multi-paradigm): hướng sự kiện, hướng chức năng và hướng đối tượng (prototype-based).</p>
 <p>Khác với các ngôn ngữ biên dịch tĩnh (statically compiled) như Java hay C# - nơi mã nguồn phải được biên dịch thành bytecode hoặc mã máy trước khi chạy, JavaScript thường được thực thi bởi một trình thông dịch (engine) ngay tại thời điểm chạy (runtime). Các engine nổi tiếng bao gồm V8 (Google Chrome, Node.js), SpiderMonkey (Firefox) và JavaScriptCore (Safari).</p>
 <p>Tiêu chuẩn kỹ thuật của JavaScript được gọi là ECMAScript (viết tắt là ES). Sự ra đời của ES6 (ECMAScript 2015) là một bước ngoặt lớn, mang lại các tính năng hiện đại giúp việc quản lý code trở nên chặt chẽ hơn.</p>
-<h2 id="2-biến-và-phạm-vi-scope">2. Biến và Phạm vi (Scope)<a hidden class="anchor" aria-hidden="true" href="#2-biến-và-phạm-vi-scope">#</a></h2>
-<p>Biến trong lập trình là tên gọi tượng trưng cho một vùng nhớ máy tính nơi lưu trữ giá trị. Trong JavaScript, cách chúng ta khai báo biến sẽ quyết định &ldquo;vòng đời&rdquo; và &ldquo;phạm vi truy cập&rdquo; của biến đó.</p>
-<h3 id="21-cơ-chế-hoisting-và-từ-khóa-var">2.1. Cơ chế Hoisting và từ khóa <code>var</code><a hidden class="anchor" aria-hidden="true" href="#21-cơ-chế-hoisting-và-từ-khóa-var">#</a></h3>
-<p>Trước phiên bản ES6, <code>var</code> là cách duy nhất để khai báo biến. Tuy nhiên, <code>var</code> tồn tại nhiều vấn đề liên quan đến cơ chế <strong>Hoisting</strong>.</p>
+<h2 id="2-biến-và-phạm-vi-scope">2. Biến và Phạm vi (Scope)
+</h2><p>Biến trong lập trình là tên gọi tượng trưng cho một vùng nhớ máy tính nơi lưu trữ giá trị. Trong JavaScript, cách chúng ta khai báo biến sẽ quyết định &ldquo;vòng đời&rdquo; và &ldquo;phạm vi truy cập&rdquo; của biến đó.</p>
+<h3 id="21-cơ-chế-hoisting-và-từ-khóa-var">2.1. Cơ chế Hoisting và từ khóa <code>var</code>
+</h3><p>Trước phiên bản ES6, <code>var</code> là cách duy nhất để khai báo biến. Tuy nhiên, <code>var</code> tồn tại nhiều vấn đề liên quan đến cơ chế <strong>Hoisting</strong>.</p>
 <p>Hoisting là hành vi mặc định của JavaScript, trong đó việc khai báo biến (declaration) được đưa lên đầu phạm vi (scope) của nó trước khi code được thực thi.</p>
 <p>Ví dụ:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x</span>); <span style="color:#75715e">// Kết quả: undefined (Không báo lỗi)
@@ -161,12 +346,12 @@
 <li><code>x = 5;</code></li>
 </ol>
 <p>Điều này gây ra sự khó hiểu và các lỗi tiềm ẩn (bug) khó phát hiện. Ngoài ra, <code>var</code> có phạm vi là <strong>Function Scope</strong> (phạm vi hàm), nghĩa là nếu khai báo trong một khối lệnh <code>if</code> hoặc <code>for</code>, biến đó vẫn rò rỉ ra ngoài khối lệnh.</p>
-<h3 id="22-sự-ra-đời-của-let-và-const-block-scope">2.2. Sự ra đời của <code>let</code> và <code>const</code> (Block Scope)<a hidden class="anchor" aria-hidden="true" href="#22-sự-ra-đời-của-let-và-const-block-scope">#</a></h3>
-<p>ES6 giới thiệu <code>let</code> và <code>const</code> để khắc phục nhược điểm của <code>var</code>. Cả hai từ khóa này đều tuân thủ <strong>Block Scope</strong> (Phạm vi khối), nghĩa là biến chỉ tồn tại trong cặp ngoặc nhọn <code>{}</code> bao quanh nó.</p>
-<h4 id="temporal-dead-zone-tdz">Temporal Dead Zone (TDZ)<a hidden class="anchor" aria-hidden="true" href="#temporal-dead-zone-tdz">#</a></h4>
-<p>Khác với <code>var</code>, biến khai báo bằng <code>let</code> và <code>const</code> cũng được hoisting nhưng chúng rơi vào trạng thái &ldquo;Vùng chết tạm thời&rdquo; (TDZ). Nếu truy cập trước khi khai báo, chương trình sẽ báo lỗi <code>ReferenceError</code> thay vì trả về <code>undefined</code>.</p>
-<h4 id="phân-biệt-let-và-const">Phân biệt let và const<a hidden class="anchor" aria-hidden="true" href="#phân-biệt-let-và-const">#</a></h4>
-<ul>
+<h3 id="22-sự-ra-đời-của-let-và-const-block-scope">2.2. Sự ra đời của <code>let</code> và <code>const</code> (Block Scope)
+</h3><p>ES6 giới thiệu <code>let</code> và <code>const</code> để khắc phục nhược điểm của <code>var</code>. Cả hai từ khóa này đều tuân thủ <strong>Block Scope</strong> (Phạm vi khối), nghĩa là biến chỉ tồn tại trong cặp ngoặc nhọn <code>{}</code> bao quanh nó.</p>
+<h4 id="temporal-dead-zone-tdz">Temporal Dead Zone (TDZ)
+</h4><p>Khác với <code>var</code>, biến khai báo bằng <code>let</code> và <code>const</code> cũng được hoisting nhưng chúng rơi vào trạng thái &ldquo;Vùng chết tạm thời&rdquo; (TDZ). Nếu truy cập trước khi khai báo, chương trình sẽ báo lỗi <code>ReferenceError</code> thay vì trả về <code>undefined</code>.</p>
+<h4 id="phân-biệt-let-và-const">Phân biệt let và const
+</h4><ul>
 <li><code>let</code>: Cho phép gán lại giá trị (Reassignable). Dùng cho các biến đếm, biến tích lũy.</li>
 <li><code>const</code>: Không cho phép gán lại giá trị (Immutable binding). Tuy nhiên, cần lưu ý với kiểu dữ liệu đối tượng (Object), <code>const</code> chỉ ngăn cản việc gán biến sang một địa chỉ bộ nhớ khác, chứ không ngăn cản việc thay đổi thuộc tính bên trong đối tượng đó.</li>
 </ul>
@@ -174,10 +359,10 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">student</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;An&#34;</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">20</span> };
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">student</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">21</span>; <span style="color:#75715e">// Hợp lệ (Thay đổi giá trị tại vùng nhớ Heap)
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">// student = { name: &#34;Binh&#34; }; // Báo lỗi: Assignment to constant variable.
-</span></span></span></code></pre></div><h2 id="3-hệ-thống-kiểu-dữ-liệu-data-types">3. Hệ thống Kiểu dữ liệu (Data Types)<a hidden class="anchor" aria-hidden="true" href="#3-hệ-thống-kiểu-dữ-liệu-data-types">#</a></h2>
-<p>JavaScript là ngôn ngữ <strong>Dynamic Typing</strong> (Kiểu động), nghĩa là biến không bị ràng buộc kiểu dữ liệu, chỉ có giá trị mới có kiểu. Theo tiêu chuẩn ECMAScript mới nhất, có 8 kiểu dữ liệu chia làm 2 nhóm chính.</p>
-<h3 id="31-kiểu-dữ-liệu-nguyên-thủy-primitive-types">3.1. Kiểu dữ liệu nguyên thủy (Primitive Types)<a hidden class="anchor" aria-hidden="true" href="#31-kiểu-dữ-liệu-nguyên-thủy-primitive-types">#</a></h3>
-<p>Các kiểu dữ liệu này được lưu trữ trực tiếp trong vùng nhớ <strong>Stack</strong> (Ngăn xếp), có kích thước cố định và truy xuất nhanh.</p>
+</span></span></span></code></pre></div><h2 id="3-hệ-thống-kiểu-dữ-liệu-data-types">3. Hệ thống Kiểu dữ liệu (Data Types)
+</h2><p>JavaScript là ngôn ngữ <strong>Dynamic Typing</strong> (Kiểu động), nghĩa là biến không bị ràng buộc kiểu dữ liệu, chỉ có giá trị mới có kiểu. Theo tiêu chuẩn ECMAScript mới nhất, có 8 kiểu dữ liệu chia làm 2 nhóm chính.</p>
+<h3 id="31-kiểu-dữ-liệu-nguyên-thủy-primitive-types">3.1. Kiểu dữ liệu nguyên thủy (Primitive Types)
+</h3><p>Các kiểu dữ liệu này được lưu trữ trực tiếp trong vùng nhớ <strong>Stack</strong> (Ngăn xếp), có kích thước cố định và truy xuất nhanh.</p>
 <ol>
 <li><strong>Undefined</strong>: Một biến đã khai báo nhưng chưa được gán giá trị.</li>
 <li><strong>Null</strong>: Đại diện cho một giá trị rỗng hoặc không tồn tại một cách có chủ đích. (Lưu ý: <code>typeof null</code> trả về <code>'object'</code> do một lỗi lịch sử của JS).</li>
@@ -187,8 +372,8 @@
 <li><strong>Symbol</strong> (ES6): Giá trị duy nhất, thường dùng làm key cho Object để tránh xung đột.</li>
 <li><strong>BigInt</strong> (ES2020): Dùng để lưu trữ các số nguyên lớn vượt quá giới hạn an toàn của kiểu Number (<code>2^53 - 1</code>).</li>
 </ol>
-<h3 id="32-kiểu-dữ-liệu-tham-chiếu-reference-types">3.2. Kiểu dữ liệu tham chiếu (Reference Types)<a hidden class="anchor" aria-hidden="true" href="#32-kiểu-dữ-liệu-tham-chiếu-reference-types">#</a></h3>
-<p>Bao gồm <strong>Object</strong>, <strong>Array</strong>, <strong>Function</strong>, <strong>Date</strong>, <strong>RegExp</strong>.
+<h3 id="32-kiểu-dữ-liệu-tham-chiếu-reference-types">3.2. Kiểu dữ liệu tham chiếu (Reference Types)
+</h3><p>Bao gồm <strong>Object</strong>, <strong>Array</strong>, <strong>Function</strong>, <strong>Date</strong>, <strong>RegExp</strong>.
 Các kiểu này được lưu trữ trong vùng nhớ <strong>Heap</strong> (Vùng nhớ động). Biến chỉ lưu địa chỉ tham chiếu (memory address) trỏ đến vùng nhớ đó trong Heap.</p>
 <p>Sự khác biệt quan trọng giữa tham chiếu và nguyên thủy thể hiện khi sao chép biến:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Nguyên thủy (Copy giá trị)
@@ -202,28 +387,28 @@ Các kiểu này được lưu trữ trong vùng nhớ <strong>Heap</strong> (V�
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">obj2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">obj1</span>;
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">obj2</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Kết quả: obj1.value = 20 (Bị thay đổi theo)
-</span></span></span></code></pre></div><h2 id="4-dynamic-typing-và-type-coercion-ép-kiểu">4. Dynamic Typing và Type Coercion (Ép kiểu)<a hidden class="anchor" aria-hidden="true" href="#4-dynamic-typing-và-type-coercion-ép-kiểu">#</a></h2>
-<p>Sự linh hoạt của JavaScript đến từ việc nó tự động chuyển đổi kiểu dữ liệu (Type Coercion) khi cần thiết.</p>
-<h3 id="41-implicit-coercion-ép-kiểu-ngầm-định">4.1. Implicit Coercion (Ép kiểu ngầm định)<a hidden class="anchor" aria-hidden="true" href="#41-implicit-coercion-ép-kiểu-ngầm-định">#</a></h3>
-<p>Trình thông dịch tự động chuyển đổi kiểu để thực hiện phép toán.</p>
+</span></span></span></code></pre></div><h2 id="4-dynamic-typing-và-type-coercion-ép-kiểu">4. Dynamic Typing và Type Coercion (Ép kiểu)
+</h2><p>Sự linh hoạt của JavaScript đến từ việc nó tự động chuyển đổi kiểu dữ liệu (Type Coercion) khi cần thiết.</p>
+<h3 id="41-implicit-coercion-ép-kiểu-ngầm-định">4.1. Implicit Coercion (Ép kiểu ngầm định)
+</h3><p>Trình thông dịch tự động chuyển đổi kiểu để thực hiện phép toán.</p>
 <ul>
 <li>Chuỗi + Số = Chuỗi: <code>'5' + 1</code> kết quả là <code>'51'</code>.</li>
 <li>Chuỗi - Số = Số: <code>'5' - 1</code> kết quả là <code>4</code>.</li>
 </ul>
-<h3 id="42-explicit-coercion-ép-kiểu-tường-minh">4.2. Explicit Coercion (Ép kiểu tường minh)<a hidden class="anchor" aria-hidden="true" href="#42-explicit-coercion-ép-kiểu-tường-minh">#</a></h3>
-<p>Lập trình viên chủ động chuyển đổi kiểu để tránh lỗi logic.</p>
+<h3 id="42-explicit-coercion-ép-kiểu-tường-minh">4.2. Explicit Coercion (Ép kiểu tường minh)
+</h3><p>Lập trình viên chủ động chuyển đổi kiểu để tránh lỗi logic.</p>
 <ul>
 <li><code>Number('5')</code> -&gt; 5</li>
 <li><code>String(123)</code> -&gt; &lsquo;123&rsquo;</li>
 <li><code>Boolean(1)</code> -&gt; true</li>
 </ul>
 <p>Trong lập trình mạng, khi nhận dữ liệu từ API (thường ở dạng JSON string), việc ép kiểu tường minh là bắt buộc để đảm bảo tính toàn vẹn dữ liệu trước khi xử lý logic nghiệp vụ.</p>
-<h2 id="5-kết-luận">5. Kết luận<a hidden class="anchor" aria-hidden="true" href="#5-kết-luận">#</a></h2>
-<p>Hiểu sâu về cách JavaScript quản lý bộ nhớ thông qua các loại biến và kiểu dữ liệu giúp lập trình viên tránh được những lỗi phổ biến như tham chiếu vòng, rò rỉ bộ nhớ (memory leak) hay sai lệch tính toán.</p>
+<h2 id="5-kết-luận">5. Kết luận
+</h2><p>Hiểu sâu về cách JavaScript quản lý bộ nhớ thông qua các loại biến và kiểu dữ liệu giúp lập trình viên tránh được những lỗi phổ biến như tham chiếu vòng, rò rỉ bộ nhớ (memory leak) hay sai lệch tính toán.</p>
 <p>Trong bài tiếp theo, chúng ta sẽ áp dụng các kiểu dữ liệu này vào cấu trúc <strong>Hàm (Function)</strong> và tìm hiểu về <strong>Cơ chế xử lý sự kiện</strong>, nền tảng cho lập trình bất đồng bộ sau này.</p>
 <hr>
-<h2 id="tài-liệu-tham-khảo">Tài liệu tham khảo<a hidden class="anchor" aria-hidden="true" href="#tài-liệu-tham-khảo">#</a></h2>
-<ol>
+<h2 id="tài-liệu-tham-khảo">Tài liệu tham khảo
+</h2><ol>
 <li>Mozilla Developer Network (MDN). &ldquo;JavaScript Data Structures&rdquo;. Truy cập ngày 25/12/2025.</li>
 <li>ECMA International. &ldquo;ECMAScript 2015 Language Specification (ES6)&rdquo;.</li>
 <li>W3Schools. &ldquo;JavaScript Variables, Let and Const&rdquo;.</li>
@@ -231,48 +416,202 @@ Các kiểu này được lưu trữ trong vùng nhớ <strong>Heap</strong> (V�
 <li>Kyle Simpson. &ldquo;You Don&rsquo;t Know JS: Types &amp; Grammar&rdquo;. O&rsquo;Reilly Media.</li>
 </ol>
 
+</section>
 
-  </div>
 
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/javascript/">JavaScript</a></li>
-      <li><a href="http://localhost:1313/tags/frontend/">Frontend</a></li>
-      <li><a href="http://localhost:1313/tags/cs-fundamentals/">CS Fundamentals</a></li>
-    </ul>
-  </footer>
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/javascript/">JavaScript</a>
+        
+            <a href="/tags/frontend/">Frontend</a>
+        
+            <a href="/tags/cs-fundamentals/">CS Fundamentals</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
 </article>
-    </main>
-     <footer class="footer">
-        <div class="social-icons" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 15px;">
-            <a href="https://github.com/SuKem0703/" target="_blank" rel="noopener noreferrer me" title="Github">
-                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round">
-    <path
-        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-    </path>
-</svg></span>
-            </a>
-            <a href="https://www.facebook.com/binh.nguyen.250862" target="_blank" rel="noopener noreferrer me" title="Facebook">
-                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round">
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-</svg></span>
-            </a>
-            <a href="https://www.youtube.com/@Sheeppp" target="_blank" rel="noopener noreferrer me" title="Youtube">
-                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round">
-    <path
-        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
-    </path>
-    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
-</svg></span>
-            </a>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Bài viết liên quan</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/courses/bai-2-ham-functions-va-co-che-xu-ly-su-kien/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bài 2: Hàm (Functions) và Cơ chế Xử lý sự kiện</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/courses/bai-3-xu-ly-bat-dong-bo-tu-promise-den-async-await/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bài 3: Xử lý Bất đồng bộ - Từ Promise đến Async/Await</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/courses/00-lo-trinh-do-an/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Lộ trình thực hiện đồ án: Java &amp; JavaScript</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2025 BNGroup - All Rights Reserved
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
         </div>
 
-        <span>
-            © 2025 BNGroup - All Rights Reserved
-        </span>
-    </footer></body>
+        
+        <div class="pswp__ui pswp__ui--hidden">
 
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+    
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.beeb916e67561f61cdd00315afc11f937d198bb9938b229d4dddb26e80084bab.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

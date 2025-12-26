@@ -1,20 +1,158 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Input/Output on BNGroup</title>
-    <link>http://localhost:1313/tags/input/output/</link>
-    <description>Recent content in Input/Output on BNGroup</description>
-    <generator>Hugo -- 0.153.1</generator>
-    <language>vi</language>
-    <copyright>2025 BNGroup - All Rights Reserved</copyright>
-    <lastBuildDate>Sun, 21 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/input/output/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Bài 5: Java I/O Streams - Quản lý luồng nhập xuất</title>
-      <link>http://localhost:1313/courses/bai-5-java-i-o-streams-quan-ly-luong-nhap-xuat/</link>
-      <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/courses/bai-5-java-i-o-streams-quan-ly-luong-nhap-xuat/</guid>
-      <description>Tìm hiểu kiến trúc I/O trong Java: Phân biệt Byte Stream và Character Stream, kỹ thuật Buffered để tối ưu hiệu suất và ứng dụng của chúng trong truyền tải dữ liệu mạng.</description>
-    </item>
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Input/Output on BNGroup</title>
+        <link>http://localhost:1313/tags/input/output/</link>
+        <description>Recent content in Input/Output on BNGroup</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>vi</language>
+        <copyright>BNGroup - All Rights Reserved</copyright>
+        <lastBuildDate>Sun, 21 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/input/output/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Bài 5: Java I/O Streams - Quản lý luồng nhập xuất</title>
+        <link>http://localhost:1313/courses/bai-5-java-i-o-streams-quan-ly-luong-nhap-xuat/</link>
+        <pubDate>Sun, 21 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/courses/bai-5-java-i-o-streams-quan-ly-luong-nhap-xuat/</guid>
+        <description>&lt;p&gt;Trong lập trình mạng, bản chất của việc giao tiếp giữa Client và Server chính là quá trình Nhập (Input) và Xuất (Output) dữ liệu. Dù dữ liệu đó là một tin nhắn văn bản, một bức ảnh hay một video, chúng đều phải được chuyển thành dòng dữ liệu (Stream) để di chuyển qua dây dẫn mạng.&lt;/p&gt;
+&lt;p&gt;Java cung cấp gói thư viện &lt;code&gt;java.io&lt;/code&gt; rất mạnh mẽ để xử lý vấn đề này. Nếu bạn đến từ C#, bạn sẽ thấy sự tương đồng giữa &lt;code&gt;System.IO&lt;/code&gt; của .NET và &lt;code&gt;java.io&lt;/code&gt; của Java.&lt;/p&gt;
+&lt;h2 id=&#34;1-khái-niệm-về-stream-luồng&#34;&gt;1. Khái niệm về Stream (Luồng)
+&lt;/h2&gt;&lt;p&gt;Stream là một khái niệm trừu tượng biểu diễn một dòng dữ liệu chảy từ nguồn (Source) đến đích (Destination).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;InputStream (Luồng nhập):&lt;/strong&gt; Dùng để đọc dữ liệu từ nguồn (bàn phím, file, mạng) vào chương trình.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OutputStream (Luồng xuất):&lt;/strong&gt; Dùng để ghi dữ liệu từ chương trình ra đích (màn hình, file, mạng).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Nguyên tắc vàng: Stream trong Java hoạt động theo cơ chế tuần tự (FIFO - First In First Out). Bạn đọc byte số 1, sau đó mới đến byte số 2, không thể nhảy cóc ngẫu nhiên (trừ khi dùng &lt;code&gt;RandomAccessFile&lt;/code&gt;).&lt;/p&gt;
+&lt;h2 id=&#34;2-phân-loại-stream-byte-vs-character&#34;&gt;2. Phân loại Stream: Byte vs Character
+&lt;/h2&gt;&lt;p&gt;Đây là sự phân biệt quan trọng nhất mà mọi lập trình viên Java cần nắm vững để tránh lỗi hiển thị ký tự (font lỗi).&lt;/p&gt;
+&lt;h3 id=&#34;21-byte-stream-luồng-byte&#34;&gt;2.1. Byte Stream (Luồng Byte)
+&lt;/h3&gt;&lt;p&gt;Byte Stream làm việc với dữ liệu thô dạng nhị phân, xử lý từng byte (8-bit) một.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Lớp cha:&lt;/strong&gt; &lt;code&gt;InputStream&lt;/code&gt; và &lt;code&gt;OutputStream&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Các lớp cài đặt phổ biến:&lt;/strong&gt; &lt;code&gt;FileInputStream&lt;/code&gt;, &lt;code&gt;FileOutputStream&lt;/code&gt;, &lt;code&gt;BufferedInputStream&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ứng dụng:&lt;/strong&gt; Dùng để xử lý các dữ liệu không phải văn bản như: Hình ảnh (PNG, JPG), Video (MP4), File âm thanh, hoặc File thực thi (.exe).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Nếu bạn dùng Byte Stream để đọc file văn bản tiếng Việt có dấu, khả năng cao sẽ bị lỗi font vì một ký tự UTF-8 có thể tốn 2-3 byte, việc đọc từng byte rời rạc sẽ làm gãy mã ký tự.&lt;/p&gt;
+&lt;h3 id=&#34;22-character-stream-luồng-ký-tự&#34;&gt;2.2. Character Stream (Luồng Ký tự)
+&lt;/h3&gt;&lt;p&gt;Character Stream được thiết kế để xử lý văn bản, tự động chuyển đổi các byte thành ký tự (16-bit Unicode) dựa trên bảng mã (encoding) của hệ thống.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Lớp cha:&lt;/strong&gt; &lt;code&gt;Reader&lt;/code&gt; và &lt;code&gt;Writer&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Các lớp cài đặt phổ biến:&lt;/strong&gt; &lt;code&gt;FileReader&lt;/code&gt;, &lt;code&gt;FileWriter&lt;/code&gt;, &lt;code&gt;BufferedReader&lt;/code&gt;, &lt;code&gt;PrintWriter&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ứng dụng:&lt;/strong&gt; Chuyên dùng để đọc/ghi file text, log file, hoặc tin nhắn chat.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;23-bảng-so-sánh&#34;&gt;2.3. Bảng so sánh
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Đặc điểm&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Byte Stream&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Character Stream&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Đơn vị xử lý&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;1 byte (8-bit)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;1 char (16-bit Unicode)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Lớp gốc&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;InputStream / OutputStream&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Reader / Writer&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Dữ liệu phù hợp&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Binary (Ảnh, Nhạc, Video)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Text (Văn bản, JSON, XML)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;strong&gt;Ví dụ&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;FileInputStream&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;FileReader&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;3-kỹ-thuật-buffered-bộ-đệm&#34;&gt;3. Kỹ thuật Buffered (Bộ đệm)
+&lt;/h2&gt;&lt;p&gt;Trong thực tế, việc đọc/ghi từng byte trực tiếp vào ổ cứng hoặc card mạng là cực kỳ tốn kém về hiệu năng (do chi phí gọi hệ thống - system calls).&lt;/p&gt;
+&lt;p&gt;Để giải quyết, Java cung cấp các lớp Wrapper có chức năng đệm: &lt;code&gt;BufferedInputStream&lt;/code&gt;, &lt;code&gt;BufferedOutputStream&lt;/code&gt;, &lt;code&gt;BufferedReader&lt;/code&gt;, &lt;code&gt;BufferedWriter&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cơ chế hoạt động:&lt;/strong&gt;
+Thay vì ghi từng byte ngay lập tức, Buffered Stream sẽ gom dữ liệu vào một mảng bộ nhớ đệm (buffer array, mặc định thường là 8KB). Khi bộ đệm đầy (hoặc khi gọi lệnh &lt;code&gt;flush()&lt;/code&gt;), nó mới thực hiện ghi một lần xuống thiết bị vật lý. Điều này giúp giảm số lần truy xuất I/O, tăng tốc độ chương trình lên hàng trăm lần.&lt;/p&gt;
+&lt;h2 id=&#34;4-cầu-nối-inputstreamreader-và-outputstreamwriter&#34;&gt;4. Cầu nối: InputStreamReader và OutputStreamWriter
+&lt;/h2&gt;&lt;p&gt;Trong lập trình Socket (mà chúng ta sẽ học ở Bài 6), luồng dữ liệu nhận được từ mạng luôn là &lt;strong&gt;Byte Stream&lt;/strong&gt; (&lt;code&gt;socket.getInputStream()&lt;/code&gt;). Để xử lý tin nhắn chat (văn bản), chúng ta cần chuyển đổi nó sang &lt;strong&gt;Character Stream&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Lớp &lt;code&gt;InputStreamReader&lt;/code&gt; đóng vai trò là cầu nối: Nó đọc các byte và giải mã chúng thành ký tự.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mô hình wrapper thường thấy trong lập trình mạng:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 1. Lấy luồng byte từ Socket&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;InputStream is &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; socket.&lt;span style=&#34;color:#a6e22e&#34;&gt;getInputStream&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 2. Chuyển đổi sang luồng ký tự (Bridge)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;InputStreamReader isr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; InputStreamReader(is, StandardCharsets.&lt;span style=&#34;color:#a6e22e&#34;&gt;UTF_8&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 3. Đưa vào bộ đệm để đọc từng dòng (Performance)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;BufferedReader reader &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; BufferedReader(isr);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 4. Đọc dữ liệu&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;String message &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; reader.&lt;span style=&#34;color:#a6e22e&#34;&gt;readLine&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;5-ví-dụ-thực-hành&#34;&gt;5. Ví dụ thực hành
+&lt;/h2&gt;&lt;h3 id=&#34;51-copy-file-dùng-byte-stream-buffered&#34;&gt;5.1. Copy file dùng Byte Stream (Buffered)
+&lt;/h3&gt;&lt;p&gt;Đoạn code này có thể copy bất kỳ loại file nào (ảnh, nhạc, text).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.io.*;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;FileCopyDemo&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// Sử dụng try-with-resources để tự động đóng stream (Java 7+)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            BufferedInputStream bis &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; BufferedInputStream(&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; FileInputStream(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;source.jpg&amp;#34;&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            BufferedOutputStream bos &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; BufferedOutputStream(&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; FileOutputStream(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dest.jpg&amp;#34;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;byte&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; buffer &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;byte&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;1024&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;// Đọc mỗi lần 1KB&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; bytesRead;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; ((bytesRead &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; bis.&lt;span style=&#34;color:#a6e22e&#34;&gt;read&lt;/span&gt;(buffer)) &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;1) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                bos.&lt;span style=&#34;color:#a6e22e&#34;&gt;write&lt;/span&gt;(buffer, 0, bytesRead);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Copy file thành công!&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (IOException e) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            e.&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;52-đọc-ghi-văn-bản-dùng-character-stream&#34;&gt;5.2. Đọc ghi văn bản dùng Character Stream
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.io.*;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;TextReadWriteDemo&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            BufferedReader reader &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; BufferedReader(&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; FileReader(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;input.txt&amp;#34;&lt;/span&gt;));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            BufferedWriter writer &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; BufferedWriter(&lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; FileWriter(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;output.txt&amp;#34;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            String line;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// Đọc từng dòng cho đến hết file&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; ((line &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; reader.&lt;span style=&#34;color:#a6e22e&#34;&gt;readLine&lt;/span&gt;()) &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Đọc được: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; line);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                writer.&lt;span style=&#34;color:#a6e22e&#34;&gt;write&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Copy: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; line);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                writer.&lt;span style=&#34;color:#a6e22e&#34;&gt;newLine&lt;/span&gt;(); &lt;span style=&#34;color:#75715e&#34;&gt;// Xuống dòng&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (IOException e) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            e.&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;6-kết-luận-và-liên-hệ-lập-trình-mạng&#34;&gt;6. Kết luận và Liên hệ Lập trình mạng
+&lt;/h2&gt;&lt;p&gt;Kiến thức về I/O Stream là nền móng bắt buộc. Khi làm việc với mạng (Network Programming):&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Socket&lt;/strong&gt; chỉ cung cấp hai luồng cơ bản: &lt;code&gt;InputStream&lt;/code&gt; và &lt;code&gt;OutputStream&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Bạn phải tự quyết định bọc (wrap) chúng thành &lt;code&gt;DataInputStream&lt;/code&gt; (nếu gửi dữ liệu nguyên thủy như int, float), &lt;code&gt;ObjectInputStream&lt;/code&gt; (nếu gửi đối tượng Java) hay &lt;code&gt;BufferedReader&lt;/code&gt; (nếu gửi văn bản chat).&lt;/li&gt;
+&lt;li&gt;Luôn nhớ &lt;strong&gt;flush()&lt;/strong&gt; dữ liệu khi gửi qua mạng để đảm bảo gói tin được đẩy đi ngay lập tức.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Trong bài tiếp theo, chúng ta sẽ áp dụng trực tiếp các kiến thức này để xây dựng một chương trình Chat Client-Server bằng giao thức TCP.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tài-liệu-tham-khảo&#34;&gt;Tài liệu tham khảo
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Oracle Java Documentation. &amp;ldquo;Basic I/O&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;GeeksforGeeks. &amp;ldquo;Difference between Byte Stream and Character Stream Class in Java&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Baeldung. &amp;ldquo;Java InputStreamReader and OutputStreamWriter&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Giáo trình Lập trình mạng - Hutech.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

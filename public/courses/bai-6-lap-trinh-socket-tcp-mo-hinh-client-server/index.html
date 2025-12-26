@@ -1,179 +1,367 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
+<html lang="vi" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Hướng dẫn lập trình mạng cơ bản với giao thức TCP trong Java. Tìm hiểu về ServerSocket, Socket và quy trình bắt tay 3 bước để xây dựng ứng dụng Chat Client-Server.">
+<title>Bài 6: Lập trình Socket TCP - Xây dựng ứng dụng Chat</title>
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>Bài 6: Lập trình Socket TCP - Xây dựng ứng dụng Chat | BNGroup</title>
-<meta name="keywords" content="Java, Socket, TCP, Client-Server">
-<meta name="description" content="Hướng dẫn lập trình mạng cơ bản với giao thức TCP trong Java. Tìm hiểu về ServerSocket, Socket và quy trình bắt tay 3 bước để xây dựng ứng dụng Chat Client-Server.">
-<meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/courses/bai-6-lap-trinh-socket-tcp-mo-hinh-client-server/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.fd5566c526ae48aadabd950798a2dc3568536401560eae5caac3765a42a9e7b5.css" integrity="sha256-/VVmxSauSKravZUHmKLcNWhTZAFWDq5cqsN2WkKp57U=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/courses/bai-6-lap-trinh-socket-tcp-mo-hinh-client-server/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
+<link rel='canonical' href='http://localhost:1313/courses/bai-6-lap-trinh-socket-tcp-mo-hinh-client-server/'>
+
+<link rel="stylesheet" href="/scss/style.min.efb84b7384d449b8bb667de8fcc2113386cb527d95f5315ce406021beb8040f3.css"><meta property='og:title' content="Bài 6: Lập trình Socket TCP - Xây dựng ứng dụng Chat">
+<meta property='og:description' content="Hướng dẫn lập trình mạng cơ bản với giao thức TCP trong Java. Tìm hiểu về ServerSocket, Socket và quy trình bắt tay 3 bước để xây dựng ứng dụng Chat Client-Server.">
+<meta property='og:url' content='http://localhost:1313/courses/bai-6-lap-trinh-socket-tcp-mo-hinh-client-server/'>
+<meta property='og:site_name' content='BNGroup'>
+<meta property='og:type' content='article'><meta property='article:section' content='Courses' /><meta property='article:tag' content='Java' /><meta property='article:tag' content='Socket' /><meta property='article:tag' content='TCP' /><meta property='article:tag' content='Client-Server' /><meta property='article:published_time' content='2025-12-21T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-12-21T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Bài 6: Lập trình Socket TCP - Xây dựng ứng dụng Chat">
+<meta name="twitter:description" content="Hướng dẫn lập trình mạng cơ bản với giao thức TCP trong Java. Tìm hiểu về ServerSocket, Socket và quy trình bắt tay 3 bước để xây dựng ứng dụng Chat Client-Server.">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
         }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
-    }
-
+    })();
 </script>
-</head>
-<body id="top">
-    <header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="BNGroup (Alt + H)">BNGroup</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Hiển thị Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    <img src="/portrait/BuiBinhNguyen.png" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
+                
+                </a>
+                
+                    <span class="emoji">👑</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">BNGroup</a></h1>
+            <h2 class="site-description">Code • Guitar • Game • Business</h2>
         </div>
-        <ul id="menu">
-            <li>
-                <a href="http://localhost:1313/" title="Trang Chủ">
-                    <span>Trang Chủ</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/projects/chronicles-of-knight-and-mage/" title="Dự Án (Projects)">
-                    <span>Dự Án (Projects)</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/courses/" title="Khóa Học (LTM)">
-                    <span>Khóa Học (LTM)</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/posts/" title="Blog Cá Nhân">
-                    <span>Blog Cá Nhân</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/about/" title="Về Tôi (Profile)">
-                    <span>Về Tôi (Profile)</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main">
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://www.youtube.com/@Sheeppp'
+                        target="_blank"
+                        title="YouTube"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
 
-<article class="post-single">
-  <header class="post-header">
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.facebook.com/binh.nguyen.250862'
+                        target="_blank"
+                        title="Facebook"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/SuKem0703/'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                <span>Trang Chủ</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/projects/chronicles-of-knight-and-mage/' >
+                
+                
+                
+                <span>Dự Án</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/courses/' >
+                
+                
+                
+                <span>Khóa Học (LTM)</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/posts/' >
+                
+                
+                
+                <span>Blog</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                <span>Về Tôi</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Chế độ nền tối</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Mục lục</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-tổng-quan-về-giao-thức-tcp">1. Tổng quan về Giao thức TCP</a>
+      <ul>
+        <li><a href="#11-tcp-là-gì">1.1. TCP là gì?</a></li>
+        <li><a href="#12-đặc-điểm-cốt-lõi">1.2. Đặc điểm cốt lõi</a></li>
+        <li><a href="#13-mô-hình-client-server">1.3. Mô hình Client-Server</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-các-lớp-java-hỗ-trợ-tcp-socket">2. Các lớp Java hỗ trợ TCP Socket</a>
+      <ul>
+        <li><a href="#21-lớp-javanetserversocket">2.1. Lớp <code>java.net.ServerSocket</code></a></li>
+        <li><a href="#22-lớp-javanetsocket">2.2. Lớp <code>java.net.Socket</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#3-quy-trình-hoạt-động-workflow">3. Quy trình hoạt động (Workflow)</a></li>
+    <li><a href="#4-demo-ứng-dụng-console-chat-1-1">4. Demo: Ứng dụng Console Chat (1-1)</a>
+      <ul>
+        <li><a href="#41-mã-nguồn-server-simpleserverjava">4.1. Mã nguồn Server (SimpleServer.java)</a></li>
+        <li><a href="#42-mã-nguồn-client-simpleclientjava">4.2. Mã nguồn Client (SimpleClient.java)</a></li>
+        <li><a href="#43-cách-chạy-chương-trình">4.3. Cách chạy chương trình</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-các-lưu-ý-quan-trọng">5. Các lưu ý quan trọng</a></li>
+    <li><a href="#6-kết-luận">6. Kết luận</a></li>
+    <li><a href="#tài-liệu-tham-khảo">Tài liệu tham khảo</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
     
-    <h1 class="post-title entry-hint-parent">
-      Bài 6: Lập trình Socket TCP - Xây dựng ứng dụng Chat
-    </h1>
-    <div class="post-meta"><span title='2025-12-21 00:00:00 +0000 UTC'>December 21, 2025</span>&nbsp;·&nbsp;<span>6 phút</span>
 
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/courses/bai-6-lap-trinh-socket-tcp-mo-hinh-client-server/">Bài 6: Lập trình Socket TCP - Xây dựng ứng dụng Chat</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2025-12-21T00:00:00Z'>21/12/2025</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 phút đọc
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
 </div>
-  </header> 
-  <div class="post-content"><p>Trong các bài trước, chúng ta đã chuẩn bị đầy đủ hành trang: hiểu về biến/hàm (JS), cơ chế bất đồng bộ, và cách quản lý luồng dữ liệu (Java I/O). Hôm nay, chúng ta sẽ ghép nối tất cả để xây dựng ứng dụng mạng đầu tiên sử dụng giao thức TCP.</p>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>Trong các bài trước, chúng ta đã chuẩn bị đầy đủ hành trang: hiểu về biến/hàm (JS), cơ chế bất đồng bộ, và cách quản lý luồng dữ liệu (Java I/O). Hôm nay, chúng ta sẽ ghép nối tất cả để xây dựng ứng dụng mạng đầu tiên sử dụng giao thức TCP.</p>
 <p>Đây là bài học quan trọng nhất, vì 90% các ứng dụng mạng bạn sử dụng hàng ngày (Web, Email, File Transfer) đều chạy trên nền tảng TCP.</p>
-<h2 id="1-tổng-quan-về-giao-thức-tcp">1. Tổng quan về Giao thức TCP<a hidden class="anchor" aria-hidden="true" href="#1-tổng-quan-về-giao-thức-tcp">#</a></h2>
-<h3 id="11-tcp-là-gì">1.1. TCP là gì?<a hidden class="anchor" aria-hidden="true" href="#11-tcp-là-gì">#</a></h3>
-<p>TCP (Transmission Control Protocol) là giao thức hướng kết nối (connection-oriented). Trước khi hai máy tính có thể trao đổi dữ liệu, chúng phải thiết lập một &ldquo;đường ống&rdquo; ảo thông qua quy trình <strong>Bắt tay 3 bước (3-way Handshake)</strong>.</p>
-<h3 id="12-đặc-điểm-cốt-lõi">1.2. Đặc điểm cốt lõi<a hidden class="anchor" aria-hidden="true" href="#12-đặc-điểm-cốt-lõi">#</a></h3>
-<ol>
+<h2 id="1-tổng-quan-về-giao-thức-tcp">1. Tổng quan về Giao thức TCP
+</h2><h3 id="11-tcp-là-gì">1.1. TCP là gì?
+</h3><p>TCP (Transmission Control Protocol) là giao thức hướng kết nối (connection-oriented). Trước khi hai máy tính có thể trao đổi dữ liệu, chúng phải thiết lập một &ldquo;đường ống&rdquo; ảo thông qua quy trình <strong>Bắt tay 3 bước (3-way Handshake)</strong>.</p>
+<h3 id="12-đặc-điểm-cốt-lõi">1.2. Đặc điểm cốt lõi
+</h3><ol>
 <li><strong>Tin cậy (Reliable):</strong> TCP đảm bảo gói tin gửi đi chắc chắn đến đích. Nếu gói tin bị mất trên đường truyền, TCP sẽ tự động gửi lại (retransmission).</li>
 <li><strong>Có thứ tự (Ordered):</strong> Nếu bạn gửi A rồi gửi B, bên nhận chắc chắn sẽ nhận A trước rồi mới đến B.</li>
 <li><strong>Luồng dữ liệu (Byte Stream):</strong> TCP không giới hạn kích thước gói tin, dữ liệu được truyền đi như một dòng chảy liên tục (Stream).</li>
 </ol>
-<h3 id="13-mô-hình-client-server">1.3. Mô hình Client-Server<a hidden class="anchor" aria-hidden="true" href="#13-mô-hình-client-server">#</a></h3>
-<ul>
+<h3 id="13-mô-hình-client-server">1.3. Mô hình Client-Server
+</h3><ul>
 <li><strong>Server (Máy chủ):</strong> Đóng vai trò thụ động. Nó mở một cổng (Port) và lắng nghe, chờ đợi ai đó kết nối đến.</li>
 <li><strong>Client (Máy khách):</strong> Đóng vai trò chủ động. Nó biết địa chỉ IP và Port của Server để khởi tạo kết nối.</li>
 </ul>
-<h2 id="2-các-lớp-java-hỗ-trợ-tcp-socket">2. Các lớp Java hỗ trợ TCP Socket<a hidden class="anchor" aria-hidden="true" href="#2-các-lớp-java-hỗ-trợ-tcp-socket">#</a></h2>
-<p>Java cung cấp gói <code>java.net</code> để làm việc với tầng giao vận này.</p>
-<h3 id="21-lớp-javanetserversocket">2.1. Lớp <code>java.net.ServerSocket</code><a hidden class="anchor" aria-hidden="true" href="#21-lớp-javanetserversocket">#</a></h3>
-<p>Lớp này chỉ được sử dụng ở phía <strong>Server</strong>. Nhiệm vụ duy nhất của nó là chờ đợi các yêu cầu kết nối từ Client.</p>
+<h2 id="2-các-lớp-java-hỗ-trợ-tcp-socket">2. Các lớp Java hỗ trợ TCP Socket
+</h2><p>Java cung cấp gói <code>java.net</code> để làm việc với tầng giao vận này.</p>
+<h3 id="21-lớp-javanetserversocket">2.1. Lớp <code>java.net.ServerSocket</code>
+</h3><p>Lớp này chỉ được sử dụng ở phía <strong>Server</strong>. Nhiệm vụ duy nhất của nó là chờ đợi các yêu cầu kết nối từ Client.</p>
 <ul>
 <li><code>ServerSocket(int port)</code>: Tạo server lắng nghe tại port chỉ định.</li>
 <li><code>Socket accept()</code>: Phương thức quan trọng nhất. Khi gọi lệnh này, chương trình sẽ <strong>dừng lại (block)</strong> và chờ cho đến khi có một Client kết nối đến. Khi có kết nối, nó trả về một đối tượng <code>Socket</code> để giao tiếp với Client đó.</li>
 </ul>
-<h3 id="22-lớp-javanetsocket">2.2. Lớp <code>java.net.Socket</code><a hidden class="anchor" aria-hidden="true" href="#22-lớp-javanetsocket">#</a></h3>
-<p>Lớp này được sử dụng ở cả hai phía (nhưng thường được khởi tạo chủ động từ phía Client). Nó đại diện cho một đầu mối kết nối (endpoint).</p>
+<h3 id="22-lớp-javanetsocket">2.2. Lớp <code>java.net.Socket</code>
+</h3><p>Lớp này được sử dụng ở cả hai phía (nhưng thường được khởi tạo chủ động từ phía Client). Nó đại diện cho một đầu mối kết nối (endpoint).</p>
 <ul>
 <li><code>Socket(String host, int port)</code>: Tạo socket và thử kết nối đến Server tại địa chỉ host:port.</li>
 <li><code>getInputStream()</code>: Lấy luồng nhập để đọc dữ liệu đối phương gửi sang.</li>
 <li><code>getOutputStream()</code>: Lấy luồng xuất để gửi dữ liệu sang đối phương.</li>
 </ul>
-<h2 id="3-quy-trình-hoạt-động-workflow">3. Quy trình hoạt động (Workflow)<a hidden class="anchor" aria-hidden="true" href="#3-quy-trình-hoạt-động-workflow">#</a></h2>
-<p>Để xây dựng một ứng dụng chat đơn giản, quy trình diễn ra như sau:</p>
+<h2 id="3-quy-trình-hoạt-động-workflow">3. Quy trình hoạt động (Workflow)
+</h2><p>Để xây dựng một ứng dụng chat đơn giản, quy trình diễn ra như sau:</p>
 <ol>
 <li><strong>Server:</strong> Khởi tạo <code>ServerSocket</code> tại port 5000.</li>
 <li><strong>Server:</strong> Gọi <code>accept()</code> và đi vào trạng thái chờ (Listening).</li>
@@ -187,10 +375,10 @@
 </li>
 <li><strong>Đóng kết nối:</strong> Gọi <code>close()</code> để giải phóng tài nguyên.</li>
 </ol>
-<h2 id="4-demo-ứng-dụng-console-chat-1-1">4. Demo: Ứng dụng Console Chat (1-1)<a hidden class="anchor" aria-hidden="true" href="#4-demo-ứng-dụng-console-chat-1-1">#</a></h2>
-<p>Chúng ta sẽ viết hai chương trình riêng biệt: <code>SimpleServer.java</code> và <code>SimpleClient.java</code>.</p>
-<h3 id="41-mã-nguồn-server-simpleserverjava">4.1. Mã nguồn Server (SimpleServer.java)<a hidden class="anchor" aria-hidden="true" href="#41-mã-nguồn-server-simpleserverjava">#</a></h3>
-<p>Server này sẽ lắng nghe ở cổng 5000. Khi Client kết nối, nó sẽ cho phép chat qua lại trên màn hình Console.</p>
+<h2 id="4-demo-ứng-dụng-console-chat-1-1">4. Demo: Ứng dụng Console Chat (1-1)
+</h2><p>Chúng ta sẽ viết hai chương trình riêng biệt: <code>SimpleServer.java</code> và <code>SimpleClient.java</code>.</p>
+<h3 id="41-mã-nguồn-server-simpleserverjava">4.1. Mã nguồn Server (SimpleServer.java)
+</h3><p>Server này sẽ lắng nghe ở cổng 5000. Khi Client kết nối, nó sẽ cho phép chat qua lại trên màn hình Console.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.*;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.*;
 </span></span><span style="display:flex;"><span>
@@ -228,8 +416,8 @@
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="42-mã-nguồn-client-simpleclientjava">4.2. Mã nguồn Client (SimpleClient.java)<a hidden class="anchor" aria-hidden="true" href="#42-mã-nguồn-client-simpleclientjava">#</a></h3>
-<p>Client kết nối đến <code>localhost</code> (chính máy hiện tại) cổng 5000.</p>
+</span></span></code></pre></div><h3 id="42-mã-nguồn-client-simpleclientjava">4.2. Mã nguồn Client (SimpleClient.java)
+</h3><p>Client kết nối đến <code>localhost</code> (chính máy hiện tại) cổng 5000.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.*;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.*;
 </span></span><span style="display:flex;"><span>
@@ -264,8 +452,8 @@
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="43-cách-chạy-chương-trình">4.3. Cách chạy chương trình<a hidden class="anchor" aria-hidden="true" href="#43-cách-chạy-chương-trình">#</a></h3>
-<p>Để kiểm thử ứng dụng này, bạn cần mở 2 cửa sổ Terminal (hoặc CMD):</p>
+</span></span></code></pre></div><h3 id="43-cách-chạy-chương-trình">4.3. Cách chạy chương trình
+</h3><p>Để kiểm thử ứng dụng này, bạn cần mở 2 cửa sổ Terminal (hoặc CMD):</p>
 <ol>
 <li><strong>Terminal 1 (Chạy Server trước):</strong>
 <ul>
@@ -290,66 +478,208 @@
 </ul>
 </li>
 </ol>
-<h2 id="5-các-lưu-ý-quan-trọng">5. Các lưu ý quan trọng<a hidden class="anchor" aria-hidden="true" href="#5-các-lưu-ý-quan-trọng">#</a></h2>
-<ol>
+<h2 id="5-các-lưu-ý-quan-trọng">5. Các lưu ý quan trọng
+</h2><ol>
 <li><strong>Cổng (Port):</strong> Port 0-1023 là cổng hệ thống (well-known ports). Nên dùng port từ 1024 trở lên (ví dụ 3000, 5000, 8080) để tránh xung đột quyền hạn.</li>
 <li><strong>Firewall (Tường lửa):</strong> Nếu bạn chạy Server và Client trên 2 máy khác nhau, Tường lửa của máy Server có thể chặn kết nối. Cần mở port hoặc tắt firewall tạm thời.</li>
 <li><strong>Blocking I/O:</strong> Trong ví dụ trên, khi gọi <code>in.readLine()</code>, chương trình sẽ dừng lại chờ dữ liệu. Điều này dẫn đến việc Server chỉ có thể phục vụ 1 Client tại một thời điểm và phải đợi Client nói xong mới được trả lời (Chat kiểu bộ đàm). Để chat song song (Full-duplex) và phục vụ nhiều người, ta cần dùng <strong>Đa luồng (Multithreading)</strong> sẽ học ở Bài 8.</li>
 </ol>
-<h2 id="6-kết-luận">6. Kết luận<a hidden class="anchor" aria-hidden="true" href="#6-kết-luận">#</a></h2>
-<p>Chúng ta đã xây dựng thành công &ldquo;xương sống&rdquo; của một ứng dụng mạng. Mô hình Client-Server dùng Socket TCP đảm bảo dữ liệu truyền đi an toàn và chính xác.
+<h2 id="6-kết-luận">6. Kết luận
+</h2><p>Chúng ta đã xây dựng thành công &ldquo;xương sống&rdquo; của một ứng dụng mạng. Mô hình Client-Server dùng Socket TCP đảm bảo dữ liệu truyền đi an toàn và chính xác.
 Tuy nhiên, TCP có nhược điểm là tốc độ chậm hơn do quá trình kiểm tra lỗi và thiết lập kết nối chặt chẽ. Ở bài tiếp theo, chúng ta sẽ tìm hiểu về UDP - người anh em nhanh nhẹn nhưng &ldquo;ẩu&rdquo; hơn của TCP.</p>
 <hr>
-<h2 id="tài-liệu-tham-khảo">Tài liệu tham khảo<a hidden class="anchor" aria-hidden="true" href="#tài-liệu-tham-khảo">#</a></h2>
-<ol>
+<h2 id="tài-liệu-tham-khảo">Tài liệu tham khảo
+</h2><ol>
 <li>Oracle Java Docs. &ldquo;Socket Programming&rdquo;.</li>
 <li>GeeksforGeeks. &ldquo;Socket Programming in Java&rdquo;.</li>
 <li>Giáo trình Lập trình mạng - Hutech.</li>
 </ol>
 
+</section>
 
-  </div>
 
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/java/">Java</a></li>
-      <li><a href="http://localhost:1313/tags/socket/">Socket</a></li>
-      <li><a href="http://localhost:1313/tags/tcp/">TCP</a></li>
-      <li><a href="http://localhost:1313/tags/client-server/">Client-Server</a></li>
-    </ul>
-  </footer>
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/java/">Java</a>
+        
+            <a href="/tags/socket/">Socket</a>
+        
+            <a href="/tags/tcp/">TCP</a>
+        
+            <a href="/tags/client-server/">Client-Server</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
 </article>
-    </main>
-     <footer class="footer">
-        <div class="social-icons" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 15px;">
-            <a href="https://github.com/SuKem0703/" target="_blank" rel="noopener noreferrer me" title="Github">
-                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round">
-    <path
-        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-    </path>
-</svg></span>
-            </a>
-            <a href="https://www.facebook.com/binh.nguyen.250862" target="_blank" rel="noopener noreferrer me" title="Facebook">
-                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round">
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-</svg></span>
-            </a>
-            <a href="https://www.youtube.com/@Sheeppp" target="_blank" rel="noopener noreferrer me" title="Youtube">
-                <span style="display: inline-block; width: 24px; height: 24px; fill: currentColor; transition: transform 0.2s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round">
-    <path
-        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
-    </path>
-    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
-</svg></span>
-            </a>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Bài viết liên quan</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/courses/bai-5-java-i-o-streams-quan-ly-luong-nhap-xuat/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bài 5: Java I/O Streams - Quản lý luồng nhập xuất</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/courses/00-lo-trinh-do-an/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Lộ trình thực hiện đồ án: Java &amp; JavaScript</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;
+        
+        2025 BNGroup - All Rights Reserved
+    </section>
+</footer>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
         </div>
 
-        <span>
-            © 2025 BNGroup - All Rights Reserved
-        </span>
-    </footer></body>
+        
+        <div class="pswp__ui pswp__ui--hidden">
 
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+    
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.beeb916e67561f61cdd00315afc11f937d198bb9938b229d4dddb26e80084bab.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>
