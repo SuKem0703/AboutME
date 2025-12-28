@@ -81,6 +81,12 @@ copyright = "BNGroup - All Rights Reserved"
     url = "/about/"
     weight = 40
 
+  [[menu.main]]
+    identifier = "cv"
+    name = "CV"
+    url = "/cv/"
+    weight = 40
+
   [[menu.social]]
     name = "GitHub"
     url = "https://github.com/SuKem0703/"

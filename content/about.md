@@ -7,7 +7,7 @@ summary: "Giới thiệu về Bùi Bình Nguyên - Sinh viên CNTT và hành tr�
 ---
 
 <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-<img src="/portrait/BuiBinhNguyen.png" alt="Bùi Bình Nguyên" style="width: 250px; height: auto; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); margin-bottom: 15px;">
+<img src="/portrait/BuiBinhNguyen_1.png" alt="Bùi Bình Nguyên" style="width: 250px; height: auto; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); margin-bottom: 15px;">
 <em style="opacity: 0.8; font-size: 0.95rem;">"Kiến tạo thế giới ảo bằng thuật toán, làm giàu giá trị thật bằng trải nghiệm."</em>
 </div>
 

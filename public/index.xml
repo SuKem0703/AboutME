@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>vi</language>
         <copyright>BNGroup - All Rights Reserved</copyright>
-        <lastBuildDate>Fri, 26 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 28 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Chào mừng đến với BNGroup</title>
         <link>http://localhost:1313/posts/loi-chao/</link>
         <pubDate>Fri, 26 Dec 2025 00:00:00 +0000</pubDate>
@@ -1461,6 +1461,93 @@ Tuy nhiên, TCP có nhược điểm là tốc độ chậm hơn do quá trình 
 </description>
         </item>
         <item>
+        <title>CV - Bùi Bình Nguyên</title>
+        <link>http://localhost:1313/cv/</link>
+        <pubDate>Sun, 28 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/cv/</guid>
+        <description>&lt;div style=&#34;display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 40px;&#34;&gt;
+    &lt;img src=&#34;http://localhost:1313/portrait/BuiBinhNguyen.png&#34; alt=&#34;Bùi Bình Nguyên&#34; style=&#34;width: 160px; height: 160px; object-fit: cover; border-radius: 50%; border: 4px solid #e0e0e0; box-shadow: 0 6px 15px rgba(0,0,0,0.15); margin-bottom: 15px;&#34;&gt;
+    &lt;h1 style=&#34;margin: 0; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 1px;&#34;&gt;Bùi Bình Nguyên&lt;/h1&gt;
+    &lt;p style=&#34;font-size: 1.1rem; opacity: 0.8; margin: 5px 0; font-weight: 500;&#34;&gt;Software Engineer | .NET Backend &amp; Game Developer&lt;/p&gt;
+&lt;/div&gt;
+&lt;div style=&#34;text-align: center; margin-bottom: 20px;&#34;&gt;
+&lt;p&gt;TP. Hồ Chí Minh&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;mailto:anhnguyen.732004@gmail.com&#34; &gt;anhnguyen.732004@gmail.com&lt;/a&gt; | 0344 898 294 &lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://github.com/SuKem0703&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/SuKem0703&lt;/a&gt; | &lt;a class=&#34;link&#34; href=&#34;https://aboutme-gtap.onrender.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://aboutme-gtap.onrender.com/&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;mục-tiêu-nghề-nghiệp&#34;&gt;MỤC TIÊU NGHỀ NGHIỆP
+&lt;/h2&gt;&lt;p&gt;Sinh viên năm 3 chuyên ngành Công nghệ phần mềm với nền tảng tư duy lập trình vững chắc. Định hướng phát triển chuyên sâu về &lt;strong&gt;Backend (.NET Core)&lt;/strong&gt; và &lt;strong&gt;Network Programming&lt;/strong&gt;. Mong muốn tìm kiếm cơ hội thực tập/làm việc để áp dụng kiến thức về OOP, Cấu trúc dữ liệu và mô hình Client-Server vào các sản phẩm thực tế, đồng thời nuôi dưỡng đam mê phát triển Game.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;học-vấn&#34;&gt;HỌC VẤN
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;TRƯỜNG ĐẠI HỌC CÔNG NGHỆ TP.HCM - HUTECH&lt;/strong&gt; | &lt;em&gt;2022 - Nay&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Chuyên ngành:&lt;/strong&gt; Công nghệ thông tin (Công nghệ phần mềm)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lớp:&lt;/strong&gt; 22DTHE5&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GPA:&lt;/strong&gt; 2.9/4.0&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Môn học tiêu biểu:&lt;/strong&gt; Lập trình hướng đối tượng.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;kỹ-năng-chuyên-môn-technical-skills&#34;&gt;KỸ NĂNG CHUYÊN MÔN (TECHNICAL SKILLS)
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ngôn ngữ lập trình:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Thành thạo:&lt;/strong&gt; C#.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Frameworks &amp;amp; Technologies:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;.NET Core / .NET Framework.&lt;/li&gt;
+&lt;li&gt;Unity Engine (Game Development).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Network Programming:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Socket Programming (TCP/UDP).&lt;/li&gt;
+&lt;li&gt;Remote Method Invocation (RMI).&lt;/li&gt;
+&lt;li&gt;Mô hình Client-Server, Multi-threading.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Công cụ (Tools):&lt;/strong&gt; Visual Studio, VS Code, Git/GitHub.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;dự-án-tiêu-biểu-projects&#34;&gt;DỰ ÁN TIÊU BIỂU (PROJECTS)
+&lt;/h2&gt;&lt;h3 id=&#34;dự-án-game-rpg-cá-nhân-game-design&#34;&gt;Dự án Game RPG Cá nhân (Game Design)
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Vai trò:&lt;/strong&gt; Game Designer &amp;amp; Programmer.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Công nghệ:&lt;/strong&gt; Unity, C#.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mô tả:&lt;/strong&gt; Game nhập vai thế giới mở, tập trung vào trải nghiệm cốt truyện.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Các chức năng chính:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Lập trình logic nhân vật, hệ thống vật phẩm (Inventory).&lt;/li&gt;
+&lt;li&gt;Thiết kế màn chơi (Level Design) và logic va chạm.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;chứng-chỉ-certifications&#34;&gt;CHỨNG CHỈ (CERTIFICATIONS)
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Cisco Networking Academy &amp;amp; OpenEDG&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;JavaScript Essentials 2&lt;/strong&gt; | &lt;em&gt;Cấp ngày: 21/12/2025&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;JavaScript Essentials 1&lt;/strong&gt; | &lt;em&gt;Cấp ngày: 01/12/2025&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;hoạt-động--sở-thích&#34;&gt;HOẠT ĐỘNG &amp;amp; SỞ THÍCH
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tư duy sản phẩm:&lt;/strong&gt; Có kinh nghiệm và sự nhạy bén trong việc nắm bắt thị trường và tâm lý người dùng (kinh doanh cá nhân).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Nghệ thuật:&lt;/strong&gt; Chơi Guitar (Fingerstyle/Đệm hát) - Rèn luyện tính kiên nhẫn và khả năng cảm thụ.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Nghiên cứu:&lt;/strong&gt; Yêu thích đọc sách và tìm hiểu văn hóa/lịch sử.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Người tham khảo (References): Sẽ cung cấp khi có yêu cầu.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
         <title>Chronicles of Knight and Mage</title>
         <link>http://localhost:1313/projects/chronicles-of-knight-and-mage/</link>
         <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
@@ -1625,7 +1712,7 @@ Tuy nhiên, TCP có nhược điểm là tốc độ chậm hơn do quá trình 
         
         <guid>http://localhost:1313/about/</guid>
         <description>&lt;div style=&#34;display: flex; flex-direction: column; align-items: center; text-align: center;&#34;&gt;
-&lt;img src=&#34;http://localhost:1313/portrait/BuiBinhNguyen.png&#34; alt=&#34;Bùi Bình Nguyên&#34; style=&#34;width: 250px; height: auto; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); margin-bottom: 15px;&#34;&gt;
+&lt;img src=&#34;http://localhost:1313/portrait/BuiBinhNguyen_1.png&#34; alt=&#34;Bùi Bình Nguyên&#34; style=&#34;width: 250px; height: auto; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); margin-bottom: 15px;&#34;&gt;
 &lt;em style=&#34;opacity: 0.8; font-size: 0.95rem;&#34;&gt;&#34;Kiến tạo thế giới ảo bằng thuật toán, làm giàu giá trị thật bằng trải nghiệm.&#34;&lt;/em&gt;
 &lt;/div&gt;
 &lt;hr&gt;
