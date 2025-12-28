@@ -2,10 +2,10 @@
 title: "Chào mừng đến với BNGroup"
 description: "Code • Guitar • Game • Business"
 date: 2025-12-26
-image: "portrait/BuiBinhNguyen.png" # Dùng ảnh đại diện của bạn làm ảnh bìa bài này luôn
+image: "portrait/BuiBinhNguyen.png"
 weight: -1
 draft: false
-comments: false # Tắt comment ở bài chào mừng cho đẹp
+comments: false
 ---
 
 Chào mừng bạn ghé thăm **BNGroup**. Đây không chỉ là một blog kỹ thuật, mà là nơi mình lưu giữ quá trình "trưởng thành" của một **Full-Stack Developer** yêu nghệ thuật.
