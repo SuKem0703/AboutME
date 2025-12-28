@@ -2,14 +2,14 @@
 title: "Chronicles of Knight and Mage"
 date: 2025-12-25
 draft: false
-description: "Game nhập vai hành động 2D với thế giới mở, hệ thống trồng trọt và vật phẩm ngẫu nhiên."
+description: "Game nhập vai hành động 2D với thế giới mở với phong cách đồ họa pixel cổ điển, đưa người chơi đến với thế giới fantasy đầy màu sắc."
 tags: ["RPG", "Adventure", "PixelArt", "Unity"]
 showToc: true
 hidemeta: true
 ---
 
 <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 30px;">
-    <img src="/projects/images/knight-mage-cover.png" 
+    <img src="/projects/images/Elric_Idle.png" 
          alt="Chronicles of Knight and Mage" 
          style="width: 280px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.15);">
     <em style="opacity: 0.8; font-size: 0.9rem; margin-top: 10px;">

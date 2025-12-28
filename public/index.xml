@@ -8,17 +8,17 @@
         <language>vi</language>
         <copyright>BNGroup - All Rights Reserved</copyright>
         <lastBuildDate>Fri, 26 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>👋 Chào mừng đến với BNGroup</title>
+        <title>Chào mừng đến với BNGroup</title>
         <link>http://localhost:1313/posts/loi-chao/</link>
         <pubDate>Fri, 26 Dec 2025 00:00:00 +0000</pubDate>
         
         <guid>http://localhost:1313/posts/loi-chao/</guid>
-        <description>&lt;img src="http://localhost:1313/portrait/BuiBinhNguyen.png" alt="Featured image of post 👋 Chào mừng đến với BNGroup" /&gt;&lt;p&gt;Chào mừng bạn ghé thăm &lt;strong&gt;BNGroup&lt;/strong&gt;. Đây không chỉ là một blog kỹ thuật, mà là nơi mình lưu giữ quá trình &amp;ldquo;trưởng thành&amp;rdquo; của một &lt;strong&gt;Full-Stack Developer&lt;/strong&gt; yêu nghệ thuật.&lt;/p&gt;
+        <description>&lt;img src="http://localhost:1313/portrait/BuiBinhNguyen.png" alt="Featured image of post Chào mừng đến với BNGroup" /&gt;&lt;p&gt;Chào mừng bạn ghé thăm &lt;strong&gt;BNGroup&lt;/strong&gt;. Đây không chỉ là một blog kỹ thuật, mà là nơi mình lưu giữ quá trình &amp;ldquo;trưởng thành&amp;rdquo; của một &lt;strong&gt;Full-Stack Developer&lt;/strong&gt; yêu nghệ thuật.&lt;/p&gt;
 &lt;p&gt;Tại đây, bạn sẽ tìm thấy:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;💻 Code:&lt;/strong&gt; Kiến thức chuyên sâu về C#/.NET, Java và Lập trình mạng.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;🎮 Game Dev:&lt;/strong&gt; Nhật ký phát triển dự án &lt;em&gt;Chronicles of Knight and Mage&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;🎸 Guitar:&lt;/strong&gt; Những phút ngẫu hứng và góc nhìn nghệ thuật.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Code:&lt;/strong&gt; Kiến thức chuyên sâu về C#/.NET, Java và Lập trình mạng.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Game Dev:&lt;/strong&gt; Nhật ký phát triển dự án &lt;em&gt;Chronicles of Knight and Mage&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Guitar:&lt;/strong&gt; Những phút ngẫu hứng và góc nhìn nghệ thuật.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;em&gt;&amp;ldquo;Lập trình là tư duy, còn sống là nghệ thuật của sự trải nghiệm.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
@@ -1467,7 +1467,7 @@ Tuy nhiên, TCP có nhược điểm là tốc độ chậm hơn do quá trình 
         
         <guid>http://localhost:1313/projects/chronicles-of-knight-and-mage/</guid>
         <description>&lt;div style=&#34;display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 30px;&#34;&gt;
-    &lt;img src=&#34;http://localhost:1313/projects/images/knight-mage-cover.png&#34; 
+    &lt;img src=&#34;http://localhost:1313/projects/images/Elric_Idle.png&#34; 
          alt=&#34;Chronicles of Knight and Mage&#34; 
          style=&#34;width: 280px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.15);&#34;&gt;
     &lt;em style=&#34;opacity: 0.8; font-size: 0.9rem; margin-top: 10px;&#34;&gt;
@@ -1629,20 +1629,20 @@ Tuy nhiên, TCP có nhược điểm là tốc độ chậm hơn do quá trình 
 &lt;em style=&#34;opacity: 0.8; font-size: 0.95rem;&#34;&gt;&#34;Kiến tạo thế giới ảo bằng thuật toán, làm giàu giá trị thật bằng trải nghiệm.&#34;&lt;/em&gt;
 &lt;/div&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;-hồ-sơ-trích-ngang&#34;&gt;👤 Hồ sơ trích ngang
+&lt;h3 id=&#34;hồ-sơ-trích-ngang&#34;&gt;Hồ sơ trích ngang
 &lt;/h3&gt;&lt;p&gt;Chào bạn, mình là &lt;strong&gt;Bùi Bình Nguyên&lt;/strong&gt;. Blog này là nơi mình ghi lại hành trình chinh phục môn &lt;strong&gt;Lập trình mạng&lt;/strong&gt;, đồng thời chia sẻ những góc nhìn cá nhân về công nghệ.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Lớp:&lt;/strong&gt; 22DTHE5&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Chuyên ngành:&lt;/strong&gt; Công nghệ thông tin - Công nghệ phần mềm&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;-kỹ-năng-chuyên-môn&#34;&gt;🛠 Kỹ năng chuyên môn
+&lt;h3 id=&#34;kỹ-năng-chuyên-môn&#34;&gt;Kỹ năng chuyên môn
 &lt;/h3&gt;&lt;p&gt;Mình định hướng phát triển theo con đường Backend chuyên sâu, với nền tảng hiện tại bao gồm:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Ngôn ngữ chính:&lt;/strong&gt; C# (.NET Core).&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Đang nghiên cứu:&lt;/strong&gt; Java &amp;amp; Network Programming (Socket, RMI).&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Mục tiêu đồ án:&lt;/strong&gt; Xây dựng hệ thống Blog chia sẻ kiến thức Lập trình mạng, áp dụng mô hình Client-Server và giao tiếp đa luồng.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;-chứng-chỉ--bằng-cấp&#34;&gt;📜 Chứng chỉ &amp;amp; Bằng cấp
+&lt;h3 id=&#34;chứng-chỉ--bằng-cấp&#34;&gt;Chứng chỉ &amp;amp; Bằng cấp
 &lt;/h3&gt;&lt;p&gt;Các chứng chỉ chuyên môn đã đạt được từ &lt;strong&gt;Cisco Networking Academy&lt;/strong&gt;:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1661,7 +1661,7 @@ Tuy nhiên, TCP có nhược điểm là tốc độ chậm hơn do quá trình 
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;-full-stack-đời-sống&#34;&gt;🎭 &amp;ldquo;Full Stack&amp;rdquo; Đời sống
+&lt;h3 id=&#34;full-stack-đời-sống&#34;&gt;&amp;ldquo;Full Stack&amp;rdquo; Đời sống
 &lt;/h3&gt;&lt;p&gt;Ngoài thời gian gõ phím, mình tự nhận bản thân là một phiên bản &amp;ldquo;Full Stack&amp;rdquo; trong cuộc sống với những mảnh ghép thú vị:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Guitarist nghiệp dư:&lt;/strong&gt; Người giữ nhịp và tạo giai điệu cho những cuộc vui.&lt;/li&gt;

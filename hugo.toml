@@ -8,7 +8,7 @@ copyright = "BNGroup - All Rights Reserved"
 [params]
   mainSections = ["posts", "projects", "courses"]
   [params.sidebar]
-    emoji = "👑"
+    #emoji = "👑"
     title = "Bùi Bình Nguyên"
     subtitle = "Code • Guitar • Game • Business"
     [params.sidebar.avatar]
